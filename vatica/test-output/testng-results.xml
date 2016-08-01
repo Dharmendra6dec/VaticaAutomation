@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" total="1" passed="1">
+  <reporter-output>
+    <line>
+      <![CDATA[Mozilla is envoked]]>
+    </line>
+    <line>
+      <![CDATA[URL is http://www.seleniumhq.org/download/]]>
+    </line>
+  </reporter-output>
+  <suite name="Default suite" duration-ms="725" started-at="2016-08-01T10:28:55Z" finished-at="2016-08-01T10:28:56Z">
+    <groups>
+    </groups>
+    <test name="Default test" duration-ms="725" started-at="2016-08-01T10:28:55Z" finished-at="2016-08-01T10:28:56Z">
+      <class name="com.vaticahealth.vatica.pages.App">
+        <test-method status="PASS" signature="pro()[pri:0, instance:com.vaticahealth.vatica.pages.App@1af7f54a]" name="pro" duration-ms="663" started-at="2016-08-01T15:58:55Z" finished-at="2016-08-01T15:58:56Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- pro -->
+      </class> <!-- com.vaticahealth.vatica.pages.App -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>
