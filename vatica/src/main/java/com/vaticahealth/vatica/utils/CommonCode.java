@@ -1,9 +1,10 @@
 package com.vaticahealth.vatica.utils;
 
 import java.io.File;
-
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.io.StringWriter;
 import java.util.Properties;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
@@ -33,6 +34,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Reporter;
 import org.w3c.css.sac.Locator;
 
 import com.google.common.base.Function;
@@ -52,40 +54,61 @@ import jxl.write.biff.RowsExceededException;
 
 public class CommonCode {
 	Configuration c = new Configuration();
-	WebDriver driver= c.driver;
-	String parentWindow;
+	WebDriver driver = c.driver;
+	String parentWindow; // Used for Multiple Window Handling
 	int row, column, adjRow, adjCol;
-	
+
 	public static String value;
-	public static String filename = "C:/Users/Lakshya Grover/Desktop/jin.xls";
+	public static String excelFilepath = Configuration.excelFilePath;// excel
+																		// sheet
+																		// path
+																		// for
+																		// importing
+																		// and
+																		// writing
+																		// data
+
+	// The function would allow to read and fetch the value for searched string
+	// from excel file. The function requires the File path at which the excel
+	// The function requires the string to be searched in the excel sheet
 
 	public String readExcel(String sheetName, String searchedString) {
 		try {
 
-			Workbook book = Workbook.getWorkbook(new File(filename));
+			Workbook book = Workbook.getWorkbook(new File(excelFilepath));
 			Sheet sh = book.getSheet(sheetName);
-			Cell c = sh.findCell(searchedString);
-			row = c.getRow();
-			column = c.getColumn();
-			Cell adjCell = sh.getCell(++column, row);
+			Cell c = sh.findCell(searchedString); // finding the cell containing
+													// the searched string
+			row = c.getRow(); // getting the last row in the sheet
+			column = c.getColumn(); // getting the last column in the sheet
+			Cell adjCell = sh.getCell(++column, row); // getting the adjacent
+														// Cell
+
 			String value = adjCell.getContents();
 			return value;
 
 		} catch (BiffException e) {
-			System.out.println("catch1");
+			StringWriter w = new StringWriter();
+			e.printStackTrace(new PrintWriter(w));
+			Reporter.log(w.toString());
 
 		} catch (IOException e) {
-			System.out.println("catch2");
+			StringWriter w = new StringWriter();
+			e.printStackTrace(new PrintWriter(w));
+			Reporter.log(w.toString());
 		}
 		return value;
 	}
 
+	// Function allow to write data in the excel file. It requires the header
+	// and the value corresponding to the header that we need to write in Excel
 	public void writeExcel(String header, String value, String sheetName) {
 		try {
-			Workbook book = Workbook.getWorkbook(new File(filename));
-			WritableWorkbook writeBoook = Workbook.createWorkbook(new File(filename), book);
+			Workbook book = Workbook.getWorkbook(new File(excelFilepath));
+			WritableWorkbook writeBoook = Workbook.createWorkbook(new File(excelFilepath), book);
 			WritableSheet writeSheet = writeBoook.getSheet(sheetName);
-			int row = writeSheet.getRows();
+			int row = writeSheet.getRows();// getting the last row in the
+											// writable sheet
 			Label lb = new Label(0, row, header);
 			Label lb1 = new Label(1, row, value);
 
@@ -95,179 +118,165 @@ public class CommonCode {
 			writeBoook.close();
 
 		} catch (BiffException e) {
+			StringWriter w = new StringWriter();
+			e.printStackTrace(new PrintWriter(w));
+			Reporter.log(w.toString());
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			StringWriter w = new StringWriter();
+			e.printStackTrace(new PrintWriter(w));
+			Reporter.log(w.toString());
 
 		} catch (RowsExceededException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			StringWriter w = new StringWriter();
+			e.printStackTrace(new PrintWriter(w));
+			Reporter.log(w.toString());
 		} catch (WriteException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			StringWriter w = new StringWriter();
+			e.printStackTrace(new PrintWriter(w));
+			Reporter.log(w.toString());
 		}
 
 	}
-	public void implictWait(Long timeInSeconds)
-	{
-	driver.manage().timeouts().implicitlyWait(timeInSeconds,TimeUnit.SECONDS );	
+
+	// function would implicitly wait for the element with time as passed in the
+	// function
+	public void implictWait(Long timeInSeconds) {
+		driver.manage().timeouts().implicitlyWait(timeInSeconds, TimeUnit.SECONDS);
 	}
-	public void explictWait(int i,String element,By by)
-	{
-		WebDriverWait wait= new WebDriverWait(driver,i);
-		WebElement j=driver.findElement(By.id("hh"));
+
+	// Function would explicitly wait for the webelement to be present for
+	// specific time. The function needs the webelment location for identifying
+	// the webelement and the time in seconds upto which the function will wait
+	// for the webelement
+
+	public void explictWait(int timeInSecond, By by) {
+		WebDriverWait wait = new WebDriverWait(driver, timeInSecond);
+		WebElement j = driver.findElement(By.id("hh"));
 		wait.until(ExpectedConditions.presenceOfElementLocated(by));
 	}
-	public void windowHandler(String windowTitle)
-	{
-		parentWindow= driver.getWindowHandle();
-		Set<String> handles= driver.getWindowHandles();
-		for (String tempHandle:handles)
-		{
+
+	// The function allows switch to new window having the title as passed
+
+	public void windowHandler(String newWindowTitle) {
+		parentWindow = driver.getWindowHandle();
+		Set<String> handles = driver.getWindowHandles();
+		for (String tempHandle : handles) {
 			driver.switchTo().window(tempHandle);
-			String title=driver.getTitle();
-			if (title.equalsIgnoreCase(windowTitle))
-			{
+			String title = driver.getTitle();
+			if (title.equalsIgnoreCase(newWindowTitle)) {
 				break;
 			}
 		}
-		
+
 	}
-	public void mainwindow()
-	{
+
+	// The function allows you to move the parent window while control is at any
+	// child window
+	public void mainwindow() {
 		driver.switchTo().window(parentWindow);
 	}
-	/*public void email()
-	{
-		String to = "lakshg07@gmail.com";
-		String from ="l.akshg07@gmail.com";
-	String host ="smtp.journaldev.com";
-	try {
-	Properties pro=System.getProperties();
-	pro.setProperty("mail.smtp.host",host );
-	Session session=Session.getDefaultInstance(pro);
-	MimeMessage message = new MimeMessage(session);
-	message.setFrom(new InternetAddress(from));
-	message.addRecipient(Message.RecipientType.TO,new InternetAddress(to));
-	message.setSubject("hi this is header");
-	BodyPart bodyMessage=new MimeBodyPart();
-	bodyMessage.setText("hi this is text");
-	MimeBodyPart attchment=new MimeBodyPart();
-	String filePath= "C:/Users/Lakshya Grover/Desktop/view-bill.pdf";
-	DataSource fileSource=new FileDataSource(filePath);
-	attchment.setDataHandler(new DataHandler(fileSource));
-	attchment.setFileName(filePath);
-	
-	Multipart multi = new MimeMultipart();
-	multi.addBodyPart(bodyMessage);
-	multi.addBodyPart(attchment);
-	
-	message.setContent(multi);
-	
-	Transport.send(message);
-	System.out.println("send");
-	
-	
-	
-	
-	
-	
-	
-	} catch (AddressException e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
-	} catch (MessagingException e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
-	}
-	
-		
-		
-	}
-	*/
-	
-	
-	public void sendMail(String mailServer, String from, String[] to, String subject, String messageBody, String attachmentPath, String attachmentName) throws MessagingException, AddressException
-	{
+	/*
+	 * public void email() { String to = "lakshg07@gmail.com"; String from
+	 * ="l.akshg07@gmail.com"; String host ="smtp.journaldev.com"; try {
+	 * Properties pro=System.getProperties();
+	 * pro.setProperty("mail.smtp.host",host ); Session
+	 * session=Session.getDefaultInstance(pro); MimeMessage message = new
+	 * MimeMessage(session); message.setFrom(new InternetAddress(from));
+	 * message.addRecipient(Message.RecipientType.TO,new InternetAddress(to));
+	 * message.setSubject("hi this is header"); BodyPart bodyMessage=new
+	 * MimeBodyPart(); bodyMessage.setText("hi this is text"); MimeBodyPart
+	 * attchment=new MimeBodyPart(); String filePath=
+	 * "C:/Users/Lakshya Grover/Desktop/view-bill.pdf"; DataSource
+	 * fileSource=new FileDataSource(filePath); attchment.setDataHandler(new
+	 * DataHandler(fileSource)); attchment.setFileName(filePath);
+	 * 
+	 * Multipart multi = new MimeMultipart(); multi.addBodyPart(bodyMessage);
+	 * multi.addBodyPart(attchment);
+	 * 
+	 * message.setContent(multi);
+	 * 
+	 * Transport.send(message); System.out.println("send");
+	 * 
+	 * 
+	 * 
+	 * 
+	 * 
+	 * 
+	 * 
+	 * } catch (AddressException e) { // TODO Auto-generated catch block
+	 * e.printStackTrace(); } catch (MessagingException e) { // TODO
+	 * Auto-generated catch block e.printStackTrace(); }
+	 * 
+	 * 
+	 * 
+	 * }
+	 */
+
+	public void sendMail(String from, String to, String subject, String messageBody) {
 		boolean debug = false;
 		Properties props = new Properties();
 		props.put("mail.smtp.starttls.enable", "true");
-		props.put("mail.smtp.EnableSSL.enable","true");
+		props.put("mail.smtp.EnableSSL.enable", "true");
 		props.put("mail.smtp.auth", "true");
 
-		props.put("mail.smtp.host", "smtp.gmail.com"); 
+		props.put("mail.smtp.host", "smtp.gmail.com");
 		props.put("mail.debug", "true");
-		
-	     props.setProperty("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");   
-	     props.setProperty("mail.smtp.socketFactory.fallback", "false");   
-	     props.setProperty("mail.smtp.port", "465");   
-	     props.setProperty("mail.smtp.socketFactory.port", "465"); 
 
-		
-		  Authenticator auth = new SMTPAuthenticator();
-		    Session session = Session.getDefaultInstance(props, auth);
+		props.setProperty("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
+		props.setProperty("mail.smtp.socketFactory.fallback", "false");
+		props.setProperty("mail.smtp.port", "465");
+		props.setProperty("mail.smtp.socketFactory.port", "465");
+		// creating the session object
+		Session session = Session.getInstance(props, new javax.mail.Authenticator() {
+			protected PasswordAuthentication getPasswordAuthentication() {
+				return new PasswordAuthentication(c.emailId, c.emailPassword);
+			}
+		});
 
-		    session.setDebug(debug);
-		
-		try
-		{
-			
-			
+		try {
+
 			Transport bus = session.getTransport("smtp");
 			bus.connect();
-            Message message = new MimeMessage(session);
-        
-         //X-Priority values are generally numbers like 1 (for highest priority), 3 (normal) and 5 (lowest).
-            
-             message.addHeader("X-Priority", "1");
-             message.setFrom(new InternetAddress("lakshg07@gmail.com"));
-             InternetAddress[] addressTo = new InternetAddress[to.length];
-             for (int i = 0; i < to.length; i++)
-      		 addressTo[i] = new InternetAddress("laksh.g07@gmail.com");
-             message.setRecipients(Message.RecipientType .TO, addressTo);
-             message.setSubject(subject);
-                  
-             
-             BodyPart body = new MimeBodyPart();
+			Message message = new MimeMessage(session);
 
-            // body.setText(messageBody);
-            body.setContent(messageBody,"text/html");
+			// X-Priority values are generally numbers like 1 (for highest
+			// priority), 3 (normal) and 5 (lowest).
 
-             BodyPart attachment = new MimeBodyPart();
-             DataSource source = new FileDataSource("C:/Users/Lakshya Grover/Desktop");
-             attachment.setDataHandler(new DataHandler(source));
-             attachment.setFileName("view-bill.pdf");
-             MimeMultipart multipart = new MimeMultipart();
-             multipart.addBodyPart(body);
-             multipart.addBodyPart(attachment);
-             message.setContent(multipart);
-             Transport.send(message);
-             System.out.println("Successfully Sent mail to All Users");
-         	 bus.close();
-    		
+			message.addHeader("X-Priority", "1");
+			message.setFrom(new InternetAddress(from));
+			InternetAddress[] addressTo = new InternetAddress[to.length()];
+			for (int i = 0; i < to.length(); i++)
+				addressTo[i] = new InternetAddress(to);
+			message.setRecipients(Message.RecipientType.TO, addressTo);
+			message.setSubject(subject);
+
+			BodyPart body = new MimeBodyPart();
+
+			// body.setText(messageBody);
+			body.setContent(messageBody, "text/html");
+
+			BodyPart attachment = new MimeBodyPart();
+			DataSource source = new FileDataSource("C:/Users/Lakshya Grover/Desktop/");
+			attachment.setDataHandler(new DataHandler(source));
+			attachment.setFileName("jin.xls");
+			MimeMultipart multipart = new MimeMultipart();
+			multipart.addBodyPart(body);
+			multipart.addBodyPart(attachment);
+			message.setContent(multipart);
+			Transport.send(message);
+			Reporter.log("Email has been sent");
+			bus.close();
+
+		} catch (MessagingException e) {
+			StringWriter w = new StringWriter();
+			e.printStackTrace(new PrintWriter(w));
+			Reporter.log(w.toString());
 		}
-		catch (MessagingException mex)
-		{
-            mex.printStackTrace();
-        }		
-	} 
-	
-	private class SMTPAuthenticator extends javax.mail.Authenticator
-	{
-
-	    public PasswordAuthentication getPasswordAuthentication()
-	    {
-	        String username = "lakshg07@gmail.com";
-	        String password = "vasundhara344";
-	        return new PasswordAuthentication(username, password);
-	    }
 	}
-	
-	
+
 }
-
-	
-
-

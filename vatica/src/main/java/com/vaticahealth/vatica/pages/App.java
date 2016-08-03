@@ -30,9 +30,10 @@ public class App
 	
 	}
 	@Test
-	public void pro() throws AddressException, MessagingException
+	public void pro() 
 	{
-		cc.sendMail();
+		//cc.sendMail("l.akshg07@gmail.com","lakshg07@gmail.com","hi","body");
+		
 	}
 	
     

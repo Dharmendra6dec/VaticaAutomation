@@ -7,17 +7,29 @@
     <line>
       <![CDATA[URL is http://www.seleniumhq.org/download/]]>
     </line>
+    <line>
+      <![CDATA[Mozilla is envoked]]>
+    </line>
+    <line>
+      <![CDATA[URL is http://www.seleniumhq.org/download/]]>
+    </line>
   </reporter-output>
-  <suite name="Default suite" duration-ms="725" started-at="2016-08-01T10:28:55Z" finished-at="2016-08-01T10:28:56Z">
+  <suite name="Default suite" duration-ms="11985" started-at="2016-08-02T06:59:22Z" finished-at="2016-08-02T06:59:34Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="725" started-at="2016-08-01T10:28:55Z" finished-at="2016-08-01T10:28:56Z">
-      <class name="com.vaticahealth.vatica.pages.App">
-        <test-method status="PASS" signature="pro()[pri:0, instance:com.vaticahealth.vatica.pages.App@1af7f54a]" name="pro" duration-ms="663" started-at="2016-08-01T15:58:55Z" finished-at="2016-08-01T15:58:56Z">
+    <test name="Default test" duration-ms="11985" started-at="2016-08-02T06:59:22Z" finished-at="2016-08-02T06:59:34Z">
+      <class name="com.vaticahealth.vatica.test">
+        <test-method status="PASS" signature="pro()[pri:0, instance:com.vaticahealth.vatica.test@1b39fd82]" name="pro" duration-ms="11931" started-at="2016-08-02T12:29:22Z" finished-at="2016-08-02T12:29:34Z">
           <reporter-output>
+            <line>
+              <![CDATA[Mozilla is envoked]]>
+            </line>
+            <line>
+              <![CDATA[URL is http://www.seleniumhq.org/download/]]>
+            </line>
           </reporter-output>
         </test-method> <!-- pro -->
-      </class> <!-- com.vaticahealth.vatica.pages.App -->
+      </class> <!-- com.vaticahealth.vatica.test -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

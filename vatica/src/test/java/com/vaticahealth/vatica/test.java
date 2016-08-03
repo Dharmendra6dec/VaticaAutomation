@@ -25,9 +25,9 @@ public class test {
 		App k = new App();
 		k.pro();
 		System.out.println("ram");
-		System.out.println(obj.readExcel("my","laksh"));
-		obj.writeExcel("li", "vi","my");
-		obj.explictWait(10, "jkj",By.xpath(""));
+		System.out.println(obj.readExcel("get_values","header"));
+		obj.writeExcel("Header1", "values1","get_values");
+		//obj.explictWait(10, "jkj",By.xpath(""));
 		
 	}
 	

@@ -19,100 +19,95 @@ import org.testng.Reporter;
 
 public class Configuration {
 	public static Properties properties = new Properties();
-	public static String filepath ;
-	public static String currentDirec=System.getProperty("usr.dir");
+	public static String filepath;
+	public static String currentDirec = System.getProperty("usr.dir");
 	public static WebDriver driver;
 	public static FileInputStream in;
 	public static String URL;
 	public static String broswer;
 	public static String env;
-	
+	public static String emailId;
+	public static String emailPassword;
+	public static String excelFilePath;
 
+	// intializing the broswer driver
 	public static WebDriver broswer() {
-		
-		if (broswer.equalsIgnoreCase("mozilla"))
-		{
-			
-			
+
+		// invoking mozilla firefox
+		if (broswer.equalsIgnoreCase("mozilla")) {
+
 			driver = new FirefoxDriver();
 			Reporter.log("Mozilla is envoked");
-			System.out.println("here");
-			return driver;
+			//return driver;
 		}
-		else if (broswer.equalsIgnoreCase("IE"))
-		{
-			
-			System.setProperty("webdriver.ie.driver",System.getProperty("usr.dir")+"/src/test/resources/IEDriverServer.exe" );
-			driver= new InternetExplorerDriver();
-			Reporter.log("I.E is invoked" );
-			System.out.println("there");
-			return driver;
+		// Invoking Internet Explorer Broswer
+		else if (broswer.equalsIgnoreCase("IE")) {
+
+			System.setProperty("webdriver.ie.driver",
+					System.getProperty("usr.dir") + "/src/test/resources/IEDriverServer.exe");
+			driver = new InternetExplorerDriver();
+			Reporter.log("I.E is invoked");
+			//return driver;
 		}
+		// Invoking the Google Chrome Broswer
 		else if (broswer.equalsIgnoreCase("chrome")) {
-			System.setProperty("webdriver.chrome.driver", System.getProperty("usr.dir")+"/src/test/resources/chromedriver.exe" );
+			System.setProperty("webdriver.chrome.driver",
+					System.getProperty("usr.dir") + "/src/test/resources/chromedriver.exe");
 			driver = new ChromeDriver();
 			Reporter.log("Chrome driver is invoked");
-			System.out.println("there");
-			return driver;
+			//return driver;
 		}
+		// Invoking the Safari Broswer
 		else if (broswer.equalsIgnoreCase("Safari")) {
-			driver=new SafariDriver();
-			Reporter.log("Safari broswer is ivoked");
-			System.out.println("there");
-			return driver;
-			
+			driver = new SafariDriver();
+			Reporter.log("Safari broswer is invoked");
+			//return driver;
+
 		}
-		//return driver;
+		// return driver;
 		return driver;
-		
-		
-		
-		
+
 	}
-	static
-	{
-		
-		
+
+	static {
+
 		try {
-			if(System.getProperty("env")==null)
-			{
-				filepath="/src/test/resources/QA-Environment.properties";
-				in = new FileInputStream(System.getProperty("user.dir")+filepath);
+			// getting the default Enviornment
+			if (System.getProperty("env") == null) {
+				filepath = "/src/test/resources/QA-Environment.properties";
+				in = new FileInputStream(System.getProperty("user.dir") + filepath);
 				properties.load(in);
 			}
-			
-			
+
+			// Getting the QA specific Enviornment
 			else if (env.equalsIgnoreCase("qa")) {
-				filepath="/src/test/resources/QA-Environment.properties";
-				in = new FileInputStream(System.getProperty("user.dir")+filepath);
+				filepath = "/src/test/resources/QA-Environment.properties";
+				in = new FileInputStream(System.getProperty("user.dir") + filepath);
 				properties.load(in);
-				System.out.println("I am Here 2");
-				env= properties.getProperty("env");
-				
+				env = properties.getProperty("env");
+
 			}
-	
-			 else if (env.equalsIgnoreCase("dev")) {
-				filepath="/src/test/resources/Dev-Environment.properties";
-				in= new FileInputStream(System.getProperty("user.dir")+filepath);
+			// getting the developer Specific Enviornment
+			else if (env.equalsIgnoreCase("dev")) {
+				filepath = "/src/test/resources/Dev-Environment.properties";
+				in = new FileInputStream(System.getProperty("user.dir") + filepath);
 				properties.load(in);
-				System.out.println("here3");
-				env= properties.getProperty("env");
-			
-				
+				env = properties.getProperty("env");
+
 			}
-			
-			
-			
-			
-			 
-			env= properties.getProperty("env");
-			URL= properties.getProperty("url");
-			broswer = properties.getProperty("broswer");
-			
-			
-			//System.out.println(URL);
-			//System.out.println(broswer);
-			
+
+			env = properties.getProperty("env"); // Env value from the
+													// properties files
+			URL = properties.getProperty("url"); // URL from the properties
+													// files
+			broswer = properties.getProperty("broswer"); // Broswer from the
+															// Properties files
+			emailId = properties.getProperty("emailId");
+			emailPassword = properties.getProperty("emailPassword");
+			excelFilePath=properties.getProperty("");
+
+			// System.out.println(URL);
+			// System.out.println(broswer);
 
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -120,17 +115,11 @@ public class Configuration {
 
 		}
 	}
-	public static String invokeUrl()
-	{
-		Reporter.log("URL is "+URL);
+
+	// function would return the website URL
+	public static String invokeUrl() {
+		Reporter.log("URL is " + URL);
 		return URL;
 	}
-	
-		
-		
-		
-	
-	
-	
 
 }
