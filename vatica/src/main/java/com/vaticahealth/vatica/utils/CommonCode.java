@@ -53,8 +53,8 @@ import jxl.write.biff.RowsExceededException;
 //import vatica_util.monitoringMail.SMTPAuthenticator;
 
 public class CommonCode {
-	Configuration c = new Configuration();
-	WebDriver driver = c.driver;
+	
+	WebDriver driver = Configuration.driver;
 	String parentWindow; // Used for Multiple Window Handling
 	int row, column, adjRow, adjCol;
 
@@ -145,7 +145,7 @@ public class CommonCode {
 
 	// function would implicitly wait for the element with time as passed in the
 	// function
-	public void implictWait(Long timeInSeconds) {
+	public void implictWait(int timeInSeconds) {
 		driver.manage().timeouts().implicitlyWait(timeInSeconds, TimeUnit.SECONDS);
 	}
 
@@ -156,7 +156,6 @@ public class CommonCode {
 
 	public void explictWait(int timeInSecond, By by) {
 		WebDriverWait wait = new WebDriverWait(driver, timeInSecond);
-		WebElement j = driver.findElement(By.id("hh"));
 		wait.until(ExpectedConditions.presenceOfElementLocated(by));
 	}
 
@@ -234,7 +233,7 @@ public class CommonCode {
 		// creating the session object
 		Session session = Session.getInstance(props, new javax.mail.Authenticator() {
 			protected PasswordAuthentication getPasswordAuthentication() {
-				return new PasswordAuthentication(c.emailId, c.emailPassword);
+				return new PasswordAuthentication(Configuration.emailId, Configuration.emailPassword);
 			}
 		});
 

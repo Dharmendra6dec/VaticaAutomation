@@ -20,7 +20,7 @@ import org.testng.Reporter;
 public class Configuration {
 	public static Properties properties = new Properties();
 	public static String filepath;
-	public static String currentDirec = System.getProperty("usr.dir");
+	public static String currentDirec = System.getProperty("user.dir");
 	public static WebDriver driver;
 	public static FileInputStream in;
 	public static String URL;
@@ -28,7 +28,7 @@ public class Configuration {
 	public static String env;
 	public static String emailId;
 	public static String emailPassword;
-	public static String excelFilePath;
+	public static String excelFilePath = currentDirec+"/src/test/resources/inputExcel.xls";
 
 	// intializing the broswer driver
 	public static WebDriver broswer() {
@@ -38,30 +38,33 @@ public class Configuration {
 
 			driver = new FirefoxDriver();
 			Reporter.log("Mozilla is envoked");
+			System.out.println("hereMozill");
 			//return driver;
 		}
 		// Invoking Internet Explorer Broswer
 		else if (broswer.equalsIgnoreCase("IE")) {
 
 			System.setProperty("webdriver.ie.driver",
-					System.getProperty("usr.dir") + "/src/test/resources/IEDriverServer.exe");
+					System.getProperty("user.dir") + "/src/test/resources/IEDriverServer.exe");
 			driver = new InternetExplorerDriver();
 			Reporter.log("I.E is invoked");
+			System.out.println("heereIEEE");
 			//return driver;
 		}
 		// Invoking the Google Chrome Broswer
 		else if (broswer.equalsIgnoreCase("chrome")) {
 			System.setProperty("webdriver.chrome.driver",
-					System.getProperty("usr.dir") + "/src/test/resources/chromedriver.exe");
+					System.getProperty("user.dir") + "/src/test/resources/chromedriver.exe");
 			driver = new ChromeDriver();
 			Reporter.log("Chrome driver is invoked");
+			System.out.println("chromein");
 			//return driver;
 		}
 		// Invoking the Safari Broswer
 		else if (broswer.equalsIgnoreCase("Safari")) {
 			driver = new SafariDriver();
 			Reporter.log("Safari broswer is invoked");
-			//return driver;
+			//eturn driver;
 
 		}
 		// return driver;
@@ -98,13 +101,12 @@ public class Configuration {
 
 			env = properties.getProperty("env"); // Env value from the
 													// properties files
-			URL = properties.getProperty("url"); // URL from the properties
+			URL = properties.getProperty("URL"); // URL from the properties
 													// files
 			broswer = properties.getProperty("broswer"); // Broswer from the
 															// Properties files
 			emailId = properties.getProperty("emailId");
 			emailPassword = properties.getProperty("emailPassword");
-			excelFilePath=properties.getProperty("");
 
 			// System.out.println(URL);
 			// System.out.println(broswer);

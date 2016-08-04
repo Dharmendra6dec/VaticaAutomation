@@ -3,6 +3,7 @@ package com.vaticahealth.vatica.pages;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
 
 import com.vaticahealth.vatica.config.Configuration;
@@ -11,7 +12,7 @@ import com.vaticahealth.vatica.utils.Elements;
 
 public class Login {
 	CommonCode common = new CommonCode();
-	WebDriver driver = Configuration.broswer();
+	WebDriver driver = Configuration.driver;
 	String url = Configuration.invokeUrl();
 	
 	@FindBy(xpath=Elements.loginId)
@@ -31,6 +32,10 @@ public class Login {
 	
 	@FindBy(xpath=Elements.resetButton)
 	public WebElement resetButton;
+	public Login()
+	{
+		PageFactory.initElements(driver, this);
+	}
 	
 	public void logging(String Id,String password)
 	{

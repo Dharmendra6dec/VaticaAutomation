@@ -3,11 +3,11 @@
 <suite name="Failed suite [Default suite]">
   <test name="Default test(failed)">
     <classes>
-      <class name="com.vaticahealth.vatica.test">
+      <class name="com.vaticahealth.vatica.RegressionTest">
         <methods>
-          <include name="pro"/>
+          <include name="invalidPassword"/>
         </methods>
-      </class> <!-- com.vaticahealth.vatica.test -->
+      </class> <!-- com.vaticahealth.vatica.RegressionTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
