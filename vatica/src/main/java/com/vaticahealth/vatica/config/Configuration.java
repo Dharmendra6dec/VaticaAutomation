@@ -13,6 +13,7 @@ import org.apache.commons.lang3.ObjectUtils.Null;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxProfile;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.safari.SafariDriver;
 import org.testng.Reporter;
@@ -35,11 +36,18 @@ public class Configuration {
 
 		// invoking mozilla firefox
 		if (broswer.equalsIgnoreCase("mozilla")) {
+			FirefoxProfile ffprofile = new FirefoxProfile();
+			ffprofile.setPreference("browser.download.dir", "C:\\Users\\Lakshya Grover\\Desktop");
+			ffprofile.setPreference("browser.download.folderList", 2);
+			ffprofile.setPreference("browser.helperApps.neverAsk.saveToDisk", "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;"
+			+"application/pdf");
+			ffprofile.setPreference("browser.download.manager.showWhenStarting", false);
+			ffprofile.setPreference("pdfjs.disabled", true);
 
-			driver = new FirefoxDriver();
+			driver = new FirefoxDriver(ffprofile);
 			Reporter.log("Mozilla is envoked");
-			System.out.println("hereMozill");
-			//return driver;
+			//System.out.println("hereMozill");
+		
 		}
 		// Invoking Internet Explorer Broswer
 		else if (broswer.equalsIgnoreCase("IE")) {
@@ -48,8 +56,8 @@ public class Configuration {
 					System.getProperty("user.dir") + "/src/test/resources/IEDriverServer.exe");
 			driver = new InternetExplorerDriver();
 			Reporter.log("I.E is invoked");
-			System.out.println("heereIEEE");
-			//return driver;
+			//System.out.println("heereIEEE");
+		
 		}
 		// Invoking the Google Chrome Broswer
 		else if (broswer.equalsIgnoreCase("chrome")) {
@@ -57,17 +65,17 @@ public class Configuration {
 					System.getProperty("user.dir") + "/src/test/resources/chromedriver.exe");
 			driver = new ChromeDriver();
 			Reporter.log("Chrome driver is invoked");
-			System.out.println("chromein");
-			//return driver;
+			//System.out.println("chromein");
+			
 		}
 		// Invoking the Safari Broswer
 		else if (broswer.equalsIgnoreCase("Safari")) {
 			driver = new SafariDriver();
 			Reporter.log("Safari broswer is invoked");
-			//eturn driver;
+			
 
 		}
-		// return driver;
+		
 		return driver;
 
 	}

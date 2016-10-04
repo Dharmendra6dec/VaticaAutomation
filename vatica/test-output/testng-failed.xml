@@ -5,7 +5,9 @@
     <classes>
       <class name="com.vaticahealth.vatica.RegressionTest">
         <methods>
-          <include name="invalidPassword"/>
+          <include name="searchFirstLastName"/>
+          <include name="invokeUrl"/>
+          <include name="reports"/>
         </methods>
       </class> <!-- com.vaticahealth.vatica.RegressionTest -->
     </classes>

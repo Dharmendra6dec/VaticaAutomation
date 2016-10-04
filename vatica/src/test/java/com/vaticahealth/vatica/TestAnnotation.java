@@ -3,7 +3,9 @@ package com.vaticahealth.vatica;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterSuite;
+import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
@@ -19,29 +21,23 @@ public class TestAnnotation {
 	Login log = new Login();
 	CommonCode common = new CommonCode();
 	Home home = new Home();
-	
+	public String logIdSupp = common.readExcel("get_values", "loginId");
+	public String logPassowrdSupp = common.readExcel("get_values", "loginPassword");
+	public String logInvalidPasswordSupp = common.readExcel("get_values", "invalidPassword");
+	public String websiteSelectionSupp = common.readExcel("get_values", "webSiteSelection");
+	int intff= Integer.parseInt(websiteSelectionSupp);
 
-	@BeforeSuite(description = "Application URL")
+
+	@BeforeTest
 	public void invokeUrl() {
 
 		driver.get(Configuration.invokeUrl());
 
 	}
-
-	@BeforeTest
-	public void loginApp() {
-		common.implictWait(10);
-		String Id = common.readExcel("get_values", "loginId");
-		String password = common.readExcel("get_values", "loginPassword");
-		log.logging(Id, password);
-		log.loginButton();
-		log.websiteDropDown(common.readExcel("get_values", "webSiteSelection"));
-		log.selectWebsiteButton();
-	}
-
-	@AfterSuite
-	public void closeDriver() {
+	/*@AfterSuite
+	public void closeDriver()
+	{
 		driver.close();
-	}
+	}*/
 
 }

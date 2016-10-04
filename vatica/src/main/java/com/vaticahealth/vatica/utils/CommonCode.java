@@ -154,9 +154,15 @@ public class CommonCode {
 	// the webelement and the time in seconds upto which the function will wait
 	// for the webelement
 
-	public void explictWait(int timeInSecond, By by) {
+	public void explictWaitPresence(int timeInSecond, By by) {
 		WebDriverWait wait = new WebDriverWait(driver, timeInSecond);
 		wait.until(ExpectedConditions.presenceOfElementLocated(by));
+	}
+	
+	public void explictWaitClickable(int timeInSecond, WebElement webelement)
+	{
+		WebDriverWait wait = new WebDriverWait(driver, timeInSecond);
+		wait.until(ExpectedConditions.elementToBeClickable(webelement));
 	}
 
 	// The function allows switch to new window having the title as passed
@@ -277,5 +283,7 @@ public class CommonCode {
 			Reporter.log(w.toString());
 		}
 	}
+
+	
 
 }
