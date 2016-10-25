@@ -6,8 +6,13 @@
       <class name="com.vaticahealth.vatica.RegressionTest">
         <methods>
           <include name="searchFirstLastName"/>
+          <include name="searchFirstVisitDate"/>
+          <include name="searchVisitType"/>
           <include name="invokeUrl"/>
+          <include name="searchVisitDate"/>
+          <include name="searchLastName"/>
           <include name="reports"/>
+          <include name="searchSatus"/>
         </methods>
       </class> <!-- com.vaticahealth.vatica.RegressionTest -->
     </classes>

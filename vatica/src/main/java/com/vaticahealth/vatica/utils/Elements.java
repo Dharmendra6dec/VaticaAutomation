@@ -57,7 +57,13 @@ public  class Elements {
 	public static final String SELECTREPORT="//div[@id='mdExport']/div/div/div[2]/form/fieldset/div/div/select";
 	public static final String EXPORTDATABUTTON="//div[@id='mdExport']/div/div/div[3]/a";
 	public static final String DONEBUTTON="//div[@id='mdExport']/div/div/div[3]/button";
-	
+	public static final String SITEONPHP="//a[@class='ng-binding'][contains(text(),' Demo Hospital 1')]";
+	public static final String COLUMNSONGRID="//span[@class='ui-grid-header-cell-label ng-binding']";
+	public static final String SETTINGS="//*[@role='button'][@data-toggle='dropdown']";
+	public static final String LOGINBTN="//*[@id='btn-login']";
+	public static final String WELCOMEMSG="//*[contains(text(),'Welcome,')]";
+	public static final String ITEMSPERPAGE="//select[@class='ng-pristine ng-untouched ng-valid']";
+	public static final String ROWSONGRID="//div[@class='ui-grid-viewport ng-isolate-scope']/div/div";
 	
 	
 	

@@ -1,15 +1,8 @@
 package com.vaticahealth.vatica.config;
 
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.io.Reader;
 import java.util.Properties;
-
-import javax.sound.sampled.DataLine.Info;
-
-import org.apache.commons.collections.map.StaticBucketMap;
-import org.apache.commons.lang3.ObjectUtils.Null;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
