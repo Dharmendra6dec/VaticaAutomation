@@ -91,13 +91,13 @@ public class Login {
 		resetButton.click();
 	}
 
-	public void websiteDropDown(int websiteSelectionSupp) {
+	public void websiteDropDown(int websiteSelectionSupp) throws InterruptedException {
 		common.implictWait(10);
-		webSiteOption.click();
-		Select selecting = new Select(webSiteOption);
-		selecting.selectByIndex(websiteSelectionSupp);
-		// selecting.selectByVisibleText(optionValue);
-
+		Thread.sleep(3000);
+		//webSiteOption.click();
+		Select select = new Select(webSiteOption);
+		//Thread.sleep(5000);
+		select.selectByIndex(websiteSelectionSupp);
 	}
 
 	public void selectWebsiteButton() {

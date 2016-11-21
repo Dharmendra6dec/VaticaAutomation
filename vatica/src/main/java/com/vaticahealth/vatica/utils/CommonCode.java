@@ -60,7 +60,7 @@ import jxl.write.biff.RowsExceededException;
 
 public class CommonCode {
 
-	public static WebDriver driver = Configuration.driver;
+	public  WebDriver driver = Configuration.driver;
 	String parentWindow; // Used for Multiple Window Handling
 	int row, column, adjRow, adjCol;
 
