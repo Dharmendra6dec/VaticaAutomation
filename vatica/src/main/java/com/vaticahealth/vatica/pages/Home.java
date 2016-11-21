@@ -1,11 +1,16 @@
 package com.vaticahealth.vatica.pages;
 
 import java.lang.reflect.Array;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Set;
-
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -14,10 +19,10 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import org.testng.Reporter;
-
 import com.vaticahealth.vatica.config.Configuration;
 import com.vaticahealth.vatica.utils.CommonCode;
 import com.vaticahealth.vatica.utils.Elements;
@@ -51,10 +56,16 @@ public class Home {
 	public List<WebElement> lastRecordParent;
 
 	@FindBy(xpath = Elements.COLUMNSONGRID)
-	public static List<WebElement> columnsOnGrid;
-	
+	public List<WebElement> columnsOnGrid;
+
+	@FindBy(xpath = Elements.FIRSTNAMESONGRID)
+	public List<WebElement> firstNamesOnGrid;
+
+	@FindBy(xpath = Elements.LASTNAMESONGRID)
+	public List<WebElement> lastNamesOnGrid;
+
 	@FindBy(xpath = Elements.ROWSONGRID)
-	public static List<WebElement> rowsOnGrid;
+	public List<WebElement> rowsOnGrid;
 
 	@FindBy(xpath = Elements.LASTNAME)
 	public WebElement lastName;
@@ -64,6 +75,9 @@ public class Home {
 
 	@FindBy(xpath = Elements.TRAVERSEMONTHYEAR)
 	public WebElement traversedmonthYear;
+	
+	@FindBy(xpath= Elements.ADDNEWVISIT)
+	public WebElement AddNewVisitBtn;
 
 	@FindBy(xpath = Elements.DOB)
 	public WebElement dob;
@@ -100,6 +114,9 @@ public class Home {
 
 	@FindBy(xpath = Elements.SETTINGS)
 	public WebElement settings;
+
+	@FindBy(xpath = Elements.NEXTBTNONGRID)
+	public WebElement NextBtnOnGrid;
 
 	@FindBy(xpath = Elements.PRINTFIRSTREPORTBUTTON)
 	public WebElement printFirstHraReportButton;
@@ -145,6 +162,66 @@ public class Home {
 
 	}
 
+	public String getFirstNamesthruDBConnect() throws ClassNotFoundException, SQLException {
+
+		Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+		Connection conn = DriverManager.getConnection("jdbc:sqlserver://111.125.141.74;databaseName=VaticaHealthLog",
+				"user=swsadmin", "password=SeniorWellnessSASpider1!");
+		System.out.println("test");
+		String boom = null;
+		Statement sta = conn.createStatement();
+		String Sql = "select top 223 FirstName, HraId from Hra where siteId = 1 order by FirstName asc ";
+		ResultSet rs = sta.executeQuery(Sql);
+		while (rs.next()) {
+			boom = rs.getString(1);
+
+		}
+		return boom;
+	}
+
+	public List<WebElement> getfirstNamesOnGrid() {
+		List<WebElement> lst = driver.findElements(By.xpath(Elements.FIRSTNAMESONGRID));
+		// System.out.println(lst);
+		return lst;
+
+	}
+
+	public String[] sortAlphabeticalList(List<String> str) {
+
+		String temp;
+		String[] strTemp = new String[str.size()];
+
+		for (int i = 0; i < str.size(); i++) {
+			strTemp[i] = str.get(i).toLowerCase();
+		}
+
+		for (int i = strTemp.length - 1; i > 0; i--) {
+			for (int j = 0; j < i; j++) {
+				int comp = strTemp[j].compareTo(strTemp[j + 1]);
+				if (comp > 0) {
+					temp = strTemp[j + 1];
+					strTemp[j + 1] = strTemp[j];
+					strTemp[j] = temp;
+				}
+			}
+		}
+		return strTemp;
+	}
+
+	public List<String> getTextFromWebElementList(List<WebElement> lst) {
+
+		List<String> lstStr = new ArrayList<String>();
+		String temp;
+
+		for (int i = 0; i < lst.size(); i++) {
+			temp = lst.get(i).getText().toString();
+			lstStr.add(temp);
+
+		}
+		return lstStr;
+
+	}
+
 	public List<WebElement> getColumnsOnGrid() {
 		List<WebElement> lst = driver.findElements(By.xpath(Elements.COLUMNSONGRID));
 		// System.out.println(lst);
@@ -152,17 +229,17 @@ public class Home {
 
 	}
 
-	
 	public List<WebElement> getRowsOnGrid() {
 		List<WebElement> lst = driver.findElements(By.xpath(Elements.ROWSONGRID));
 		// System.out.println(lst);
 		return lst;
 
 	}
+
 	public String getDefaultItemsPerPage() throws InterruptedException {
 
 		Thread.sleep(5000);
-		WebElement elle = driver.findElement(By.xpath("//select[@class='ng-pristine ng-untouched ng-valid']"));
+		WebElement elle = driver.findElement(By.xpath(Elements.ITEMSPERPAGE));
 		Select sel = new Select(elle);
 		String valueAtDefault = sel.getFirstSelectedOption().getText();
 		return valueAtDefault;

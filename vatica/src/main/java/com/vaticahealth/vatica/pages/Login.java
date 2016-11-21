@@ -16,105 +16,101 @@ public class Login {
 	CommonCode common = new CommonCode();
 	WebDriver driver = Configuration.driver;
 	Home home = new Home();
-	//String url = Configuration.invokeUrl();
-	
-	@FindBy(xpath=Elements.loginId)
+	// String url = Configuration.invokeUrl();
+
+	@FindBy(xpath = Elements.loginId)
 	public WebElement loginId;
-	
-	@FindBy(xpath=Elements.loginPassword)
+
+	@FindBy(xpath = Elements.loginPassword)
 	public WebElement loginPassword;
-	
-	@FindBy(xpath=Elements.loginButton)
+
+	@FindBy(xpath = Elements.loginButton)
 	public WebElement loginbutton;
-	
-	@FindBy(xpath=Elements.webSiteOption)
+
+	@FindBy(xpath = Elements.webSiteOption)
 	public WebElement webSiteOption;
-	
-	@FindBy(xpath=Elements.websiteSubmission)
+
+	@FindBy(xpath = Elements.websiteSubmission)
 	public WebElement websiteSubmission;
-	
-	@FindBy(xpath=Elements.resetButton)
+
+	@FindBy(xpath = Elements.resetButton)
 	public WebElement resetButton;
-	
-	@FindBy(xpath=Elements.resetEmailId)
+
+	@FindBy(xpath = Elements.resetEmailId)
 	public WebElement resetEmailId;
-	
-	@FindBy(xpath=Elements.submitRequest)
+
+	@FindBy(xpath = Elements.submitRequest)
 	public WebElement submitRequest;
-	
-	@FindBy(xpath=Elements.resetPasswordMessage)
+
+	@FindBy(xpath = Elements.resetPasswordMessage)
 	public WebElement resetPasswordMessage;
-	
-	@FindBy(xpath=Elements.rememberMeCheckBox)
+
+	@FindBy(xpath = Elements.rememberMeCheckBox)
 	public WebElement rememberMeCheckBox;
-	
-	@FindBy(xpath=Elements.privacyPolicy)
+
+	@FindBy(xpath = Elements.privacyPolicy)
 	public WebElement privacPolicyLink;
-	
-	@FindBy(xpath=Elements.techSupport)
+
+	@FindBy(xpath = Elements.techSupport)
 	public WebElement techSupportLink;
-	
-	@FindBy(xpath=Elements.PRIVACYTITLE)
+
+	@FindBy(xpath = Elements.PRIVACYTITLE)
 	public WebElement privacyTitle;
-	
-	@FindBy(xpath=Elements.TECHSUPPORTITLE)
+
+	@FindBy(xpath = Elements.TECHSUPPORTITLE)
 	public WebElement techSupportTitle;
-	
-	@FindBy(xpath=Elements.PRIVACYPOLICYCLOSE)
+
+	@FindBy(xpath = Elements.PRIVACYPOLICYCLOSE)
 	public WebElement closePrivacyPolicy;
-	
-	@FindBy(xpath=Elements.CANCELTECHSUPPORT)
+
+	@FindBy(xpath = Elements.CANCELTECHSUPPORT)
 	public WebElement cancelTechSupport;
-	
-	@FindBy(xpath=Elements.OKBUTTON)
+
+	@FindBy(xpath = Elements.OKBUTTON)
 	public WebElement okButton;
-	
-	@FindBy(xpath=Elements.inValidLoginMessgae)
+
+	@FindBy(xpath = Elements.inValidLoginMessgae)
 	public WebElement invalidLoginMess;
-	
-	
-	
-	public Login()
-	{
+
+	public Login() {
 		PageFactory.initElements(driver, this);
 	}
-	
-	public void logging(String Id,String password)
-	{
-		String logId1=Id;
-		String logPassword1=password;
+
+	public void logging(String Id, String password) {
+		String logId1 = Id;
+		String logPassword1 = password;
 		loginId.sendKeys(logId1);
 		loginPassword.sendKeys(logPassword1);
 	}
-	public void loginButton()
-	{
+
+	public void loginButton() {
 		loginbutton.click();
 	}
-	public void resetbutton()
-	{
+
+	public void resetbutton() {
 		resetButton.click();
 	}
-	public void websiteDropDown(int optionValue)
-	{
-		
+
+	public void websiteDropDown(int websiteSelectionSupp) {
+		common.implictWait(10);
 		webSiteOption.click();
 		Select selecting = new Select(webSiteOption);
-		selecting.selectByIndex(optionValue);
-		//selecting.selectByVisibleText(optionValue);
-		
+		selecting.selectByIndex(websiteSelectionSupp);
+		// selecting.selectByVisibleText(optionValue);
+
 	}
-	public void selectWebsiteButton()
-	{
-		common.explictWaitClickable(10, websiteSubmission);
+
+	public void selectWebsiteButton() {
+		common.explictWaitClickable(20, websiteSubmission);
 		websiteSubmission.click();
 	}
-	public void resetPassword(String emailId,String passwordResetMessage )
-	{
+
+	public void resetPassword(String emailId, String passwordResetMessage) {
 		common.implictWait(10);
 		resetButton.click();
 		resetEmailId.sendKeys(emailId);
 		submitRequest.click();
-		Assert.assertEquals(resetPasswordMessage.getText(),passwordResetMessage);
+		Assert.assertEquals(resetPasswordMessage.getText(), passwordResetMessage);
 		try {
 			Thread.sleep(1000);
 		} catch (InterruptedException e) {
@@ -122,44 +118,42 @@ public class Login {
 			e.printStackTrace();
 		}
 		okButton.click();
-		
+
 	}
-	public void rememberMeOption() 
-	{
-		
+
+	public void rememberMeOption() {
+
 		rememberMeCheckBox.click();
-		
+
 	}
-	public void privacyPolicy(String privacyTitleInput)
-	{
+
+	public void privacyPolicy(String privacyTitleInput) {
 		common.implictWait(10);
 		privacPolicyLink.click();
 		common.explictWaitPresence(5, By.xpath(Elements.PRIVACYTITLE));
 		Assert.assertEquals(privacyTitle.getText(), privacyTitleInput);
-		
-		
+
 	}
-	public void closePrivacyPolicy()
-	{
+
+	public void closePrivacyPolicy() {
 		closePrivacyPolicy.click();
 	}
-	public void technicalSupportLink(String techSupportInputText)
-	{
+
+	public void technicalSupportLink(String techSupportInputText) {
 		common.implictWait(10);
 		techSupportLink.click();
 		common.explictWaitPresence(5, By.xpath(Elements.TECHSUPPORTITLE));
-		Assert.assertEquals(techSupportTitle.getText(),techSupportInputText );
+		Assert.assertEquals(techSupportTitle.getText(), techSupportInputText);
 	}
-	public void cancelTechSupport()
-	{
+
+	public void cancelTechSupport() {
 		cancelTechSupport.click();
 	}
-	public void clearInputField()
-	{
+
+	public void clearInputField() {
 		common.implictWait(10);
 		loginId.clear();
 		loginPassword.clear();
 	}
-	
-	
+
 }

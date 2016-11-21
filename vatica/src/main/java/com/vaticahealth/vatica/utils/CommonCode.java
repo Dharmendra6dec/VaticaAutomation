@@ -5,6 +5,12 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.StringWriter;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.List;
 import java.util.Properties;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
@@ -53,8 +59,8 @@ import jxl.write.biff.RowsExceededException;
 //import vatica_util.monitoringMail.SMTPAuthenticator;
 
 public class CommonCode {
-	
-	WebDriver driver = Configuration.driver;
+
+	public static WebDriver driver = Configuration.driver;
 	String parentWindow; // Used for Multiple Window Handling
 	int row, column, adjRow, adjCol;
 
@@ -158,9 +164,8 @@ public class CommonCode {
 		WebDriverWait wait = new WebDriverWait(driver, timeInSecond);
 		wait.until(ExpectedConditions.presenceOfElementLocated(by));
 	}
-	
-	public void explictWaitClickable(int timeInSecond, WebElement webelement)
-	{
+
+	public void explictWaitClickable(int timeInSecond, WebElement webelement) {
 		WebDriverWait wait = new WebDriverWait(driver, timeInSecond);
 		wait.until(ExpectedConditions.elementToBeClickable(webelement));
 	}

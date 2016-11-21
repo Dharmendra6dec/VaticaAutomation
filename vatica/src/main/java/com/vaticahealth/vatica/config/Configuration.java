@@ -39,7 +39,6 @@ public class Configuration {
 
 			driver = new FirefoxDriver(ffprofile);
 			Reporter.log("Mozilla is envoked");
-			//System.out.println("hereMozill");
 		
 		}
 		// Invoking Internet Explorer Broswer
@@ -49,7 +48,6 @@ public class Configuration {
 					System.getProperty("user.dir") + "/src/test/resources/IEDriverServer.exe");
 			driver = new InternetExplorerDriver();
 			Reporter.log("I.E is invoked");
-			//System.out.println("heereIEEE");
 		
 		}
 		// Invoking the Google Chrome Broswer
@@ -58,7 +56,6 @@ public class Configuration {
 					System.getProperty("user.dir") + "/src/test/resources/chromedriver.exe");
 			driver = new ChromeDriver();
 			Reporter.log("Chrome driver is invoked");
-			//System.out.println("chromein");
 			
 		}
 		// Invoking the Safari Broswer
