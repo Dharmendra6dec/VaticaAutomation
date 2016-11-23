@@ -17,6 +17,7 @@ public class SmokeTest extends TestAnnotation {
 	PHPTest phpTest = new PHPTest();
 	CommonCode common = new CommonCode();
 	CreateHraTest createHra = new CreateHraTest();
+	HraTest hra = new HraTest();
 	
 	// Smoke Suite 
 	@Test
@@ -25,6 +26,18 @@ public class SmokeTest extends TestAnnotation {
 	loginTest.tc_Login_1();
 	phpTest.tc_PHP_1();	
 	createHra.tc_CreateHra_1();
+	hra.tc_Hra_Bi_1();
+	hra.tc_Hra_Pwl_1();
+	hra.tc_Hra_Sh_1();
+	hra.tc_Hra_fh_1();
+	hra.tc_Hra_MedicalConditions_1();
+	hra.tc_Hra_ROS_1();
+	hra.tc_Hra_SelfAssessment_1();
+	hra.tc_Hra_FallRisk_1();
+	hra.tc_Hra_Biometrics_1();
+	hra.tc_Hra_CognitiveAssessment_1();
+	
+	
 	}
 	
 /*	

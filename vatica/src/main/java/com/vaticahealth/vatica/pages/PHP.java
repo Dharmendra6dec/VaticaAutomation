@@ -27,7 +27,7 @@ import com.vaticahealth.vatica.config.Configuration;
 import com.vaticahealth.vatica.utils.CommonCode;
 import com.vaticahealth.vatica.utils.Elements;
 
-public class Home {
+public class PHP {
 	WebDriver driver = Configuration.driver;
 	CommonCode common = new CommonCode();
 
@@ -136,7 +136,7 @@ public class Home {
 	@FindBy(xpath = Elements.SITEONPHP)
 	public WebElement siteOnPhp;
 
-	public Home() {
+	public PHP() {
 		PageFactory.initElements(driver, this);
 	}
 

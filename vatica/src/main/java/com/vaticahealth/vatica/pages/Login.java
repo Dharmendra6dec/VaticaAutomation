@@ -15,7 +15,7 @@ import com.vaticahealth.vatica.utils.Elements;
 public class Login {
 	CommonCode common = new CommonCode();
 	WebDriver driver = Configuration.driver;
-	Home home = new Home();
+	PHP home = new PHP();
 	// String url = Configuration.invokeUrl();
 
 	@FindBy(xpath = Elements.loginId)

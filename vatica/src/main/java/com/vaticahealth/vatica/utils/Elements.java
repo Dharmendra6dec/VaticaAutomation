@@ -2,11 +2,13 @@ package com.vaticahealth.vatica.utils;
 
 import org.openqa.selenium.By;
 
-import com.vaticahealth.vatica.pages.Home;
+import com.vaticahealth.vatica.pages.PHP;
 import com.vaticahealth.vatica.tests.TestAnnotation;
 
 public  class Elements extends TestAnnotation{
-	Home h = new Home();
+	PHP h = new PHP();
+	
+	// Login and PHP page
 	public static final String loginId = "//input[@id='userName']";
 	public static final String loginPassword="//input[@id='password']";
 	public static final String loginButton="//button[@id='btn-login']";
@@ -72,6 +74,20 @@ public  class Elements extends TestAnnotation{
 	public static final String NEXTBTNONGRID="//button[@class='ui-grid-pager-next']";
 	public static final String ADDNEWVISIT="//a[text()='Add New Visit']";
 	
+	// Create a new Visit page
+		public static final String MEDICARENUMBER_CV = "//*[@id='medicareNumber']";
+		public static final String FIRSTNAME_CV = "//*[@class='form-control ng-pristine ng-untouched ng-invalid ng-invalid-required' and @placeholder='First Name']";
+		public static final String LASTNAME_CV = "//*[@class='form-control ng-pristine ng-untouched ng-invalid ng-invalid-required' and @placeholder='Last Name']";
+		public static final String DOB_CV = "//*[@id='BI4']";
+		public static final String NEXTBTN = "//input[@type='button' and @value='Next']";
+		
+		// Confirm Patient Eligible details page
+		public static final String CONFIRMPATIENTINSUREANCE = "//select[@ng-model='NewHra.ChosenMaPlan']";
+		public static final String CONFIRMPATIENTBTN = "//button[text()='Confirm Patient']";
+		
+		//	Confirm new HRA
+		public static final String CONFIRMHRABTN = "//button[@class='btn btn-primary btn-sm' and text()='Confirm']";
+	
 	
 	// HRA page
 	public static final String BACKGROUNDINFOLINK = "//div[@id='preVisitWorkListAccordionvhAcc']/div/div[1]/div[1]/a";
@@ -87,7 +103,7 @@ public  class Elements extends TestAnnotation{
 	public static final String SAVE_NEXTBTN = "//a[text()='Save/Next']";
 	
 		//HRA page - Background Information page
-		public static final String MEDICARENUMBER = ".//*[@id='BI16']";
+		public static final String MEDICARENUMBER = "//*[@id='BI16']";
 		public static final String FIRSTNAME_BI = "//*[@id='BI1']";
 		public static final String LASTNAME_BI = "//*[@id='BI2']";
 		public static final String MEDICALRECORDNUMBER = "//*[@id='B14']";
@@ -101,20 +117,56 @@ public  class Elements extends TestAnnotation{
 		public static final String ADDMEDICINEUNIT = "//*[@id='unit']";
 		public static final String ADDMEDICINEFREQUENCY = "//*[@id='frequency']";
 		
+		//HRA page - Pre-Visit Work List page
+		public static final String FLUSHOTYES = "//input[@type='radio' and @name='TV45']";
+		public static final String FLUDATE = "//input[@id='T23LD']";
+		public static final String HEMOGLOBINA1CYES = "//input[@type='radio' and @name='TV97']";
+		public static final String HEMOGLOBINA1CDATE = "//input[@id='T37LD']";
+		public static final String HEMOGLOBINA1CVALUE = "//input[@id='T37H']";
+		public static final String PSAYES = "//input[@type='radio' and @name='TV41']";
+		public static final String PSADATE = "//input[@id='T21LD']";
+		public static final String GLOMERULERYES = "//input[@name='DLV10' and @type='radio']";
+		public static final String GLOMERULERDATE = "//input[@id='DL4D']";
+		public static final String GLOMERULERSELECT = "//select[@id='DL5']";
+		
+		//HRA page - Social History page
+		public static final String ILLEGALDRUGUSEYES = "//input[@type='radio' and @value='LSV131']";
+			public static final String COCAINE = "//input[@id='LS111']";
+				public static final String DEPENDENCYCURRENT = "//input[@value='LSV136']";
+					public static final String DRUGCOMPLICATIONS = "//*[@id='LS68']";
+					
+		public static final String ALCOHOLDEPENDENCYCURRENT = "//input[@value='LSV200']";
+			public static final String ALCOHOLCOMPLICATIONS = "//*[@id='LS109']";
+			
+		//HRA page - Family History page
+		public static final String COLONPOLYPSYES = "//input[@value='FHV19']";
+		public static final String STROKEYES = "//input[@value='FHV7']"; 
+		
+		//HRA page - Medical Conditions
+		public static final String GLAUCOMA = "//input[@id='PH503']";
+		public static final String GLAUCOMAPRE = "//input[@id='PH504']";
+		public static final String HHD = "//input[@id='PH889']";
+		public static final String HHDWITHHEARTDISEASE = "//input[@value='PHV1148']";
+		
+		//HRA page - Review of Symptoms(ROS)
+		public static final String ROSALLNO = "//button[contains(@ng-click,'Symptoms')]";
+		
+		//HRA page - Self-Assessment
+		public static final String HEALTHFAIR = "//input[@value='SAV4']";
+		public static final String LITTLEDIFFICULTYINWALKING = "//input[@value='SAV41']";
+		
+		//HRA page - Fall Risk
+		public static final String FALLRISKALLNO = "//button[contains(@ng-click,'Fall Risk')]";
+		
+		//HRA page - Cognitive Assessment
+		public static final String NUMBEROFITEMS2 = "//input[@value='CV3']";
+		public static final String CLOCKDRAWINGTESTNORMAL = "//input[@value='CV6']";
+		
+				
+		//HRA page - Biometrics page
+		public static final String VISITDATEBIO = "//input[@id='B23']";
+		
 	
-	// Create a new Visit page
-	public static final String MEDICARENUMBER_CV = "//*[@id='medicareNumber']";
-	public static final String FIRSTNAME_CV = "//*[@class='form-control ng-pristine ng-untouched ng-invalid ng-invalid-required' and @placeholder='First Name']";
-	public static final String LASTNAME_CV = "//*[@class='form-control ng-pristine ng-untouched ng-invalid ng-invalid-required' and @placeholder='Last Name']";
-	public static final String DOB_CV = "//*[@id='BI4']";
-	public static final String NEXTBTN = "//input[@type='button' and @value='Next']";
-	
-	// Confirm Patient Eligible details page
-	public static final String CONFIRMPATIENTINSUREANCE = "//select[@ng-model='NewHra.ChosenMaPlan']";
-	public static final String CONFIRMPATIENTBTN = "//button[text()='Confirm Patient']";
-	
-	//	Confirm new HRA
-	public static final String CONFIRMHRABTN = "//button[@class='btn btn-primary btn-sm' and text()='Confirm']";
 		
 	
 

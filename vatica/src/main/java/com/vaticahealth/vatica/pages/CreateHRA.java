@@ -4,6 +4,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.Select;
 
 import com.sun.jna.platform.win32.OaIdl.ELEMDESC;
 import com.vaticahealth.vatica.config.Configuration;
@@ -42,6 +43,14 @@ public class CreateHRA {
 	
 	public CreateHRA() {
 		PageFactory.initElements(driver, this);
+	}
+	
+	public void selectByValue(WebElement elle, int sel) throws InterruptedException {
+		common.implictWait(10);
+		Thread.sleep(5000);
+		Select select = new Select(elle);
+		select.selectByIndex(sel);
+		
 	}
 	
 }

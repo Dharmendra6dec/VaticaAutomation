@@ -12,6 +12,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.List;
 import java.util.Properties;
+import java.util.Random;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
@@ -60,7 +61,7 @@ import jxl.write.biff.RowsExceededException;
 
 public class CommonCode {
 
-	public  WebDriver driver = Configuration.driver;
+	public WebDriver driver = Configuration.driver;
 	String parentWindow; // Used for Multiple Window Handling
 	int row, column, adjRow, adjCol;
 
@@ -168,6 +169,29 @@ public class CommonCode {
 	public void explictWaitClickable(int timeInSecond, WebElement webelement) {
 		WebDriverWait wait = new WebDriverWait(driver, timeInSecond);
 		wait.until(ExpectedConditions.elementToBeClickable(webelement));
+	}
+
+	// HRA number generator
+	public String tenDigitNumberGenerator() {
+		Random rand = new Random();
+		long num = rand.nextInt(900000000) + 1000000000;
+		return String.valueOf(num);
+	}
+
+	public String firstNameGenerator() {
+		Random rand = new Random();
+		long num = rand.nextInt(90000) + 10000;
+		String name = String.valueOf(num);
+		String FirstName = "John".concat(name);
+		return FirstName;
+	}
+
+	public String LastNameGenerator() {
+		Random rand = new Random();
+		long num = rand.nextInt(90000) + 10000;
+		String name = String.valueOf(num);
+		String LastName = "Doe".concat(name);
+		return LastName;
 	}
 
 	// The function allows switch to new window having the title as passed
@@ -288,7 +312,5 @@ public class CommonCode {
 			Reporter.log(w.toString());
 		}
 	}
-
-	
 
 }
