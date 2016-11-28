@@ -3,7 +3,7 @@
 <suite name="Suite">
   <test name="Test">
     <classes>
-      <class name="com.vaticahealth.vatica.RegressionTest"/>
+      <class name="com.vaticahealth.vatica.tests.SmokeTest"/>
     </classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->

@@ -3,12 +3,12 @@
 <suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
   <test name="Default test(failed)">
     <classes>
-      <class name="com.vaticahealth.vatica.tests.SmokeTest">
+      <class name="com.vaticahealth.vatica.tests.Try">
         <methods>
           <include name="invokeUrl"/>
-          <include name="smokeTest"/>
+          <include name="tryIt"/>
         </methods>
-      </class> <!-- com.vaticahealth.vatica.tests.SmokeTest -->
+      </class> <!-- com.vaticahealth.vatica.tests.Try -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

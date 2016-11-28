@@ -147,8 +147,20 @@ public class HraTest extends TestAnnotation {
 		hra.NumberOfItems2.click();
 		hra.ClockDrawingTestNormal.click();
 		Thread.sleep(5000);
-		hra.Save_NextBtn.click();
+		//hra.Save_NextBtn.click();
 
 	}
+
+	// Click on the 'T' button on the HRA page
+	public void tTabClick() {
+		common.implictWait(10);
+		hra.TestsTab.click();
+	}
+	
+	// Click on the 'D' button on the HRA page
+		public void dTabClick() {
+			common.implictWait(10);
+			hra.DiagnosticsTab.click();
+		}
 
 }

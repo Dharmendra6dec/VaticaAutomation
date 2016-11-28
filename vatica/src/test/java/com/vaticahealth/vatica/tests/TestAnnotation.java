@@ -13,6 +13,7 @@ import org.testng.annotations.Test;
 import com.vaticahealth.vatica.config.Configuration;
 import com.vaticahealth.vatica.pages.CreateHRA;
 import com.vaticahealth.vatica.pages.PHP;
+import com.vaticahealth.vatica.pages.Tests;
 import com.vaticahealth.vatica.pages.Hra;
 import com.vaticahealth.vatica.pages.Login;
 import com.vaticahealth.vatica.utils.CommonCode;
@@ -24,6 +25,7 @@ public class TestAnnotation {
 	CommonCode common = new CommonCode();
 	protected PHP home = new PHP();
 	protected CreateHRA createHra = new CreateHRA();
+	protected Tests test = new Tests();
 	protected Hra hra = new Hra();
 	public String logIdSupp = common.readExcel("get_values", "loginId");
 	public String logPassowrdSupp = common.readExcel("get_values", "loginPassword");

@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Failed suite [Suite]">
+<suite guice-stage="DEVELOPMENT" name="Failed suite [Suite]">
   <test name="Test(failed)">
     <classes>
-      <class name="com.vaticahealth.vatica.RegressionTest">
+      <class name="com.vaticahealth.vatica.tests.SmokeTest">
         <methods>
-          <include name="techSupportLink"/>
+          <include name="invokeUrl"/>
+          <include name="smokeTest"/>
         </methods>
-      </class> <!-- com.vaticahealth.vatica.RegressionTest -->
+      </class> <!-- com.vaticahealth.vatica.tests.SmokeTest -->
     </classes>
   </test> <!-- Test(failed) -->
 </suite> <!-- Failed suite [Suite] -->

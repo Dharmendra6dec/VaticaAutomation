@@ -100,7 +100,16 @@ public  class Elements extends TestAnnotation{
 	public static final String FALLRISKLINK = "//div[@id='hraVerticalAccordionvhAcc']/div/div[8]/div[1]/a";
 	public static final String BIOMETRICSLINK = "//div[@id='awvVerticalAccordionvhAcc']/div/div[1]/div[1]/a";
 	public static final String COGNITIVEASSESSLINK = "//div[@id='awvVerticalAccordionvhAcc']/div/div[2]/div[1]/a";
-	public static final String SAVE_NEXTBTN = "//a[text()='Save/Next']";
+	public static final String HOMETAB = "//a[@href='#/home/provider' and @class='grid-action-button top-btn']";
+	public static final String HRATAB = "//a[text()='H']";
+	public static final String PPPTAB = "//a[text()='P']";
+	public static final String TESTSTAB = "//a[text()='T']";
+	public static final String DIAGNOSTICSTAB = "//a[text()='D']";
+	public static final String SNAPSHOTTAB = "//*[@id='main-wrap']/div[1]/div/div/div[2]/div/div[1]/div/a[6]";
+	public static final String COMMENTSTAB = "//a[@ng-click='showCommentsView();']";
+	
+	
+	public static final String SAVE_NEXTBTN = "//*[text()='Save/Next']";
 	
 		//HRA page - Background Information page
 		public static final String MEDICARENUMBER = "//*[@id='BI16']";
@@ -168,6 +177,16 @@ public  class Elements extends TestAnnotation{
 		
 	
 		
+	//	Tests/Therapies
+	public static final String AWVRADIOBUTTON = "//input[@id='rbAcceptTest68']";
+	public static final String IPPERADIOBUTTON = "//input[@id='rbAcceptTest71']";
+	public static final String PREVENTIVESERVSELECTALL= "//input[@id='cbxSelectAllIndicated_prev']";
+	public static final String OTHERCLINICALTEST = "//input[@id='cbxSelectAllIndicated_other']";
+	public static final String REJECTEDTAB = ".//*[@id='main-wrap']/div[2]/div[1]/div/div/div/ul/li[2]/a";
+	public static final String ADDTEST = "//input[@id='btnSelectAdditionalTests']";
+	public static final String VITAMINDTEST = ".//*[@id='mdPickList']/div/div/div[2]/div[5]/div/input";
+	public static final String ADDSELECTEDTEST = "//input[@value='Add Selected Tests']";
+	
 	
 
 }

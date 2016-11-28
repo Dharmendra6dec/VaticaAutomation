@@ -33,6 +33,10 @@ public class PHP {
 
 	@FindBy(xpath = Elements.logOut)
 	public WebElement logOut;
+	
+	// Doe HRA
+	@FindBy(xpath="//div[text()='DOE40217']")
+	public WebElement DoeHra;
 
 	@FindBy(xpath = Elements.SEARCHFIRSTNAME)
 	public WebElement firstNameSearch;
@@ -383,5 +387,14 @@ public class PHP {
 		}
 
 	}
+	
+	// Double Clicking on any webelement
+			public void doubleClick(WebDriver driver, WebElement elle) throws InterruptedException{
+			//	common.implictWait(10);
+			//	Thread.sleep(10000);
+				Actions builder = new Actions(driver);
+				builder.doubleClick(elle).build().perform();
+				Thread.sleep(7000);
+			}
 
 }
