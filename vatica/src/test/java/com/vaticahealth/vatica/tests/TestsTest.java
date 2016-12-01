@@ -9,20 +9,19 @@ public class TestsTest extends TestAnnotation{
 	// Filling the Test Page correctly
 	public void tc_tt_1() throws InterruptedException {
 		common.implictWait(10);
-		Thread.sleep(5000);
+		Thread.sleep(20000);
 		test.IppeRadioButton.click();
+		test.Hgb1acTestReject.click();
+		System.out.println("HgB1AC test rejected");
+		test.LipidProfileTestReject.click();
+		System.out.println("Lipid profile test rejected");
 		test.PreventiveServiceSelectAll.click();
 		test.OtherClinicalTestSelectAll.click();
 		test.AddTest.click();
 		test.VitaminDTest.click();
 		test.AddSelectedTest.click();
-		System.out.println(test.RejectTab.getText().toString());
-		if((test.RejectTab.getText().toString()).equalsIgnoreCase("Rejected (0)")) {
-			hra.Save_NextBtn.click();
-		}
 	}
 	
 	
-	// Filling the 
 
 }

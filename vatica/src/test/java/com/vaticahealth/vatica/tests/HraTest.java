@@ -15,8 +15,7 @@ public class HraTest extends TestAnnotation {
 	public void tc_Hra_Bi_1() throws InterruptedException {
 
 		common.implictWait(10);
-		hra.BackgroundInformationLink.click();
-		Thread.sleep(5000);
+;		Thread.sleep(5000);
 		hra.selectByValue(hra.Gender, Integer.parseInt(common.readExcel("hra", "Gender")));
 		hra.AspirinYes.click();
 		hra.HighBloodPressureMedYes.click();
@@ -36,7 +35,7 @@ public class HraTest extends TestAnnotation {
 		hra.PreVisitWorkListLink.click();
 		Thread.sleep(5000);
 		hra.FluShotYes.click();
-		hra.FluDate.sendKeys(common.readExcel("hra", "Last Test Date"));
+		hra.FluDate.sendKeys(common.recentDate());
 		hra.HemoglobinA1cYes.click();
 		hra.HemoglobinA1cDate.sendKeys(common.readExcel("hra", "Last Test Date"));
 		hra.HemoglobinA1cValue.sendKeys(common.readExcel("hra", "Hemoglobin"));
@@ -129,10 +128,12 @@ public class HraTest extends TestAnnotation {
 	// Filling the Biometrics information in the HRA
 	public void tc_Hra_Biometrics_1() throws InterruptedException {
 
+		String date = common.recentDate();
 		common.implictWait(10);
 		hra.BiometricsLink.click();
 		Thread.sleep(5000);
-		hra.VisitDateBio.sendKeys(common.readExcel("hra", "Last Test Date"));
+		hra.VisitDateBio.sendKeys(date);
+		common.writeExcel("DOV", date, "hra");
 		hra.VisitDateBio.sendKeys(Keys.TAB);
 		Thread.sleep(3000);
 
@@ -146,20 +147,22 @@ public class HraTest extends TestAnnotation {
 		Thread.sleep(5000);
 		hra.NumberOfItems2.click();
 		hra.ClockDrawingTestNormal.click();
-		Thread.sleep(5000);
+		Thread.sleep(10000);
 		//hra.Save_NextBtn.click();
 
 	}
 
 	// Click on the 'T' button on the HRA page
-	public void tTabClick() {
+	public void tTabClick() throws InterruptedException {
 		common.implictWait(10);
+		Thread.sleep(3000);
 		hra.TestsTab.click();
 	}
 	
 	// Click on the 'D' button on the HRA page
-		public void dTabClick() {
+		public void dTabClick() throws InterruptedException {
 			common.implictWait(10);
+			Thread.sleep(3000);
 			hra.DiagnosticsTab.click();
 		}
 

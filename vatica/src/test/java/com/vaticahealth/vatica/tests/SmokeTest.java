@@ -19,48 +19,63 @@ public class SmokeTest extends TestAnnotation {
 	CreateHraTest createHraTest = new CreateHraTest();
 	HraTest hraTest = new HraTest();
 	TestsTest testTest = new TestsTest();
+	DiagnosisTest diagTest = new DiagnosisTest();
+
+	@Test(priority = 1, description = "login and Si")
+	public void smokeTest_login() throws Exception {
+		common.implictWait(20);
+		loginTest.tc_Login_1();
+		home.logoCheck();
+		phpTest.loginConf();
+		phpTest.php_siteCheck();
+		phpTest.tc_PHP_1();
+	}
+
+	@Test(priority = 2, description = "hra creation ")
+	public void smokeTest_hra_creation() throws InvocationTargetException, InterruptedException {
+		common.implictWait(20);
+		createHraTest.tc_CreateHra_1();
+	}
+
+	@Test(priority = 3, description = "hra completion ")
+	public void smokeTest_hra_completion() throws InvocationTargetException, InterruptedException {
+		common.implictWait(20);
+		hraTest.tc_Hra_Bi_1();
+		hraTest.tc_Hra_Pwl_1();
+		hraTest.tc_Hra_Sh_1();
+		hraTest.tc_Hra_fh_1();
+		hraTest.tc_Hra_MedicalConditions_1();
+		hraTest.tc_Hra_ROS_1();
+		hraTest.tc_Hra_SelfAssessment_1();
+		hraTest.tc_Hra_FallRisk_1();
+		hraTest.tc_Hra_Biometrics_1();
+		hraTest.tc_Hra_CognitiveAssessment_1();
+	}
+
+	@Test(priority = 4, description = "T tab completion ")
+	public void smokeTest_ttab_completion() throws InvocationTargetException, InterruptedException {
+		common.implictWait(20);
+		hraTest.tTabClick();
+		testTest.tc_tt_1();
+	}
+
+	@Test(priority = 5, description = "D tab completion")
+	public void smokeTest_dtab_completion() throws InvocationTargetException, InterruptedException {
+		common.implictWait(20);
+		hraTest.dTabClick();
+		diagTest.tc_dt_1();
+		diagTest.tc_td_2();
+
+	}
 	
-	// Smoke Suite 
-	@Test
-	public void smokeTest() throws InvocationTargetException, InterruptedException {
+	@Test(priority = 5, description = "PHP Test cases")
+	public void smokeTest_home_tcs() throws InvocationTargetException, InterruptedException {
+		common.implictWait(20);
+		phpTest.verifyOneRowOnPhp();
+		phpTest.columnsOnGrid();
+		phpTest.logout();
 		
-	loginTest.tc_Login_1();
-	phpTest.tc_PHP_1();	
-	createHraTest.tc_CreateHra_1();
-	hraTest.tc_Hra_Bi_1();
-	hraTest.tc_Hra_Pwl_1();
-	hraTest.tc_Hra_Sh_1();
-	hraTest.tc_Hra_fh_1();
-	hraTest.tc_Hra_MedicalConditions_1();
-	hraTest.tc_Hra_ROS_1();
-	hraTest.tc_Hra_SelfAssessment_1();
-	hraTest.tc_Hra_FallRisk_1();
-	hraTest.tc_Hra_Biometrics_1();
-	hraTest.tc_Hra_CognitiveAssessment_1();
-	hraTest.tTabClick();
-	testTest.tc_tt_1();
-	
-	
-	}
-	
-/*	
-	
-	
-	
-	
-	
-	
-	@Test(alwaysRun = true, description = "")
-	public void (){
-
 
 	}
-	
-	@Test(alwaysRun = true, description = "")
-	public void () throws InterruptedException, InvocationTargetException {
 
-
-	} */
-	
-	
 }

@@ -14,7 +14,7 @@ import com.vaticahealth.vatica.utils.Elements;
 public class CreateHRA {
 	WebDriver driver = Configuration.driver;
 	CommonCode common = new CommonCode();
-	
+	private String FirstNameCreated;
 
 	@FindBy(xpath = Elements.MEDICARENUMBER_CV)
 	public WebElement MedicareNumber;
@@ -30,27 +30,38 @@ public class CreateHRA {
 
 	@FindBy(xpath = Elements.NEXTBTN)
 	public WebElement NextBtn;
-	
 
 	@FindBy(xpath = Elements.CONFIRMPATIENTINSUREANCE)
 	public WebElement ConfirmPatientInsurance;
-	
+
 	@FindBy(xpath = Elements.CONFIRMPATIENTBTN)
 	public WebElement ConfirmPatientBtn;
-	
+
 	@FindBy(xpath = Elements.CONFIRMHRABTN)
 	public WebElement ConfirmNewHraBtn;
-	
+
+	@FindBy(xpath = Elements.FIRSTNAMEVALUE)
+	public WebElement FirstNameValue;
+
+	@FindBy(xpath = Elements.LASTNAMEVALUE)
+	public WebElement LastNameValue;
+
+	@FindBy(xpath = Elements.DOBVALUE)
+	public WebElement DobValue;
+
+	@FindBy(xpath = Elements.MEDICAREVALUE)
+	public WebElement MedicareValue;
+
 	public CreateHRA() {
 		PageFactory.initElements(driver, this);
 	}
-	
+
 	public void selectByValue(WebElement elle, int sel) throws InterruptedException {
 		common.implictWait(10);
 		Thread.sleep(5000);
 		Select select = new Select(elle);
 		select.selectByIndex(sel);
-		
+
 	}
-	
+
 }

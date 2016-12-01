@@ -10,6 +10,9 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.Properties;
 import java.util.Random;
@@ -40,8 +43,10 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Reporter;
+import org.testng.annotations.Test;
 import org.w3c.css.sac.Locator;
 
 import com.google.common.base.Function;
@@ -155,6 +160,16 @@ public class CommonCode {
 	public void implictWait(int timeInSeconds) {
 		driver.manage().timeouts().implicitlyWait(timeInSeconds, TimeUnit.SECONDS);
 	}
+	
+	// Generate a 7 day old date
+	@Test
+	public String  recentDate() {
+		DateFormat dateFormat = new SimpleDateFormat("MM/dd/YYYY");
+		Date date = new Date();
+		
+		String date1 = dateFormat.format(date.getTime() - (7*24 * 3600000));
+		return date1;
+	}
 
 	// Function would explicitly wait for the webelement to be present for
 	// specific time. The function needs the webelment location for identifying
@@ -250,6 +265,14 @@ public class CommonCode {
 	 * 
 	 * }
 	 */
+	
+	public void selectByValue(WebElement elle, int sel) throws InterruptedException {
+		//common.implictWait(10);
+		Thread.sleep(5000);
+		Select select = new Select(elle);
+		select.selectByIndex(sel);
+
+	}
 
 	public void sendMail(String from, String to, String subject, String messageBody) {
 		boolean debug = false;

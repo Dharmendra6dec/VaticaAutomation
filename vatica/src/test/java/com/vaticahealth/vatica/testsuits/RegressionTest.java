@@ -144,17 +144,20 @@ public class RegressionTest extends TestAnnotation {
 	}
 
 	@Test(enabled = false)
-	public void logout() {
+	public void logout() throws InterruptedException {
+		common.implictWait(10);
 		home.logOut();
+		Thread.sleep(7000);
+		if (home.loginBtn.isDisplayed() == true)
+			System.out.println("Logout Successful");
+		else
+			System.out.println("Logout failed");
 
 	}
 
 	@Test(enabled = false, dependsOnMethods = "logout", description = "Logout confirmation")
 	public void logoutConfirmation() {
-		if (home.loginBtn.isDisplayed() == true)
-			System.out.println("Logout Successful");
-		else
-			System.out.println("Logout failed");
+		
 
 	}
 

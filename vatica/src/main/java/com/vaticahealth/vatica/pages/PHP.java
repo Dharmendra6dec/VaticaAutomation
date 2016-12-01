@@ -26,6 +26,7 @@ import org.testng.Reporter;
 import com.vaticahealth.vatica.config.Configuration;
 import com.vaticahealth.vatica.utils.CommonCode;
 import com.vaticahealth.vatica.utils.Elements;
+import org.openqa.selenium.JavascriptExecutor;
 
 public class PHP {
 	WebDriver driver = Configuration.driver;
@@ -33,10 +34,13 @@ public class PHP {
 
 	@FindBy(xpath = Elements.logOut)
 	public WebElement logOut;
-	
+
 	// Doe HRA
-	@FindBy(xpath="//div[text()='DOE40217']")
+	@FindBy(xpath = "//div[text()='DOE17865']")
 	public WebElement DoeHra;
+
+	@FindBy(xpath = Elements.VATICAlOGO)
+	public WebElement VaticaLogo;
 
 	@FindBy(xpath = Elements.SEARCHFIRSTNAME)
 	public WebElement firstNameSearch;
@@ -79,12 +83,24 @@ public class PHP {
 
 	@FindBy(xpath = Elements.TRAVERSEMONTHYEAR)
 	public WebElement traversedmonthYear;
-	
-	@FindBy(xpath= Elements.ADDNEWVISIT)
+
+	@FindBy(xpath = Elements.ADDNEWVISIT)
 	public WebElement AddNewVisitBtn;
 
 	@FindBy(xpath = Elements.DOB)
 	public WebElement dob;
+
+	@FindBy(xpath = Elements.SEARCHGRIDFIRSTNAME)
+	public WebElement SearchGridFirstName;
+
+	@FindBy(xpath = Elements.SEARCHGRIDLASTNAME)
+	public WebElement SearchGridLastName;
+
+	@FindBy(xpath = Elements.SEARCHGRIDDOB)
+	public WebElement SearchGridDOB;
+
+	@FindBy(xpath = Elements.SEARCHGRIDDOV)
+	public WebElement SearchGridDOV;
 
 	@FindBy(xpath = Elements.SEARCHVISITDATETEXT)
 	public WebElement visitDateTextSearch;
@@ -140,17 +156,52 @@ public class PHP {
 	@FindBy(xpath = Elements.SITEONPHP)
 	public WebElement siteOnPhp;
 
+	@FindBy(xpath = Elements.HRA)
+	public WebElement GridHraBtn;
+
+	@FindBy(xpath = Elements.PPP)
+	public WebElement GridPppBtn;
+
+	@FindBy(xpath = Elements.Test)
+	public WebElement GridTestBtn;
+
+	@FindBy(xpath = Elements.Diagnosis)
+	public WebElement GridDiagnosisBtn;
+
+	@FindBy(xpath = Elements.Snapshot)
+	public WebElement GridSnapshotBtn;
+
+	@FindBy(xpath = Elements.Comment)
+	public WebElement GridCommentBtn;
+
+	@FindBy(xpath = Elements.Printforms)
+	public WebElement GridPrintformsbtn;
+
+	@FindBy(xpath = Elements.MedicalRecords)
+	public WebElement GridMedicalRecordsBtn;
+
+	@FindBy(xpath = Elements.Admin)
+	public WebElement GridAdminBtn;
+
 	public PHP() {
 		PageFactory.initElements(driver, this);
 	}
 
-	public String siteOnPhp() {
-		try {
-			Thread.sleep(2000);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+	// Check the presence of Vatica Logo
+	public void logoCheck() throws Exception {
+		Thread.sleep(5000);
+		Boolean ImagePresent = (Boolean) ((JavascriptExecutor) driver).executeScript(
+				"return arguments[0].complete && typeof arguments[0].naturalWidth != \"undefined\" && arguments[0].naturalWidth > 0",
+				VaticaLogo);
+		if (!ImagePresent) {
+			System.out.println("Image not displayed.");
+		} else {
+			System.out.println("Image displayed.");
 		}
+	}
+
+	public String siteOnPhp() throws InterruptedException {
+		Thread.sleep(2000);
 		return siteOnPhp.getText();
 
 	}
@@ -387,14 +438,14 @@ public class PHP {
 		}
 
 	}
-	
+
 	// Double Clicking on any webelement
-			public void doubleClick(WebDriver driver, WebElement elle) throws InterruptedException{
-			//	common.implictWait(10);
-			//	Thread.sleep(10000);
-				Actions builder = new Actions(driver);
-				builder.doubleClick(elle).build().perform();
-				Thread.sleep(7000);
-			}
+	public void doubleClick(WebDriver driver, WebElement elle) throws InterruptedException {
+		// common.implictWait(10);
+		// Thread.sleep(10000);
+		Actions builder = new Actions(driver);
+		builder.doubleClick(elle).build().perform();
+		Thread.sleep(7000);
+	}
 
 }
