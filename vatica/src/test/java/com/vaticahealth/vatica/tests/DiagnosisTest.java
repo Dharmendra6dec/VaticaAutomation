@@ -13,9 +13,6 @@ public class DiagnosisTest extends TestAnnotation {
 	public void tc_dt_1() throws InterruptedException {
 		common.implictWait(10);
 		Thread.sleep(10000);
-		System.out.print(diag.HomeCount.getText().toString());
-		System.out.print("OK");
-
 		diag.Disease6Reject.click();
 		Thread.sleep(5000);
 		diag.ConditionsNotExist.click();
@@ -86,22 +83,19 @@ public class DiagnosisTest extends TestAnnotation {
 			// TODO: handle exception
 			System.out.println("Something wrong happened with the count.");
 		}
-		
-		
-		
-		
 
 	}
-	
+
 	// Sign a HRA and confirmation to the PHP
 	public void tc_td_2() throws InterruptedException {
 		common.implictWait(20);
 		Thread.sleep(10000);
 		diag.SaveNextBtn.click();
-		Thread.sleep(10000);
+		Thread.sleep(15000);
 		diag.clickSignHra();
 		Thread.sleep(15000);
-		Assert.assertTrue(diag.EsignSuccessMsg.getText().equals("Electronically signed by Demo Test."),"The Esign success message is different");
+		Assert.assertTrue(diag.EsignSuccessMsg.getText().equals("Electronically signed by Demo Test."),
+				"The Esign success message is different");
 		diag.EsignSuccessOk.click();
 		Thread.sleep(5000);
 		Assert.assertTrue(driver.getTitle().toString().equals("Vatica Health"), "Incorrect page has been rendered.");

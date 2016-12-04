@@ -1,5 +1,8 @@
 package com.vaticahealth.vatica.pages;
 
+import java.awt.AWTException;
+import java.awt.Robot;
+import java.awt.event.KeyEvent;
 import java.lang.reflect.Array;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -8,6 +11,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -135,6 +140,9 @@ public class PHP {
 	@FindBy(xpath = Elements.SETTINGS)
 	public WebElement settings;
 
+	@FindBy(xpath = Elements.SETTINGSCHANGESITE)
+	public WebElement SettingsChangeSite;
+
 	@FindBy(xpath = Elements.NEXTBTNONGRID)
 	public WebElement NextBtnOnGrid;
 
@@ -155,6 +163,9 @@ public class PHP {
 
 	@FindBy(xpath = Elements.SITEONPHP)
 	public WebElement siteOnPhp;
+
+	@FindBy(xpath = Elements.SETTINGSSITEOPTIONS)
+	public WebElement SiteOptions;
 
 	@FindBy(xpath = Elements.HRA)
 	public WebElement GridHraBtn;
@@ -393,33 +404,45 @@ public class PHP {
 		s.selectByVisibleText(suppVisitType);
 	}
 
-	public void reports(String reportToBePrinted) throws InterruptedException {
-		String suppReportToBePrinted = reportToBePrinted;
+	public void pdfReport() throws InterruptedException, AWTException {
 		Thread.sleep(5000);
 		printFirstHraReportButton.click();
 		common.explictWaitPresence(5, By.xpath(Elements.SELECTREPORT));
-		Select s = new Select(selectReport);
-		s.selectByVisibleText(reportToBePrinted);
+		common.selectByValue(selectReport, 0);
 		exportDataButton.click();
-		Set<String> h = driver.getWindowHandles();
-		System.out.println(h.size());
-		int i = 1;
-		for (String m : h) {
-			if (i == 2) {
-				driver.switchTo().window(m);
-				System.out.println(driver.getTitle());
-				Thread.sleep(3000);
-				driver.findElement(By.xpath("//button[@id='download']")).click();
-			}
-			i++;
+		Thread.sleep(20000);
+		doneButton.click();
+		Thread.sleep(5000);
 
-		}
+		Set<String> handles = driver.getWindowHandles();
+		String win1 = driver.getWindowHandle();
+		handles.remove(win1);
+		String win2 = handles.iterator().next();
+		driver.switchTo().window(win2);
+		common.keyboard_Ctrl_S(driver);
+		driver.close();
+		driver.switchTo().window(win1);
 
-		/*
-		 * Actions a = new Actions(driver);
-		 * a.sendKeys(Keys.CONTROL,Keys.TAB).build().perform();
-		 * System.out.println(driver.getTitle());
-		 */
+	}
+
+	public void plainTextReport() throws InterruptedException, AWTException {
+		Thread.sleep(5000);
+		printFirstHraReportButton.click();
+		common.explictWaitPresence(5, By.xpath(Elements.SELECTREPORT));
+		common.selectByValue(selectReport, 1);
+		exportDataButton.click();
+		Thread.sleep(20000);
+		doneButton.click();
+		Thread.sleep(5000);
+
+		Set<String> handles = driver.getWindowHandles();
+		String win1 = driver.getWindowHandle();
+		handles.remove(win1);
+		String win2 = handles.iterator().next();
+		driver.switchTo().window(win2);
+		common.keyboard_Ctrl_S(driver);
+		driver.close();
+		driver.switchTo().window(win1);
 
 	}
 
@@ -430,7 +453,23 @@ public class PHP {
 		ArrayList<String> lst1 = new ArrayList<String>();
 		{
 			for (i = 0; i < 5; i++) {
-				lst[i] = common.readExcel("get_values", "columnLabelPHP" + (i + 1));
+				lst[i] = common.readExcel("sites", "columnLabelPHP" + (i + 1));
+				lst1.add(lst[i]);
+			}
+
+			return lst1;
+		}
+
+	}
+	
+	public ArrayList<String> expectedSiteOptions() {
+
+		int i;
+		String lst[] = new String[8];
+		ArrayList<String> lst1 = new ArrayList<String>();
+		{
+			for (i = 0; i < 8; i++) {
+				lst[i] = common.readExcel("sites", "siteOption" + (i + 1));
 				lst1.add(lst[i]);
 			}
 

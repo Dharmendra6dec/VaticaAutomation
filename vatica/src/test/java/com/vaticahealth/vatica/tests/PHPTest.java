@@ -2,7 +2,9 @@ package com.vaticahealth.vatica.tests;
 
 import java.util.ArrayList;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
 
 import com.vaticahealth.vatica.utils.CommonCode;
@@ -48,13 +50,13 @@ public class PHPTest extends TestAnnotation {
 		ArrayList<String> expectColumnsOnGrid = home.getColumnLabelsOnPHP();
 
 		for (int i = 0; i < listOfColumns.size(); i++) {
-			if (expectColumnsOnGrid.get(i).equals((listOfColumns.get(i).getText())))
-				System.out.println("Column is a match");
-			else
-				System.out.println("It's not a match");
+			if (expectColumnsOnGrid.get(i).toString().equalsIgnoreCase((listOfColumns.get(i).getText().toString()))) {
+				System.out.println(expectColumnsOnGrid.get(i).toString() +" - column is a match");
+			} else {
+				System.out.println(expectColumnsOnGrid.get(i).toString() +" - column is not a match");
+			}
 
 			Thread.sleep(2000);
-			System.out.println(listOfColumns.get(i).getText() + "     " + expectColumnsOnGrid.get(i));
 		}
 	}
 
@@ -70,7 +72,7 @@ public class PHPTest extends TestAnnotation {
 
 		}
 	}
-	
+
 	// Logout and it's confirmation
 	public void logout() throws InterruptedException {
 		common.implictWait(10);
@@ -85,7 +87,7 @@ public class PHPTest extends TestAnnotation {
 
 	// Execute one complete Search and Verify the one row in the PHP grid
 	public void verifyOneRowOnPhp() throws InterruptedException {
-		
+
 		common.implictWait(10);
 		Thread.sleep(5000);
 		home.clearSearchField();
@@ -104,8 +106,7 @@ public class PHPTest extends TestAnnotation {
 					"Last Names don't match");
 			Assert.assertTrue(home.SearchGridDOV.getText().toString().equals(common.readExcel("hra", "DOV")),
 					"DOVs don't match");
-			Assert.assertTrue(home.SearchGridDOB.getText().toString().equals("DOB 04/04/1945"),
-					"DOBs don't match");
+			Assert.assertTrue(home.SearchGridDOB.getText().toString().equals("DOB 04/04/1945"), "DOBs don't match");
 			Assert.assertTrue(home.GridPppBtn.isDisplayed() && home.GridPppBtn.isEnabled(),
 					"P button on grid is not working.");
 			Assert.assertTrue(home.GridTestBtn.isDisplayed() && home.GridTestBtn.isEnabled(),
@@ -129,4 +130,27 @@ public class PHPTest extends TestAnnotation {
 			e.printStackTrace();
 		}
 	}
+
+	public void verifySiteOptions() throws InterruptedException {
+
+		Thread.sleep(5000);
+		ArrayList<String> expectedSiteOptions = home.expectedSiteOptions();
+		home.settings.click();
+		Actions action = new Actions(driver);
+		action.moveToElement(home.SettingsChangeSite).perform();
+		// home.SettingsChangeSite.click();
+		String site = Elements.SETTINGSSITEOPTIONS;
+		for (int i = 0; i < 8; i++) {
+			// System.out.println(site + "/li[" + i + "]/a");
+			String ActualSite = driver.findElement(By.xpath(site + "/li[" + (i+1) + "]/a")).getText();
+			if (ActualSite.equalsIgnoreCase(expectedSiteOptions.get(i))) {
+				System.out.println(ActualSite + "  - site matched.");
+			} else {
+				System.out.println(ActualSite + "  - site did not match.");
+			}
+		}
+		home.SettingsChangeSite.click();
+
+	}
+
 }

@@ -1,5 +1,6 @@
 package com.vaticahealth.vatica.tests;
 
+import java.awt.AWTException;
 import java.lang.reflect.InvocationTargetException;
 
 import org.openqa.selenium.By;
@@ -21,14 +22,17 @@ public class SmokeTest extends TestAnnotation {
 	TestsTest testTest = new TestsTest();
 	DiagnosisTest diagTest = new DiagnosisTest();
 
-	@Test(priority = 1, description = "login and Si")
+	@Test(priority = 1, description = "login and Site check")
 	public void smokeTest_login() throws Exception {
 		common.implictWait(20);
 		loginTest.tc_Login_1();
+		phpTest.verifySiteOptions();
 		home.logoCheck();
 		phpTest.loginConf();
 		phpTest.php_siteCheck();
+		phpTest.columnsOnGrid();
 		phpTest.tc_PHP_1();
+
 	}
 
 	@Test(priority = 2, description = "hra creation ")
@@ -67,14 +71,14 @@ public class SmokeTest extends TestAnnotation {
 		diagTest.tc_td_2();
 
 	}
-	
+
 	@Test(priority = 5, description = "PHP Test cases")
-	public void smokeTest_home_tcs() throws InvocationTargetException, InterruptedException {
+	public void smokeTest_home_tcs() throws InvocationTargetException, InterruptedException, AWTException {
 		common.implictWait(20);
 		phpTest.verifyOneRowOnPhp();
-		phpTest.columnsOnGrid();
+		home.pdfReport();
+		home.plainTextReport();
 		phpTest.logout();
-		
 
 	}
 

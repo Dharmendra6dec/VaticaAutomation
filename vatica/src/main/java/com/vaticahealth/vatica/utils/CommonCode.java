@@ -1,5 +1,8 @@
 package com.vaticahealth.vatica.utils;
 
+import java.awt.AWTException;
+import java.awt.Robot;
+import java.awt.event.KeyEvent;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -39,8 +42,10 @@ import javax.swing.text.Position;
 
 import org.apache.bcel.generic.RETURN;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
@@ -272,6 +277,21 @@ public class CommonCode {
 		Select select = new Select(elle);
 		select.selectByIndex(sel);
 
+	}
+	
+	public void keyboard_Ctrl_S(WebDriver driver) throws AWTException, InterruptedException {
+		new Actions(driver).sendKeys(Keys.chord(Keys.CONTROL, "s")).perform();
+	      
+	      Robot robot = new Robot();
+	   // press Ctrl+S the Robot's way
+	   robot.keyPress(KeyEvent.VK_CONTROL);
+	   robot.keyPress(KeyEvent.VK_S);
+	   robot.keyRelease(KeyEvent.VK_CONTROL);
+	   robot.keyRelease(KeyEvent.VK_S);
+	   Thread.sleep(5000);
+	   // press Enter
+	   robot.keyPress(KeyEvent.VK_ENTER);
+	   robot.keyRelease(KeyEvent.VK_ENTER);
 	}
 
 	public void sendMail(String from, String to, String subject, String messageBody) {

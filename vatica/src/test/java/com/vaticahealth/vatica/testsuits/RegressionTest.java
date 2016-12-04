@@ -1,5 +1,6 @@
 package com.vaticahealth.vatica.testsuits;
 
+import java.awt.AWTException;
 import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.lang.reflect.InvocationTargetException;
@@ -15,10 +16,10 @@ import com.vaticahealth.vatica.utils.CommonCode;
 import com.vaticahealth.vatica.utils.Elements;
 
 public class RegressionTest extends TestAnnotation {
-	  CommonCode common = new CommonCode();
+	CommonCode common = new CommonCode();
 
 	@Test(alwaysRun = true, description = "Login Application")
-	public  void loginApp() throws InterruptedException, InvocationTargetException {
+	public void loginApp() throws InterruptedException, InvocationTargetException {
 
 		common.implictWait(10);
 		log.logging(logIdSupp, logPassowrdSupp);
@@ -83,7 +84,6 @@ public class RegressionTest extends TestAnnotation {
 	 * System.out.println(StringOfFirstNames.get(j)); } }
 	 */
 
-	
 	@Test(alwaysRun = true, description = "Default items per page", dependsOnMethods = "loginApp")
 	public void itemsPerPage() throws InterruptedException {
 
@@ -96,7 +96,6 @@ public class RegressionTest extends TestAnnotation {
 
 	}
 
-	
 	@Test(alwaysRun = true, description = "Site name check on PHP just after login")
 	public void siteCheck() throws InterruptedException {
 
@@ -157,7 +156,6 @@ public class RegressionTest extends TestAnnotation {
 
 	@Test(enabled = false, dependsOnMethods = "logout", description = "Logout confirmation")
 	public void logoutConfirmation() {
-		
 
 	}
 
@@ -181,8 +179,8 @@ public class RegressionTest extends TestAnnotation {
 		log.logging(logIdSupp, logPassowrdSupp);
 		Thread.sleep(1000);
 		log.rememberMeOption();
-		log.loginButton(); 
-	//	log.websiteDropDown(websiteSelectionSupp);
+		log.loginButton();
+		// log.websiteDropDown(websiteSelectionSupp);
 		log.selectWebsiteButton();
 		home.logOut();
 	}
@@ -421,9 +419,14 @@ public class RegressionTest extends TestAnnotation {
 	}
 
 	@Test(dependsOnMethods = "searchFirstLastName")
-	public void reports() throws InterruptedException {
+	public void reports() throws InterruptedException, AWTException {
 		String suppReportToPrint = common.readExcel("get_values", "reportToPrint");
-		home.reports(suppReportToPrint);
+		try {
+			home.pdfReport();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 }

@@ -66,6 +66,10 @@ public  class Elements extends TestAnnotation{
 	public static final String SITEONPHP="html/body/div[1]/div/div[1]/div[2]/div[2]/div/div[1]/ul/li[4]/a";
 	public static final String COLUMNSONGRID="//span[@class='ui-grid-header-cell-label ng-binding']";
 	public static final String SETTINGS="//*[@role='button'][@data-toggle='dropdown']";
+	public static final String SETTINGSSA = "html/body/div[1]/div/div[1]/div[1]/div/div[2]/ul/li[3]/ul/li[1]/a";
+	public static final String SETTINGSCHANGESITE = "html/body/div[1]/div/div[1]/div[1]/div/div[2]/ul/li[3]/ul/li[2]/a";
+	public static final String SETTINGSSITEOPTIONS = "html/body/div[1]/div/div[1]/div[1]/div/div[2]/ul/li[3]/ul/li[2]/ul";
+	
 	public static final String LOGINBTN="//*[@id='btn-login']";
 	public static final String WELCOMEMSG="//*[contains(text(),'Welcome,')]";
 	public static final String ITEMSPERPAGE="//select[@class='ng-pristine ng-untouched ng-valid']";

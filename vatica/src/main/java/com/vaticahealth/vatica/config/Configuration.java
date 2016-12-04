@@ -35,7 +35,7 @@ public class Configuration {
 			ffprofile.setPreference("browser.helperApps.neverAsk.saveToDisk", "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;"
 			+"application/pdf");
 			ffprofile.setPreference("browser.download.manager.showWhenStarting", false);
-			ffprofile.setPreference("pdfjs.disabled", true);
+		//	ffprofile.setPreference("pdfjs.disabled", false);
 
 			driver = new FirefoxDriver(ffprofile);
 			Reporter.log("Mozilla is envoked");

@@ -3,6 +3,7 @@ package com.vaticahealth.vatica.pages;
 import java.util.List;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -101,7 +102,7 @@ public class Diagnosis {
 	}
 
 	// Click on the Sign HRA button
-	public void clickSignHra() {
+	public void clickSignHra() throws InterruptedException {
 		List<WebElement> lst = driver.findElements(By.xpath(Elements.SIGNBTN));
 		System.out.println(lst.size());
 
@@ -117,6 +118,15 @@ public class Diagnosis {
 				System.out.println("Incorrect element : Element not visible");
 			}
 
+		}
+		
+		if (lst.size()==2) {
+			WebElement elle = driver.findElement(By.xpath(Elements.SAVE_NEXTBTN));
+			Thread.sleep(2000);
+			elle.sendKeys(Keys.TAB);
+			elle.sendKeys(Keys.TAB);
+			Thread.sleep(2000);
+			elle.sendKeys(Keys.ENTER);
 		}
 		// lst.get(2).click();
 

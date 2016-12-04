@@ -133,7 +133,7 @@ public class HraTest extends TestAnnotation {
 		hra.BiometricsLink.click();
 		Thread.sleep(5000);
 		hra.VisitDateBio.sendKeys(date);
-		common.writeExcel("DOV", date, "hra");
+//		common.writeExcel("DOV", date, "hra");
 		hra.VisitDateBio.sendKeys(Keys.TAB);
 		Thread.sleep(3000);
 
