@@ -9,6 +9,7 @@ import com.vaticahealth.vatica.utils.CommonCode;
 public class HraTest extends TestAnnotation {
 
 	CommonCode common = new CommonCode();
+	String DateOfVisitCreated = common.recentDate();
 
 	// Completing the HRA by filling information in Background Information with
 	// necessary info
@@ -128,11 +129,10 @@ public class HraTest extends TestAnnotation {
 	// Filling the Biometrics information in the HRA
 	public void tc_Hra_Biometrics_1() throws InterruptedException {
 
-		String date = common.recentDate();
 		common.implictWait(10);
 		hra.BiometricsLink.click();
 		Thread.sleep(5000);
-		hra.VisitDateBio.sendKeys(date);
+		hra.VisitDateBio.sendKeys(DateOfVisitCreated);
 //		common.writeExcel("DOV", date, "hra");
 		hra.VisitDateBio.sendKeys(Keys.TAB);
 		Thread.sleep(3000);

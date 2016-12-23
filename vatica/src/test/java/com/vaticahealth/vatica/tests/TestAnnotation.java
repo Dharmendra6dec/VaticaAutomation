@@ -24,15 +24,14 @@ public class TestAnnotation {
 
 	public static WebDriver driver = Configuration.broswer();
 	CommonCode common = new CommonCode();
-	
+
 	protected Login log = new Login();
 	protected PHP home = new PHP();
 	protected CreateHRA createHra = new CreateHRA();
 	protected Tests test = new Tests();
 	protected Hra hra = new Hra();
 	protected Diagnosis diag = new Diagnosis();
-	
-	
+
 	public String logIdSupp = common.readExcel("get_values", "loginId");
 	public String logPassowrdSupp = common.readExcel("get_values", "loginPassword");
 	public String logInvalidPasswordSupp = common.readExcel("get_values", "invalidPassword");

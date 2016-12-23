@@ -63,19 +63,24 @@ public  class Elements extends TestAnnotation{
 	public static final String SELECTREPORT="//div[@id='mdExport']/div/div/div[2]/form/fieldset/div/div/select";
 	public static final String EXPORTDATABUTTON="//div[@id='mdExport']/div/div/div[3]/a";
 	public static final String DONEBUTTON="//div[@id='mdExport']/div/div/div[3]/button";
-	public static final String SITEONPHP="html/body/div[1]/div/div[1]/div[2]/div[2]/div/div[1]/ul/li[4]/a";
+	public static final String SITEONPHP="html/body/div[1]/div/div[1]/div[1]/div/div[2]/ul/li[2]/a";
 	public static final String COLUMNSONGRID="//span[@class='ui-grid-header-cell-label ng-binding']";
 	public static final String SETTINGS="//*[@role='button'][@data-toggle='dropdown']";
 	public static final String SETTINGSSA = "html/body/div[1]/div/div[1]/div[1]/div/div[2]/ul/li[3]/ul/li[1]/a";
 	public static final String SETTINGSCHANGESITE = "html/body/div[1]/div/div[1]/div[1]/div/div[2]/ul/li[3]/ul/li[2]/a";
 	public static final String SETTINGSSITEOPTIONS = "html/body/div[1]/div/div[1]/div[1]/div/div[2]/ul/li[3]/ul/li[2]/ul";
+	public static final String FIRSTNAMECOLUMNGRID = "//span[text()='First Name']";
+	public static final String LASTNAMECOLUMNGRID = "//span[text()='Last Name']";
+	public static final String VISITDATECOLUMNGRID = "//span[text()='Visit Date']";
+	public static final String PAGETOFIRSTBUTTON = "//button[@title='Page to first']";
 	
 	public static final String LOGINBTN="//*[@id='btn-login']";
 	public static final String WELCOMEMSG="//*[contains(text(),'Welcome,')]";
 	public static final String ITEMSPERPAGE="//select[@class='ng-pristine ng-untouched ng-valid']";
 	public static final String ROWSONGRID="//div[@class='ui-grid-viewport ng-isolate-scope']/div/div";
 	public static final String FIRSTNAMESONGRID="//div[@class='ngCellText ui-grid-cell-contents  ng-scope']/span";
-	public static final String LASTNAMESONGRID="//div[@class='ngCell ui-grid-cell ng-scope ui-grid-disable-selection ui-grid-coluiGrid-000C']/div";
+	public static final String LASTNAMESONGRID="//div[@class='ngCell ui-grid-cell ng-scope ui-grid-disable-selection ui-grid-coluiGrid-0007']/div";
+	public static final String VISITDATEONGRID="//div[@class='ngCell ui-grid-cell ng-scope ui-grid-disable-selection ui-grid-coluiGrid-0008']/div";
 	public static final String NEXTBTNONGRID="//button[@class='ui-grid-pager-next']";
 	public static final String ADDNEWVISIT="//a[text()='Add New Visit']";
 	

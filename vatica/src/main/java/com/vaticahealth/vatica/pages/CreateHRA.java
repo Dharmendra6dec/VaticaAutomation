@@ -56,12 +56,41 @@ public class CreateHRA {
 		PageFactory.initElements(driver, this);
 	}
 
-	public void selectByValue(WebElement elle, int sel) throws InterruptedException {
+	/*public void selectByValue(WebElement elle, int sel) throws InterruptedException {
 		common.implictWait(10);
 		Thread.sleep(5000);
 		Select select = new Select(elle);
 		select.selectByIndex(sel);
 
+	}*/
+	
+	public void fillMedicareNumber(String a) {
+		MedicareNumber.sendKeys(a);
+	}
+	
+	public void fillFirstName(String b) {
+		FirstName.sendKeys(b);
+	}
+	
+	public void fillLastName(String c) {
+		LastName.sendKeys(c);
+	}
+	
+	public void fillDOB(String d) {
+		DOB.sendKeys(d);
+	}
+	
+	public void clickConfirmPatientButton() {
+		ConfirmPatientBtn.click();
+	}
+	
+	public void clickConfirmNewHraButton() {
+		ConfirmNewHraBtn.click();
 	}
 
+	public void clickNextButton() {
+		NextBtn.click();
+	}
+	
+	
 }

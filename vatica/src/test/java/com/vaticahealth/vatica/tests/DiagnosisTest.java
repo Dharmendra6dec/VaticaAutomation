@@ -96,7 +96,8 @@ public class DiagnosisTest extends TestAnnotation {
 		Thread.sleep(15000);
 		Assert.assertTrue(diag.EsignSuccessMsg.getText().equals("Electronically signed by Demo Test."),
 				"The Esign success message is different");
-		diag.EsignSuccessOk.click();
+		common.explictWaitClickable(20, diag.EsignSuccessOk);
+	//	diag.EsignSuccessOk.click();
 		Thread.sleep(5000);
 		Assert.assertTrue(driver.getTitle().toString().equals("Vatica Health"), "Incorrect page has been rendered.");
 	}

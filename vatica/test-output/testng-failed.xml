@@ -6,10 +6,8 @@
       <class name="com.vaticahealth.vatica.tests.SmokeTest">
         <methods>
           <include name="invokeUrl"/>
-          <include name="smokeTest_login"/>
           <include name="smokeTest_dtab_completion"/>
           <include name="smokeTest_home_tcs"/>
-          <include name="smokeTest_hra_creation"/>
           <include name="smokeTest_hra_completion"/>
           <include name="smokeTest_ttab_completion"/>
         </methods>

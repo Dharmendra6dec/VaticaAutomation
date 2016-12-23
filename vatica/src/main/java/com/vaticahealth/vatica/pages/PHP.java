@@ -28,6 +28,8 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import org.testng.Reporter;
+import org.testng.annotations.Test;
+
 import com.vaticahealth.vatica.config.Configuration;
 import com.vaticahealth.vatica.utils.CommonCode;
 import com.vaticahealth.vatica.utils.Elements;
@@ -52,6 +54,9 @@ public class PHP {
 
 	@FindBy(xpath = Elements.SEARCHBUTTON)
 	public WebElement searchButton;
+
+	@FindBy(xpath = Elements.PAGETOFIRSTBUTTON)
+	public WebElement PageToFirstButton;
 
 	@FindBy(xpath = Elements.CLEARBUTTON)
 	public WebElement clearButton;
@@ -143,6 +148,15 @@ public class PHP {
 	@FindBy(xpath = Elements.SETTINGSCHANGESITE)
 	public WebElement SettingsChangeSite;
 
+	@FindBy(xpath = Elements.FIRSTNAMECOLUMNGRID)
+	public WebElement FirstNameColumnGrid;
+
+	@FindBy(xpath = Elements.LASTNAMECOLUMNGRID)
+	public WebElement LastNameColumnGrid;
+
+	@FindBy(xpath = Elements.VISITDATECOLUMNGRID)
+	public WebElement VisitDateColumnGrid;
+
 	@FindBy(xpath = Elements.NEXTBTNONGRID)
 	public WebElement NextBtnOnGrid;
 
@@ -204,11 +218,14 @@ public class PHP {
 		Boolean ImagePresent = (Boolean) ((JavascriptExecutor) driver).executeScript(
 				"return arguments[0].complete && typeof arguments[0].naturalWidth != \"undefined\" && arguments[0].naturalWidth > 0",
 				VaticaLogo);
-		if (!ImagePresent) {
-			System.out.println("Image not displayed.");
-		} else {
-			System.out.println("Image displayed.");
-		}
+
+		Assert.assertTrue(ImagePresent, "Image displayed.");
+
+		/*
+		 * if (!ImagePresent) { System.out.println("Image not displayed."); }
+		 * else { System.out.println("Image displayed."); }
+		 */
+
 	}
 
 	public String siteOnPhp() throws InterruptedException {
@@ -217,6 +234,11 @@ public class PHP {
 
 	}
 
+	public void clickAddNewVisitButton() {
+		AddNewVisitBtn.click();
+	}
+
+	// Clicking Logout Button
 	public void logOut() {
 		try {
 			Thread.sleep(2000);
@@ -228,30 +250,17 @@ public class PHP {
 
 	}
 
-	public String getFirstNamesthruDBConnect() throws ClassNotFoundException, SQLException {
-
-		Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-		Connection conn = DriverManager.getConnection("jdbc:sqlserver://111.125.141.74;databaseName=VaticaHealthLog",
-				"user=swsadmin", "password=SeniorWellnessSASpider1!");
-		System.out.println("test");
-		String boom = null;
-		Statement sta = conn.createStatement();
-		String Sql = "select top 223 FirstName, HraId from Hra where siteId = 1 order by FirstName asc ";
-		ResultSet rs = sta.executeQuery(Sql);
-		while (rs.next()) {
-			boom = rs.getString(1);
-
+	public ArrayList<String> getItemsFromGrid(String xpath) {
+		ArrayList<String> list = new ArrayList<String>();
+		List<WebElement> lstelle = driver.findElements(By.xpath(xpath));
+		for (int i = 0; i < lstelle.size(); i++) {
+			list.add(i, lstelle.get(i).getText());
 		}
-		return boom;
-	}
-
-	public List<WebElement> getfirstNamesOnGrid() {
-		List<WebElement> lst = driver.findElements(By.xpath(Elements.FIRSTNAMESONGRID));
-		// System.out.println(lst);
-		return lst;
+		return list;
 
 	}
 
+	// For Sorting Alphabetical List using Bubble sort
 	public String[] sortAlphabeticalList(List<String> str) {
 
 		String temp;
@@ -353,6 +362,14 @@ public class PHP {
 
 	public void searchButton() {
 		searchButton.click();
+	}
+
+	public void clickSettings() {
+		settings.click();
+	}
+
+	public void clickChangeSettings() {
+		SettingsChangeSite.click();
 	}
 
 	public void assertSearchedItem(String elemetTextSupp, WebElement elementInList, String lastElementLocation) {
@@ -461,7 +478,7 @@ public class PHP {
 		}
 
 	}
-	
+
 	public ArrayList<String> expectedSiteOptions() {
 
 		int i;
@@ -486,5 +503,186 @@ public class PHP {
 		builder.doubleClick(elle).build().perform();
 		Thread.sleep(7000);
 	}
+
+	public ArrayList<String> getSortedFirstNameOnPHPfromDB() throws ClassNotFoundException, SQLException {
+		ArrayList<String> lst = new ArrayList<String>();
+		int i = 1;
+
+		Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+		Connection conn = DriverManager.getConnection(
+				"jdbc:sqlserver://192.168.1.51\\VaticaHealth;databasename=VaticaHealthQA", "swsadmin",
+				"SeniorWellnessSASpider1!");
+		Statement sta = conn.createStatement();
+
+		String Sql2 = "select count(FirstName) from hra where SiteId = 1 ";
+		ResultSet rs2 = sta.executeQuery(Sql2);
+		while (rs2.next()) {
+			int ListSize = Integer.parseInt(rs2.getString(1));
+			// System.out.println(ListSize);
+		}
+
+		String Sql = "select FirstName from hra where SiteId = 1 order by FirstName asc";
+		ResultSet rs = sta.executeQuery(Sql);
+		// System.out.println(rs.si);
+		while (rs.next()) {
+			lst.add(rs.getString("FirstName"));
+			// System.out.println(rs.getString("FirstName"));
+			// System.out.println(rs.getString("LastName"));
+			// boom = rs.getString(2);
+
+		}
+		System.out.println(lst.size());
+		return lst;
+	}
+
+	public ArrayList<String> getSortedLastNameOnPHPfromDB() throws ClassNotFoundException, SQLException {
+		ArrayList<String> lst = new ArrayList<String>();
+		int i = 1;
+
+		Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+		Connection conn = DriverManager.getConnection(
+				"jdbc:sqlserver://192.168.1.51\\VaticaHealth;databasename=VaticaHealthQA", "swsadmin",
+				"SeniorWellnessSASpider1!");
+		Statement sta = conn.createStatement();
+
+		String Sql2 = "select count(LastName) from hra where SiteId = 1 ";
+		ResultSet rs2 = sta.executeQuery(Sql2);
+		while (rs2.next()) {
+			int ListSize = Integer.parseInt(rs2.getString(1));
+			// System.out.println(ListSize);
+		}
+
+		String Sql = "select LastName from hra where SiteId = 1 order by LastName asc";
+		ResultSet rs = sta.executeQuery(Sql);
+		// System.out.println(rs.si);
+		while (rs.next()) {
+			lst.add(rs.getString("LastName"));
+			// System.out.println(rs.getString("FirstName"));
+			// System.out.println(rs.getString("LastName"));
+			// boom = rs.getString(2);
+
+		}
+		System.out.println(lst.size());
+		return lst;
+	}
+
+	public ArrayList<String> getSortedVisitDatesOnPHPfromDB() throws ClassNotFoundException, SQLException {
+		ArrayList<String> lst = new ArrayList<String>();
+		int i = 1;
+
+		Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+		Connection conn = DriverManager.getConnection(
+				"jdbc:sqlserver://192.168.1.51\\VaticaHealth;databasename=VaticaHealthQA", "swsadmin",
+				"SeniorWellnessSASpider1!");
+		Statement sta = conn.createStatement();
+
+		String Sql2 = "select count(1) from hra where SiteId = 1 ";
+		ResultSet rs2 = sta.executeQuery(Sql2);
+		while (rs2.next()) {
+			int ListSize = Integer.parseInt(rs2.getString(1));
+			// System.out.println(ListSize);
+		}
+
+		String Sql = "select CONVERT(varchar(10),AwvDate ,101) as AwvDate2 from hra where SiteId = 1 order by AwvDate asc";
+		ResultSet rs = sta.executeQuery(Sql);
+		// System.out.println(rs.si);
+		while (rs.next()) {
+
+			if (rs.getString("AwvDate2") != null) {
+				lst.add(rs.getString("AwvDate2"));
+			}
+
+			else {
+				lst.add("");
+			}
+
+		}
+		System.out.println(lst.size());
+		return lst;
+	}
+
+	public static void show(ArrayList<String> expectedList) {
+		// TODO Auto-generated method stub
+		ArrayList<String> lst = expectedList;
+		for (int i = 0; i < lst.size(); i++) {
+			System.out.println(lst.get(i));
+		}
+		// System.out.println("Done");
+	}
+	
+	// To verify the sorting of the First Names on the grid on PHP and its consistency on further pages
+	public ArrayList<String> getSortedFirstNamesFromPHPGrid() throws InterruptedException {
+		common.implictWait(20);
+		Thread.sleep(3000);
+		FirstNameColumnGrid.click();
+		ArrayList<String> listOfFirstNames = new ArrayList<String>();
+
+		while (true) {
+			listOfFirstNames.addAll(getItemsFromGrid(Elements.FIRSTNAMESONGRID));
+			if (NextBtnOnGrid.isDisplayed() && NextBtnOnGrid.isEnabled()) {
+				NextBtnOnGrid.click();
+				Thread.sleep(3000);
+			} else {
+				break;
+			}
+		}
+		System.out.println(listOfFirstNames.size());
+
+		for (int i = 0; i < listOfFirstNames.size(); i++) {
+	//		System.out.println(listOfFirstNames.get(i).toString());
+		}
+		PageToFirstButton.click();
+		return listOfFirstNames;
+	}
+	
+	// To verify the sorting of the Last Names on the grid on PHP and its consistency on further pages
+		public ArrayList<String> getSortedLastNamesFromPHPGrid() throws InterruptedException {
+			common.implictWait(20);
+			Thread.sleep(3000);
+			LastNameColumnGrid.click();
+			ArrayList<String> listOfLastNames = new ArrayList<String>();
+
+			while (true) {
+				listOfLastNames.addAll(getItemsFromGrid(Elements.LASTNAMESONGRID));
+				if (NextBtnOnGrid.isDisplayed() && NextBtnOnGrid.isEnabled()) {
+					NextBtnOnGrid.click();
+					Thread.sleep(3000);
+				} else {
+					break;
+				}
+			}
+			System.out.println(listOfLastNames.size());
+
+			for (int i = 0; i < listOfLastNames.size(); i++) {
+				System.out.println(listOfLastNames.get(i).toString());
+			}
+			PageToFirstButton.click();
+			return listOfLastNames;
+		}
+
+		// To verify the sorting of the Last Names on the grid on PHP and its consistency on further pages
+		public ArrayList<String> getSortedVisitDatesFromPHPGrid() throws InterruptedException {
+			common.implictWait(20);
+			Thread.sleep(3000);
+			VisitDateColumnGrid.click();
+			ArrayList<String> listOfVisitDates = new ArrayList<String>();
+
+			while (true) {
+				listOfVisitDates.addAll(getItemsFromGrid(Elements.VISITDATEONGRID));
+				if (NextBtnOnGrid.isDisplayed() && NextBtnOnGrid.isEnabled()) {
+					NextBtnOnGrid.click();
+					Thread.sleep(3000);
+				} else {
+					break;
+				}
+			}
+			System.out.println(listOfVisitDates.size());
+
+			for (int i = 0; i < listOfVisitDates.size(); i++) {
+				System.out.println(listOfVisitDates.get(i).toString());
+			}
+			PageToFirstButton.click();
+			return listOfVisitDates;
+		}
 
 }

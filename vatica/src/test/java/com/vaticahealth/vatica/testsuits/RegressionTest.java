@@ -53,37 +53,46 @@ public class RegressionTest extends TestAnnotation {
 	 * 
 	 * }
 	 */
+/*
+	@Test(alwaysRun = true, dependsOnMethods = "loginApp", description = "Checking the sorting on the first name column in PHP grid")
+	public ArrayList<String> getSortedFirstNamesFromPHPGrid() throws InterruptedException {
 
-	/*
-	 * @Test(alwaysRun = true, dependsOnMethods = "loginApp", description =
-	 * "Checking the sorting on the first name column in PHP grid") public void
-	 * sortOnFirstNames() throws InterruptedException {
-	 * 
-	 * //Thread.sleep(7000); java.util.List<WebElement> listOfFirstNames = new
-	 * ArrayList<WebElement>(); while (true) { java.util.List<WebElement>
-	 * tempList = home.getfirstNamesOnGrid(); listOfFirstNames.addAll(tempList);
-	 * try { WebElement elle =
-	 * driver.findElement(By.xpath(Elements.NEXTBTNONGRID)); if
-	 * (elle.isDisplayed() == true && elle.isEnabled() == true) {
-	 * 
-	 * elle.click(); } else { break; } } catch (StaleElementReferenceException
-	 * e) { System.out.println(e.getMessage());
-	 * System.out.println("Exception caused"); break; } }
-	 * 
-	 * 
-	 * java.util.List<String> StringOfFirstNames =
-	 * home.getTextFromWebElementList(listOfFirstNames);
-	 * 
-	 * String[] expectedList = home.sortAlphabeticalList(StringOfFirstNames);
-	 * 
-	 * for (int i = 0; i < expectedList.length; i++) {
-	 * System.out.println(expectedList[i]); }
-	 * 
-	 * System.out.println(StringOfFirstNames.size()); for (int j = 0; j <
-	 * StringOfFirstNames.size(); j++) {
-	 * System.out.println(StringOfFirstNames.get(j)); } }
-	 */
+		// Thread.sleep(7000);
+		ArrayList<String> listOfFirstNames = new ArrayList<String>();
+		
+		while (true) {
+			java.util.List<WebElement> tempList = home.getfirstNamesOnGrid();
+			listOfFirstNames.addAll(tempList);
+			try {
+				WebElement elle = driver.findElement(By.xpath(Elements.NEXTBTNONGRID));
+				if (elle.isDisplayed() == true && elle.isEnabled() == true) {
 
+					elle.click();
+				} else {
+					break;
+				}
+			} catch (StaleElementReferenceException e) {
+				System.out.println(e.getMessage());
+				System.out.println("Exception caused");
+				break;
+			}
+		}
+
+		java.util.List<String> StringOfFirstNames = home.getTextFromWebElementList(listOfFirstNames);
+
+		String[] expectedList = home.sortAlphabeticalList(StringOfFirstNames);
+
+		for (int i = 0; i < expectedList.length; i++) {
+			System.out.println(expectedList[i]);
+		}
+
+		System.out.println(StringOfFirstNames.size());
+		for (int j = 0; j < StringOfFirstNames.size(); j++) {
+			System.out.println(StringOfFirstNames.get(j));
+		}
+	}
+
+*/
 	@Test(alwaysRun = true, description = "Default items per page", dependsOnMethods = "loginApp")
 	public void itemsPerPage() throws InterruptedException {
 
