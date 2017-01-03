@@ -167,14 +167,14 @@ public class CommonCode {
 	public void implictWait(int timeInSeconds) {
 		driver.manage().timeouts().implicitlyWait(timeInSeconds, TimeUnit.SECONDS);
 	}
-	
+
 	// Generate a 7 day old date
 	@Test
-	public String  recentDate() {
+	public String recentDate() {
 		DateFormat dateFormat = new SimpleDateFormat("MM/dd/YYYY");
 		Date date = new Date();
-		
-		String date1 = dateFormat.format(date.getTime() - (7*24 * 3600000));
+
+		String date1 = dateFormat.format(date.getTime() - (7 * 24 * 3600000));
 		return date1;
 	}
 
@@ -272,7 +272,7 @@ public class CommonCode {
 	 * 
 	 * }
 	 */
-	
+
 	public void selectByValue(WebElement elle, int sel) throws InterruptedException {
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		Thread.sleep(5000);
@@ -280,37 +280,44 @@ public class CommonCode {
 		select.selectByIndex(sel);
 
 	}
-	
-	
+
 	public void pressTab(WebElement elle2) {
 		elle2.sendKeys(Keys.TAB);
-		
+
 	}
-	
+
+	// Double Clicking on any webelement
+	public void doubleClick(WebDriver driver, WebElement elle) throws InterruptedException {
+		// common.implictWait(10);
+		// Thread.sleep(10000);
+		Actions builder = new Actions(driver);
+		builder.doubleClick(elle).build().perform();
+		Thread.sleep(7000);
+	}
+
 	public void keyboard_Ctrl_S(WebDriver driver) throws AWTException, InterruptedException {
 		new Actions(driver).sendKeys(Keys.chord(Keys.CONTROL, "s")).perform();
-	      
-	      Robot robot = new Robot();
-	   // press Ctrl+S the Robot's way
-	   robot.keyPress(KeyEvent.VK_CONTROL);
-	   robot.keyPress(KeyEvent.VK_S);
-	   robot.keyRelease(KeyEvent.VK_CONTROL);
-	   robot.keyRelease(KeyEvent.VK_S);
-	   Thread.sleep(5000);
-	   // press Enter
-	   robot.keyPress(KeyEvent.VK_ENTER);
-	   robot.keyRelease(KeyEvent.VK_ENTER);
+
+		Robot robot = new Robot();
+		// press Ctrl+S the Robot's way
+		robot.keyPress(KeyEvent.VK_CONTROL);
+		robot.keyPress(KeyEvent.VK_S);
+		robot.keyRelease(KeyEvent.VK_CONTROL);
+		robot.keyRelease(KeyEvent.VK_S);
+		Thread.sleep(5000);
+		// press Enter
+		robot.keyPress(KeyEvent.VK_ENTER);
+		robot.keyRelease(KeyEvent.VK_ENTER);
 	}
-	
 
 	// To compare two arraylist<String> with same size.
 	public void compareList(ArrayList<String> el, ArrayList<String> al) {
-		System.out.println(el.size()+"  "+al.size());
+		System.out.println(el.size() + "  " + al.size());
 		// TODO Auto-generated method stub
-		for (int i=0; i<al.size();i++) {
-			System.out.println(el.get(i)+"  "+al.get(i));
-			Assert.assertTrue(el.get(i).toString().equalsIgnoreCase(al.get(i).toString()),"Not Matching");
-			
+		for (int i = 0; i < al.size(); i++) {
+			System.out.println(el.get(i) + "  " + al.get(i));
+			Assert.assertTrue(el.get(i).toString().equalsIgnoreCase(al.get(i).toString()), "Not Matching");
+
 		}
 	}
 

@@ -12,14 +12,20 @@ import com.vaticahealth.vatica.utils.Elements;
 
 public class Hra {
 
-	CommonCode common = new CommonCode();
+	static CommonCode common = new CommonCode();
 	WebDriver driver = Configuration.driver;
-	// Hra hra = new Hra();
+	String DateOfVisitCreated = common.recentDate();
+	static String NewFirstname = common.firstNameGenerator();
+	static String NewLastname = common.LastNameGenerator();
+	static String NewVisitdate = common.recentDate();
 
 	// Tabs
 
 	@FindBy(xpath = Elements.HOMETAB)
 	public WebElement HomeTab;
+
+	@FindBy(xpath = "//*[@id='dlErrorList']/div/div/div[1]/button")
+	public WebElement ErrorListClose;
 
 	@FindBy(xpath = Elements.HRATAB)
 	public WebElement HraTab;
@@ -136,8 +142,8 @@ public class Hra {
 	@FindBy(xpath = Elements.GLOMERULERDATE)
 	public WebElement GlomerulerDate;
 
-	@FindBy(xpath = Elements.GLOMERULERSELECT)
-	public WebElement GlomerulerSelect;
+	@FindBy(xpath = Elements.GLOMERULERTEXTBOX)
+	public WebElement GlomerulerTextBox;
 
 	// Social History Page
 
@@ -215,6 +221,9 @@ public class Hra {
 	@FindBy(xpath = Elements.SAVE_NEXTBTN)
 	public WebElement Save_NextBtn;
 
+	@FindBy(xpath = Elements.WARNINGCLOSEBUTTON)
+	public WebElement WarningCloseButton;
+
 	public Hra() {
 		PageFactory.initElements(driver, this);
 	}
@@ -225,6 +234,78 @@ public class Hra {
 		Select select = new Select(elle);
 		select.selectByIndex(sel);
 
+	}
+	
+	public void clickSaveButton() {
+		Save_NextBtn.click();
+	}
+
+	public void FirstName(String name) {
+		FirstName.sendKeys(name);
+	}
+
+	public void LastName(String name) {
+		LastName.sendKeys(name);
+	}
+
+	public void DOB(String date) {
+		DOB.sendKeys(date);
+		common.pressTab(DOB);
+
+	}
+
+	public void VisitDateBio(String newVisitdate) {
+		VisitDateBio.sendKeys(newVisitdate);
+		common.pressTab(VisitDateBio);
+	}
+
+	// Closing the Warning on HRA if it appears
+	public void warningPopUpClose() throws InterruptedException {
+		Thread.sleep(5000);
+		if (WarningCloseButton.isDisplayed()) {
+			WarningCloseButton.click();
+		}
+	}
+
+	// Update Background Information
+	public void updateBackgroundInfo() throws InterruptedException {
+		common.implictWait(10);
+		BackgroundInformationLink.click();
+		Thread.sleep(5000);
+		FirstName.clear();
+		LastName.clear();
+		FirstName(NewFirstname);
+		LastName(NewLastname);
+		DOB.clear();
+		DOB(common.readExcel("sites", "new DOB"));
+		Thread.sleep(2000);
+	}
+
+	public String getFirstName() {
+		return NewFirstname;
+	}
+
+	public String getLastName() {
+		return NewLastname;
+	}
+
+	public String getVisitDate() {
+		return NewVisitdate;
+	}
+
+	// Update Visit Date
+	public void updateVisitDate() throws InterruptedException {
+		common.implictWait(10);
+		BiometricsLink.click();
+		Thread.sleep(5000);
+		VisitDateBio.clear();
+		VisitDateBio(NewVisitdate);
+		Save_NextBtn.click();
+		Thread.sleep(3000);
+		ErrorListClose.click();
+		Thread.sleep(2000);
+		HomeTab.click();
+		Thread.sleep(5000);
 	}
 
 }

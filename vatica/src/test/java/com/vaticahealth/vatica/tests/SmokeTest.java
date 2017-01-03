@@ -25,12 +25,17 @@ public class SmokeTest extends TestAnnotation {
 	DiagnosisTest diagTest = new DiagnosisTest();
 	
 	
-	@Test(priority = 1, description = "login and Site check")
+	@Test(priority = 1, description = "login")
 	public void smokeTest_login() throws Exception {
 		common.implictWait(20);
 		loginTest.tc_Login_1();
+	}
+		
+	@Test(priority = 2, description = "login confirmation")
+	public void smokeTest_loginConfirmation() throws Exception {
 		phpTest.loginConf();
-		home.logoCheck();
+		phpTest.loginConf();
+		phpTest.logoCheck();
 		phpTest.siteCheck();
 		phpTest.verifySiteOptions();
 		phpTest.columnsOnGridCheck();

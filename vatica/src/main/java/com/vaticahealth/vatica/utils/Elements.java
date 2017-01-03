@@ -67,8 +67,9 @@ public  class Elements extends TestAnnotation{
 	public static final String COLUMNSONGRID="//span[@class='ui-grid-header-cell-label ng-binding']";
 	public static final String SETTINGS="//*[@role='button'][@data-toggle='dropdown']";
 	public static final String SETTINGSSA = "html/body/div[1]/div/div[1]/div[1]/div/div[2]/ul/li[3]/ul/li[1]/a";
-	public static final String SETTINGSCHANGESITE = "html/body/div[1]/div/div[1]/div[1]/div/div[2]/ul/li[3]/ul/li[2]/a";
+	public static final String SETTINGSCHANGESITE = "//a[text()='Change Site']";
 	public static final String SETTINGSSITEOPTIONS = "html/body/div[1]/div/div[1]/div[1]/div/div[2]/ul/li[3]/ul/li[2]/ul";
+	public static final String SETTINGSSITEOPTIONS2 = "html/body/div[1]/div/div[1]/div[1]/div/div[2]/ul/li[3]/ul/li/ul";
 	public static final String FIRSTNAMECOLUMNGRID = "//span[text()='First Name']";
 	public static final String LASTNAMECOLUMNGRID = "//span[text()='Last Name']";
 	public static final String VISITDATECOLUMNGRID = "//span[text()='Visit Date']";
@@ -83,6 +84,11 @@ public  class Elements extends TestAnnotation{
 	public static final String VISITDATEONGRID="//div[@class='ngCell ui-grid-cell ng-scope ui-grid-disable-selection ui-grid-coluiGrid-0008']/div";
 	public static final String NEXTBTNONGRID="//button[@class='ui-grid-pager-next']";
 	public static final String ADDNEWVISIT="//a[text()='Add New Visit']";
+	public static final String VISITSTATUSONGRID = ".//*[contains(@id,'-grid-container')]/div[2]/div/div/div/div[4]/div/span";
+	public static final String VISITTYPEONGRID = ".//*[contains(@id,'-grid-container')]/div[2]/div/div/div/div[4]/div/small";
+	public static final String VISITSIGNONGRID = ".//*[contains(@id,'-grid-container')]/div[2]/div/div/div/div[4]/div/small/i";
+	
+	
 	
 		// Search related
 		public static final String SEARCHGRIDFIRSTNAME = "//div[@class='ui-grid-canvas']/div/div/div[1]/div/span";
@@ -95,6 +101,7 @@ public  class Elements extends TestAnnotation{
 		 public static final String PPP="//a[text()='P']";
 		 public static final String Test="//a[text()='T']";
 		 public static final String Diagnosis="//a[text()='D']";
+		 public static final String FIRSTHRAONGRID = "//*[contains(@id,'-grid-container')]/div[2]/div/div/div/div[2]/div";
 		 public static final String Snapshot="//a[contains (@href, '#/home/Snapshot')]";
 		 public static final String Comment="//a[contains (@ng-click, 'showProviderComments')]";
 		 public static final String Printforms="//a[contains (@ng-click, 'showPrint')]";
@@ -138,9 +145,10 @@ public  class Elements extends TestAnnotation{
 	public static final String DIAGNOSTICSTAB = "//a[text()='D']";
 	public static final String SNAPSHOTTAB = "//*[@id='main-wrap']/div[1]/div/div/div[2]/div/div[1]/div/a[6]";
 	public static final String COMMENTSTAB = "//a[@ng-click='showCommentsView();']";
+	public static final String WARNINGCLOSEBUTTON = "//button[@class='btn btn-default ng-binding' and text()='Close']";
 	
 	
-	public static final String SAVE_NEXTBTN = "//button[@data-ng-click='saveAndOpenEsignPopup()']";
+	public static final String SAVE_NEXTBTN = "//*[text()='Save/Next']";
 	
 		//HRA page - Background Information page
 		public static final String MEDICARENUMBER = "//*[@id='BI16']";
@@ -167,7 +175,7 @@ public  class Elements extends TestAnnotation{
 		public static final String PSADATE = "//input[@id='T21LD']";
 		public static final String GLOMERULERYES = "//input[@name='DLV10' and @type='radio']";
 		public static final String GLOMERULERDATE = "//input[@id='DL4D']";
-		public static final String GLOMERULERSELECT = "//select[@id='DL5']";
+		public static final String GLOMERULERTEXTBOX = "//input[@id='DL15']";
 		
 		//HRA page - Social History page
 		public static final String ILLEGALDRUGUSEYES = "//input[@type='radio' and @value='LSV131']";

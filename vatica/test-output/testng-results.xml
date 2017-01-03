@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="0" total="4" passed="4">
+<testng-results skipped="0" failed="0" total="6" passed="6">
   <reporter-output>
     <line>
       <![CDATA[Mozilla is envoked]]>
@@ -8,35 +8,43 @@
       <![CDATA[URL is http://111.125.141.74:8086/VaticaHealth.Web.UI/]]>
     </line>
   </reporter-output>
-  <suite name="Default suite" duration-ms="258406" started-at="2016-12-23T11:50:48Z" finished-at="2016-12-23T11:55:06Z">
+  <suite name="Default suite" duration-ms="598445" started-at="2017-01-03T06:41:05Z" finished-at="2017-01-03T06:51:04Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="258406" started-at="2016-12-23T11:50:48Z" finished-at="2016-12-23T11:55:06Z">
-      <class name="com.vaticahealth.vatica.tests.SmokeTest2">
-        <test-method status="PASS" signature="invokeUrl()[pri:0, instance:com.vaticahealth.vatica.tests.SmokeTest2@7ceb3185]" name="invokeUrl" is-config="true" duration-ms="2328" started-at="2016-12-23T17:20:48Z" finished-at="2016-12-23T17:20:50Z">
+    <test name="Default test" duration-ms="598445" started-at="2017-01-03T06:41:05Z" finished-at="2017-01-03T06:51:04Z">
+      <class name="com.vaticahealth.vatica.tests.SmokeTest">
+        <test-method status="PASS" signature="invokeUrl()[pri:0, instance:com.vaticahealth.vatica.tests.SmokeTest@1bd39d3c]" name="invokeUrl" is-config="true" duration-ms="3687" started-at="2017-01-03T12:11:05Z" finished-at="2017-01-03T12:11:09Z">
           <reporter-output>
             <line>
               <![CDATA[URL is http://111.125.141.74:8086/VaticaHealth.Web.UI/]]>
             </line>
           </reporter-output>
         </test-method> <!-- invokeUrl -->
-        <test-method status="PASS" signature="smokeTest_login()[pri:1, instance:com.vaticahealth.vatica.tests.SmokeTest2@7ceb3185]" name="smokeTest_login" duration-ms="50361" started-at="2016-12-23T17:20:50Z" description="login and Site check" finished-at="2016-12-23T17:21:41Z">
+        <test-method status="PASS" signature="smokeTest_login()[pri:1, instance:com.vaticahealth.vatica.tests.SmokeTest@1bd39d3c]" name="smokeTest_login" duration-ms="64698" started-at="2017-01-03T12:11:09Z" description="login and Site check" finished-at="2017-01-03T12:12:14Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- smokeTest_login -->
-        <test-method status="PASS" signature="checkFirstNameSortingonPHPGrid()[pri:2, instance:com.vaticahealth.vatica.tests.SmokeTest2@7ceb3185]" name="checkFirstNameSortingonPHPGrid" duration-ms="69545" started-at="2016-12-23T17:21:41Z" description="To check the Sorting of First Names on Grid on PHP" finished-at="2016-12-23T17:22:50Z">
+        <test-method status="PASS" signature="smokeTest_hra_creation()[pri:2, instance:com.vaticahealth.vatica.tests.SmokeTest@1bd39d3c]" name="smokeTest_hra_creation" duration-ms="50102" started-at="2017-01-03T12:12:14Z" description="hra creation " finished-at="2017-01-03T12:13:04Z">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- checkFirstNameSortingonPHPGrid -->
-        <test-method status="PASS" signature="checkLastNameSortingonPHPGrid()[pri:3, instance:com.vaticahealth.vatica.tests.SmokeTest2@7ceb3185]" name="checkLastNameSortingonPHPGrid" duration-ms="68669" started-at="2016-12-23T17:22:50Z" description="To check the Sorting of Last Names on Grid on PHP" finished-at="2016-12-23T17:23:59Z">
+        </test-method> <!-- smokeTest_hra_creation -->
+        <test-method status="PASS" signature="smokeTest_hra_completion()[pri:3, instance:com.vaticahealth.vatica.tests.SmokeTest@1bd39d3c]" name="smokeTest_hra_completion" duration-ms="164285" started-at="2017-01-03T12:13:04Z" description="hra completion " finished-at="2017-01-03T12:15:48Z">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- checkLastNameSortingonPHPGrid -->
-        <test-method status="PASS" signature="checkVisitDateSortingonPHPGrid()[pri:4, instance:com.vaticahealth.vatica.tests.SmokeTest2@7ceb3185]" name="checkVisitDateSortingonPHPGrid" duration-ms="67442" started-at="2016-12-23T17:23:59Z" description="To check the Sorting of Visit Dates on Grid on PHP" finished-at="2016-12-23T17:25:06Z">
+        </test-method> <!-- smokeTest_hra_completion -->
+        <test-method status="PASS" signature="smokeTest_ttab_completion()[pri:4, instance:com.vaticahealth.vatica.tests.SmokeTest@1bd39d3c]" name="smokeTest_ttab_completion" duration-ms="27836" started-at="2017-01-03T12:15:48Z" description="T tab completion " finished-at="2017-01-03T12:16:16Z">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- checkVisitDateSortingonPHPGrid -->
-      </class> <!-- com.vaticahealth.vatica.tests.SmokeTest2 -->
+        </test-method> <!-- smokeTest_ttab_completion -->
+        <test-method status="PASS" signature="smokeTest_dtab_completion()[pri:5, instance:com.vaticahealth.vatica.tests.SmokeTest@1bd39d3c]" name="smokeTest_dtab_completion" duration-ms="166866" started-at="2017-01-03T12:16:16Z" description="D tab completion" finished-at="2017-01-03T12:19:03Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- smokeTest_dtab_completion -->
+        <test-method status="PASS" signature="smokeTest_home_tcs()[pri:6, instance:com.vaticahealth.vatica.tests.SmokeTest@1bd39d3c]" name="smokeTest_home_tcs" duration-ms="120905" started-at="2017-01-03T12:19:03Z" description="PHP Test cases" finished-at="2017-01-03T12:21:04Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- smokeTest_home_tcs -->
+      </class> <!-- com.vaticahealth.vatica.tests.SmokeTest -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

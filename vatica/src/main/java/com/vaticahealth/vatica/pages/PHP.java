@@ -38,13 +38,13 @@ import org.openqa.selenium.JavascriptExecutor;
 public class PHP {
 	WebDriver driver = Configuration.driver;
 	CommonCode common = new CommonCode();
+	Hra hra = new Hra();
 
 	@FindBy(xpath = Elements.logOut)
 	public WebElement logOut;
 
-	// Doe HRA
-	@FindBy(xpath = "//div[text()='DOE17865']")
-	public WebElement DoeHra;
+	@FindBy(xpath = Elements.FIRSTHRAONGRID)
+	public WebElement FirstHraOnGrid;
 
 	@FindBy(xpath = Elements.VATICAlOGO)
 	public WebElement VaticaLogo;
@@ -207,31 +207,33 @@ public class PHP {
 
 	@FindBy(xpath = Elements.Admin)
 	public WebElement GridAdminBtn;
-
+	
+	@FindBy(xpath = Elements.VISITTYPEONGRID)
+	public WebElement VisitTypeOnGrid;
+	
+	@FindBy(xpath = Elements.VISITSTATUSONGRID)
+	public WebElement VisitStatusOnGrid;
+	
+	@FindBy(xpath = Elements.VISITSIGNONGRID)
+	public WebElement VisitSignOnGrid ;
+	
 	public PHP() {
 		PageFactory.initElements(driver, this);
 	}
 
-	// Check the presence of Vatica Logo
-	public void logoCheck() throws Exception {
-		Thread.sleep(5000);
-		Boolean ImagePresent = (Boolean) ((JavascriptExecutor) driver).executeScript(
-				"return arguments[0].complete && typeof arguments[0].naturalWidth != \"undefined\" && arguments[0].naturalWidth > 0",
-				VaticaLogo);
-
-		Assert.assertTrue(ImagePresent, "Image displayed.");
-
-		/*
-		 * if (!ImagePresent) { System.out.println("Image not displayed."); }
-		 * else { System.out.println("Image displayed."); }
-		 */
-
-	}
 
 	public String siteOnPhp() throws InterruptedException {
 		Thread.sleep(2000);
 		return siteOnPhp.getText();
 
+	}
+
+	// Double Clicking on First Hra from the PHP.
+	public void php_doubleClickFirstHRA() throws InterruptedException {
+		common.implictWait(10);
+		Thread.sleep(2000);
+		common.doubleClick(driver, FirstHraOnGrid);
+		Thread.sleep(10000);
 	}
 
 	public void clickAddNewVisitButton() {
@@ -258,29 +260,6 @@ public class PHP {
 		}
 		return list;
 
-	}
-
-	// For Sorting Alphabetical List using Bubble sort
-	public String[] sortAlphabeticalList(List<String> str) {
-
-		String temp;
-		String[] strTemp = new String[str.size()];
-
-		for (int i = 0; i < str.size(); i++) {
-			strTemp[i] = str.get(i).toLowerCase();
-		}
-
-		for (int i = strTemp.length - 1; i > 0; i--) {
-			for (int j = 0; j < i; j++) {
-				int comp = strTemp[j].compareTo(strTemp[j + 1]);
-				if (comp > 0) {
-					temp = strTemp[j + 1];
-					strTemp[j + 1] = strTemp[j];
-					strTemp[j] = temp;
-				}
-			}
-		}
-		return strTemp;
 	}
 
 	public List<String> getTextFromWebElementList(List<WebElement> lst) {
@@ -360,39 +339,23 @@ public class PHP {
 		lastNameSearch.sendKeys(lastNameSupp);
 	}
 
+	public String DOBExtractOnPHP() {
+		String target = dob.getText();
+		return target.substring(4);
+	}
+
 	public void searchButton() {
 		searchButton.click();
 	}
 
-	public void clickSettings() {
+	public void clickSettings() throws InterruptedException {
+		Thread.sleep(2000);
+		common.explictWaitPresence(20, By.xpath(Elements.SETTINGS));
 		settings.click();
 	}
 
 	public void clickChangeSettings() {
 		SettingsChangeSite.click();
-	}
-
-	public void assertSearchedItem(String elemetTextSupp, WebElement elementInList, String lastElementLocation) {
-		String suppElementText = elemetTextSupp;
-		try {
-			Thread.sleep(7000);
-		} catch (InterruptedException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
-		if (noRecordfound.isDisplayed()) {
-			Reporter.log("No Record found");
-		} else {
-			System.out.println("passed   " + suppElementText);
-			System.out.println("1st element    " + elementInList.getText());
-			System.out.println("GROUND ZERO");
-			Assert.assertTrue(elementInList.getText().toUpperCase().contains(suppElementText));
-			System.out.println("here");
-
-			Assert.assertTrue(lastElemnetText(lastElementLocation).toUpperCase().contains(suppElementText));
-			moveToFirstPage.click();
-
-		}
 	}
 
 	public void dobText(String dobDateSupp) {
@@ -493,15 +456,6 @@ public class PHP {
 			return lst1;
 		}
 
-	}
-
-	// Double Clicking on any webelement
-	public void doubleClick(WebDriver driver, WebElement elle) throws InterruptedException {
-		// common.implictWait(10);
-		// Thread.sleep(10000);
-		Actions builder = new Actions(driver);
-		builder.doubleClick(elle).build().perform();
-		Thread.sleep(7000);
 	}
 
 	public ArrayList<String> getSortedFirstNameOnPHPfromDB() throws ClassNotFoundException, SQLException {
@@ -609,8 +563,9 @@ public class PHP {
 		}
 		// System.out.println("Done");
 	}
-	
-	// To verify the sorting of the First Names on the grid on PHP and its consistency on further pages
+
+	// To verify the sorting of the First Names on the grid on PHP and its
+	// consistency on further pages
 	public ArrayList<String> getSortedFirstNamesFromPHPGrid() throws InterruptedException {
 		common.implictWait(20);
 		Thread.sleep(3000);
@@ -629,60 +584,96 @@ public class PHP {
 		System.out.println(listOfFirstNames.size());
 
 		for (int i = 0; i < listOfFirstNames.size(); i++) {
-	//		System.out.println(listOfFirstNames.get(i).toString());
+			// System.out.println(listOfFirstNames.get(i).toString());
 		}
 		PageToFirstButton.click();
 		return listOfFirstNames;
 	}
-	
-	// To verify the sorting of the Last Names on the grid on PHP and its consistency on further pages
-		public ArrayList<String> getSortedLastNamesFromPHPGrid() throws InterruptedException {
-			common.implictWait(20);
-			Thread.sleep(3000);
-			LastNameColumnGrid.click();
-			ArrayList<String> listOfLastNames = new ArrayList<String>();
 
-			while (true) {
-				listOfLastNames.addAll(getItemsFromGrid(Elements.LASTNAMESONGRID));
-				if (NextBtnOnGrid.isDisplayed() && NextBtnOnGrid.isEnabled()) {
-					NextBtnOnGrid.click();
-					Thread.sleep(3000);
-				} else {
-					break;
-				}
-			}
-			System.out.println(listOfLastNames.size());
+	// To verify the sorting of the Last Names on the grid on PHP and its
+	// consistency on further pages
+	public ArrayList<String> getSortedLastNamesFromPHPGrid() throws InterruptedException {
+		common.implictWait(20);
+		Thread.sleep(3000);
+		LastNameColumnGrid.click();
+		ArrayList<String> listOfLastNames = new ArrayList<String>();
 
-			for (int i = 0; i < listOfLastNames.size(); i++) {
-				System.out.println(listOfLastNames.get(i).toString());
+		while (true) {
+			listOfLastNames.addAll(getItemsFromGrid(Elements.LASTNAMESONGRID));
+			if (NextBtnOnGrid.isDisplayed() && NextBtnOnGrid.isEnabled()) {
+				NextBtnOnGrid.click();
+				Thread.sleep(3000);
+			} else {
+				break;
 			}
-			PageToFirstButton.click();
-			return listOfLastNames;
 		}
+		System.out.println(listOfLastNames.size());
 
-		// To verify the sorting of the Last Names on the grid on PHP and its consistency on further pages
-		public ArrayList<String> getSortedVisitDatesFromPHPGrid() throws InterruptedException {
-			common.implictWait(20);
-			Thread.sleep(3000);
-			VisitDateColumnGrid.click();
-			ArrayList<String> listOfVisitDates = new ArrayList<String>();
-
-			while (true) {
-				listOfVisitDates.addAll(getItemsFromGrid(Elements.VISITDATEONGRID));
-				if (NextBtnOnGrid.isDisplayed() && NextBtnOnGrid.isEnabled()) {
-					NextBtnOnGrid.click();
-					Thread.sleep(3000);
-				} else {
-					break;
-				}
-			}
-			System.out.println(listOfVisitDates.size());
-
-			for (int i = 0; i < listOfVisitDates.size(); i++) {
-				System.out.println(listOfVisitDates.get(i).toString());
-			}
-			PageToFirstButton.click();
-			return listOfVisitDates;
+		for (int i = 0; i < listOfLastNames.size(); i++) {
+			System.out.println(listOfLastNames.get(i).toString());
 		}
+		PageToFirstButton.click();
+		return listOfLastNames;
+	}
+
+	// To verify the sorting of the Last Names on the grid on PHP and its
+	// consistency on further pages
+	public ArrayList<String> getSortedVisitDatesFromPHPGrid() throws InterruptedException {
+		common.implictWait(20);
+		Thread.sleep(3000);
+		VisitDateColumnGrid.click();
+		ArrayList<String> listOfVisitDates = new ArrayList<String>();
+
+		while (true) {
+			listOfVisitDates.addAll(getItemsFromGrid(Elements.VISITDATEONGRID));
+			if (NextBtnOnGrid.isDisplayed() && NextBtnOnGrid.isEnabled()) {
+				NextBtnOnGrid.click();
+				Thread.sleep(3000);
+			} else {
+				break;
+			}
+		}
+		System.out.println(listOfVisitDates.size());
+
+		for (int i = 0; i < listOfVisitDates.size(); i++) {
+			System.out.println(listOfVisitDates.get(i).toString());
+		}
+		PageToFirstButton.click();
+		return listOfVisitDates;
+	}
+
+	// Searching by filling in the Last Name on the Search section of PHP
+	public void SearchWithLastName(String lastname) throws InterruptedException {
+		common.implictWait(10);
+		Thread.sleep(5000);
+		clearSearchField();
+		Thread.sleep(5000);
+		lastName(lastname);
+		searchButton();
+		Thread.sleep(5000);
+	}
+
+	// Opening the HRA on the Grid.
+	public void updateHra() throws InterruptedException {
+		common.implictWait(10);
+
+		php_doubleClickFirstHRA();
+		try {
+			hra.warningPopUpClose();
+		} catch (org.openqa.selenium.NoSuchElementException e) {
+			System.out.println("Pop didn't appear");
+		}
+	}
+
+	// Default items per page on grid after login
+	public void itemsPerPage() throws InterruptedException {
+
+		Thread.sleep(3000);
+		int expectedvalue = Integer.parseInt(common.readExcel("get_values", "itemsPerPage"));
+		int actualvalue = Integer.parseInt(getDefaultItemsPerPage());
+
+		Assert.assertTrue(expectedvalue == actualvalue, "Count of default items per page is incorrect.");
+
+	}
 
 }

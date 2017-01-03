@@ -10,7 +10,7 @@ import com.vaticahealth.vatica.utils.CommonCode;
 public class LoginTest extends TestAnnotation{
 	CommonCode common = new CommonCode();
 
-	// Login in to the application with correct credentials and select the website from the dropdown of sites.
+	// Login in to the application with correct credentials and select the website 'Plus' from the dropdown of sites.
 	public  void tc_Login_1() throws InterruptedException, InvocationTargetException {
 
 		common.implictWait(20);

@@ -55,11 +55,11 @@ function toggleAllBoxes() {
 <body>
 <h2 align='center'>Test</h2><table border='1' align="center">
 <tr>
-<td>Tests passed/Failed/Skipped:</td><td>5/1/0</td>
+<td>Tests passed/Failed/Skipped:</td><td>4/2/0</td>
 </tr><tr>
-<td>Started on:</td><td>Mon Dec 19 13:16:43 IST 2016</td>
+<td>Started on:</td><td>Thu Dec 29 17:00:17 IST 2016</td>
 </tr>
-<tr><td>Total time:</td><td>465 seconds (465097 ms)</td>
+<tr><td>Total time:</td><td>409 seconds (409445 ms)</td>
 </tr><tr>
 <td>Included groups:</td><td></td>
 </tr><tr>
@@ -75,32 +75,45 @@ function toggleAllBoxes() {
 <td><b>Instance</b></td>
 </tr>
 <tr>
-<td title='com.vaticahealth.vatica.tests.SmokeTest.smokeTest_home_tcs()'><b>smokeTest_home_tcs</b><br>Test class: com.vaticahealth.vatica.tests.SmokeTest<br>Test method: PHP Test cases</td>
-<td><div><pre>org.openqa.selenium.WebDriverException: Element is not clickable at point (244, 547). Other element would receive the click: &lt;div style=&quot;z-index: 1050; display: block;&quot; modal-animation=&quot;true&quot; animate=&quot;animate&quot; index=&quot;0&quot; uib-modal-window=&quot;modal-window&quot; modal-render=&quot;true&quot; tabindex=&quot;-1&quot; role=&quot;dialog&quot; class=&quot;modal fade ng-isolate-scope in&quot; uib-modal-animation-class=&quot;fade&quot; modal-in-class=&quot;in&quot; ng-style=&quot;{&apos;z-index&apos;: 1050 + index*10, display: &apos;block&apos;}&quot;&gt;&lt;/div&gt;
-Command duration or timeout: 109 milliseconds
+<td title='com.vaticahealth.vatica.tests.SmokeTest.smokeTest_dtab_completion()'><b>smokeTest_dtab_completion</b><br>Test class: com.vaticahealth.vatica.tests.SmokeTest<br>Test method: D tab completion</td>
+<td><div><pre>org.openqa.selenium.NoSuchElementException: Unable to locate element: {&quot;method&quot;:&quot;xpath&quot;,&quot;selector&quot;:&quot;//*[@id=&apos;main-wrap&apos;]/div[2]/div[2]/div/div/div/div/a[3]&quot;}
+Command duration or timeout: 20.10 seconds
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
 Build info: version: &apos;2.53.1&apos;, revision: &apos;a36b8b1cd5757287168e54b817830adce9b0158d&apos;, time: &apos;2016-06-30 19:26:09&apos;
-System info: host: &apos;nitunp-L&apos;, ip: &apos;192.168.30.132&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;1.8.0_111&apos;
+System info: host: &apos;nitunp-L&apos;, ip: &apos;192.168.20.46&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;1.8.0_111&apos;
 Driver info: org.openqa.selenium.firefox.FirefoxDriver
 Capabilities [{applicationCacheEnabled=true, rotatable=false, handlesAlerts=true, databaseEnabled=true, version=47.0.1, platform=WINDOWS, nativeEvents=false, acceptSslCerts=true, webStorageEnabled=true, locationContextEnabled=true, browserName=firefox, takesScreenshot=true, javascriptEnabled=true, cssSelectorsEnabled=true}]
-Session ID: 6161bc60-5818-4545-ad1b-46ff44e6d9e8
+Session ID: 19f81284-b66c-4d5b-a72a-0e356ae79dc2
+*** Element info: {Using=xpath, value=//*[@id=&apos;main-wrap&apos;]/div[2]/div[2]/div/div/div/div/a[3]}
 	at org.openqa.selenium.remote.ErrorHandler.createThrowable(ErrorHandler.java:206)
 	at org.openqa.selenium.remote.ErrorHandler.throwIfResponseFailed(ErrorHandler.java:158)
 	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:678)
-	at org.openqa.selenium.remote.RemoteWebElement.execute(RemoteWebElement.java:327)
-	at org.openqa.selenium.remote.RemoteWebElement.click(RemoteWebElement.java:85)
-	at org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:51)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:363)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElementByXPath(RemoteWebDriver.java:500)
+	at org.openqa.selenium.By$ByXPath.findElement(By.java:361)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:355)
+	at org.openqa.selenium.support.pagefactory.DefaultElementLocator.findElement(DefaultElementLocator.java:69)
+	at org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:38)
 	at com.sun.proxy.$Proxy6.click(Unknown Source)
-	at com.vaticahealth.vatica.pages.PHP.clearSearchField(PHP.java:352)
-	at com.vaticahealth.vatica.tests.PHPTest.verifyOneRowOnPhp(PHPTest.java:111)
-	at com.vaticahealth.vatica.tests.SmokeTest.smokeTest_home_tcs(SmokeTest.java:78)
-... Removed 32 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1528834618", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
-<div class='stack-trace' id='stack-trace1528834618'><pre>org.openqa.selenium.WebDriverException: Element is not clickable at point (244, 547). Other element would receive the click: &lt;div style=&quot;z-index: 1050; display: block;&quot; modal-animation=&quot;true&quot; animate=&quot;animate&quot; index=&quot;0&quot; uib-modal-window=&quot;modal-window&quot; modal-render=&quot;true&quot; tabindex=&quot;-1&quot; role=&quot;dialog&quot; class=&quot;modal fade ng-isolate-scope in&quot; uib-modal-animation-class=&quot;fade&quot; modal-in-class=&quot;in&quot; ng-style=&quot;{&apos;z-index&apos;: 1050 + index*10, display: &apos;block&apos;}&quot;&gt;&lt;/div&gt;
-Command duration or timeout: 109 milliseconds
+	at com.vaticahealth.vatica.tests.DiagnosisTest.tc_td_2(DiagnosisTest.java:93)
+	at com.vaticahealth.vatica.tests.SmokeTest.smokeTest_dtab_completion(SmokeTest.java:74)
+Caused by: org.openqa.selenium.NoSuchElementException: Unable to locate element: {&quot;method&quot;:&quot;xpath&quot;,&quot;selector&quot;:&quot;//*[@id=&apos;main-wrap&apos;]/div[2]/div[2]/div/div/div/div/a[3]&quot;}
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
 Build info: version: &apos;2.53.1&apos;, revision: &apos;a36b8b1cd5757287168e54b817830adce9b0158d&apos;, time: &apos;2016-06-30 19:26:09&apos;
-System info: host: &apos;nitunp-L&apos;, ip: &apos;192.168.30.132&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;1.8.0_111&apos;
+System info: host: &apos;nitunp-L&apos;, ip: &apos;192.168.20.46&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;1.8.0_111&apos;
+Driver info: driver.version: unknown
+	at &lt;anonymous class&gt;.FirefoxDriver.prototype.findElementInternal_(file:///C:/Users/NITUNP~1/AppData/Local/Temp/anonymous9088904637525981952webdriver-profile/extensions/fxdriver@googlecode.com/components/driver-component.js:10770)
+	at &lt;anonymous class&gt;.fxdriver.Timer.prototype.setTimeout/&lt;.notify(file:///C:/Users/NITUNP~1/AppData/Local/Temp/anonymous9088904637525981952webdriver-profile/extensions/fxdriver@googlecode.com/components/driver-component.js:625)
+... Removed 29 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace2008106788", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace2008106788'><pre>org.openqa.selenium.NoSuchElementException: Unable to locate element: {&quot;method&quot;:&quot;xpath&quot;,&quot;selector&quot;:&quot;//*[@id=&apos;main-wrap&apos;]/div[2]/div[2]/div/div/div/div/a[3]&quot;}
+Command duration or timeout: 20.10 seconds
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
+Build info: version: &apos;2.53.1&apos;, revision: &apos;a36b8b1cd5757287168e54b817830adce9b0158d&apos;, time: &apos;2016-06-30 19:26:09&apos;
+System info: host: &apos;nitunp-L&apos;, ip: &apos;192.168.20.46&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;1.8.0_111&apos;
 Driver info: org.openqa.selenium.firefox.FirefoxDriver
 Capabilities [{applicationCacheEnabled=true, rotatable=false, handlesAlerts=true, databaseEnabled=true, version=47.0.1, platform=WINDOWS, nativeEvents=false, acceptSslCerts=true, webStorageEnabled=true, locationContextEnabled=true, browserName=firefox, takesScreenshot=true, javascriptEnabled=true, cssSelectorsEnabled=true}]
-Session ID: 6161bc60-5818-4545-ad1b-46ff44e6d9e8
+Session ID: 19f81284-b66c-4d5b-a72a-0e356ae79dc2
+*** Element info: {Using=xpath, value=//*[@id=&apos;main-wrap&apos;]/div[2]/div[2]/div/div/div/div/a[3]}
 	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
 	at sun.reflect.NativeConstructorAccessorImpl.newInstance(Unknown Source)
 	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(Unknown Source)
@@ -108,16 +121,15 @@ Session ID: 6161bc60-5818-4545-ad1b-46ff44e6d9e8
 	at org.openqa.selenium.remote.ErrorHandler.createThrowable(ErrorHandler.java:206)
 	at org.openqa.selenium.remote.ErrorHandler.throwIfResponseFailed(ErrorHandler.java:158)
 	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:678)
-	at org.openqa.selenium.remote.RemoteWebElement.execute(RemoteWebElement.java:327)
-	at org.openqa.selenium.remote.RemoteWebElement.click(RemoteWebElement.java:85)
-	at sun.reflect.GeneratedMethodAccessor1.invoke(Unknown Source)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
-	at java.lang.reflect.Method.invoke(Unknown Source)
-	at org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:51)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:363)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElementByXPath(RemoteWebDriver.java:500)
+	at org.openqa.selenium.By$ByXPath.findElement(By.java:361)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:355)
+	at org.openqa.selenium.support.pagefactory.DefaultElementLocator.findElement(DefaultElementLocator.java:69)
+	at org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:38)
 	at com.sun.proxy.$Proxy6.click(Unknown Source)
-	at com.vaticahealth.vatica.pages.PHP.clearSearchField(PHP.java:352)
-	at com.vaticahealth.vatica.tests.PHPTest.verifyOneRowOnPhp(PHPTest.java:111)
-	at com.vaticahealth.vatica.tests.SmokeTest.smokeTest_home_tcs(SmokeTest.java:78)
+	at com.vaticahealth.vatica.tests.DiagnosisTest.tc_td_2(DiagnosisTest.java:93)
+	at com.vaticahealth.vatica.tests.SmokeTest.smokeTest_dtab_completion(SmokeTest.java:74)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
@@ -143,9 +155,109 @@ Session ID: 6161bc60-5818-4545-ad1b-46ff44e6d9e8
 	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:132)
 	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:236)
 	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:81)
+Caused by: org.openqa.selenium.NoSuchElementException: Unable to locate element: {&quot;method&quot;:&quot;xpath&quot;,&quot;selector&quot;:&quot;//*[@id=&apos;main-wrap&apos;]/div[2]/div[2]/div/div/div/div/a[3]&quot;}
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
+Build info: version: &apos;2.53.1&apos;, revision: &apos;a36b8b1cd5757287168e54b817830adce9b0158d&apos;, time: &apos;2016-06-30 19:26:09&apos;
+System info: host: &apos;nitunp-L&apos;, ip: &apos;192.168.20.46&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;1.8.0_111&apos;
+Driver info: driver.version: unknown
+	at &lt;anonymous class&gt;.FirefoxDriver.prototype.findElementInternal_(file:///C:/Users/NITUNP~1/AppData/Local/Temp/anonymous9088904637525981952webdriver-profile/extensions/fxdriver@googlecode.com/components/driver-component.js:10770)
+	at &lt;anonymous class&gt;.fxdriver.Timer.prototype.setTimeout/&lt;.notify(file:///C:/Users/NITUNP~1/AppData/Local/Temp/anonymous9088904637525981952webdriver-profile/extensions/fxdriver@googlecode.com/components/driver-component.js:625)
 </pre></div></td>
-<td>9</td>
-<td>com.vaticahealth.vatica.tests.SmokeTest@3148f668</td></tr>
+<td>105</td>
+<td>com.vaticahealth.vatica.tests.SmokeTest@7ceb3185</td></tr>
+<tr>
+<td title='com.vaticahealth.vatica.tests.SmokeTest.smokeTest_home_tcs()'><b>smokeTest_home_tcs</b><br>Test class: com.vaticahealth.vatica.tests.SmokeTest<br>Test method: PHP Test cases</td>
+<td><div><pre>org.openqa.selenium.NoSuchElementException: Unable to locate element: {&quot;method&quot;:&quot;xpath&quot;,&quot;selector&quot;:&quot;//button[@id=&apos;clearButton&apos;]&quot;}
+Command duration or timeout: 10.08 seconds
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
+Build info: version: &apos;2.53.1&apos;, revision: &apos;a36b8b1cd5757287168e54b817830adce9b0158d&apos;, time: &apos;2016-06-30 19:26:09&apos;
+System info: host: &apos;nitunp-L&apos;, ip: &apos;192.168.20.46&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;1.8.0_111&apos;
+Driver info: org.openqa.selenium.firefox.FirefoxDriver
+Capabilities [{applicationCacheEnabled=true, rotatable=false, handlesAlerts=true, databaseEnabled=true, version=47.0.1, platform=WINDOWS, nativeEvents=false, acceptSslCerts=true, webStorageEnabled=true, locationContextEnabled=true, browserName=firefox, takesScreenshot=true, javascriptEnabled=true, cssSelectorsEnabled=true}]
+Session ID: 19f81284-b66c-4d5b-a72a-0e356ae79dc2
+*** Element info: {Using=xpath, value=//button[@id=&apos;clearButton&apos;]}
+	at org.openqa.selenium.remote.ErrorHandler.createThrowable(ErrorHandler.java:206)
+	at org.openqa.selenium.remote.ErrorHandler.throwIfResponseFailed(ErrorHandler.java:158)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:678)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:363)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElementByXPath(RemoteWebDriver.java:500)
+	at org.openqa.selenium.By$ByXPath.findElement(By.java:361)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:355)
+	at org.openqa.selenium.support.pagefactory.DefaultElementLocator.findElement(DefaultElementLocator.java:69)
+	at org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:38)
+	at com.sun.proxy.$Proxy6.click(Unknown Source)
+	at com.vaticahealth.vatica.pages.PHP.clearSearchField(PHP.java:362)
+	at com.vaticahealth.vatica.tests.PHPTest.verifyOneRowOnPhp(PHPTest.java:121)
+	at com.vaticahealth.vatica.tests.SmokeTest.smokeTest_home_tcs(SmokeTest.java:81)
+Caused by: org.openqa.selenium.NoSuchElementException: Unable to locate element: {&quot;method&quot;:&quot;xpath&quot;,&quot;selector&quot;:&quot;//button[@id=&apos;clearButton&apos;]&quot;}
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
+Build info: version: &apos;2.53.1&apos;, revision: &apos;a36b8b1cd5757287168e54b817830adce9b0158d&apos;, time: &apos;2016-06-30 19:26:09&apos;
+System info: host: &apos;nitunp-L&apos;, ip: &apos;192.168.20.46&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;1.8.0_111&apos;
+Driver info: driver.version: unknown
+	at &lt;anonymous class&gt;.FirefoxDriver.prototype.findElementInternal_(file:///C:/Users/NITUNP~1/AppData/Local/Temp/anonymous9088904637525981952webdriver-profile/extensions/fxdriver@googlecode.com/components/driver-component.js:10770)
+	at &lt;anonymous class&gt;.fxdriver.Timer.prototype.setTimeout/&lt;.notify(file:///C:/Users/NITUNP~1/AppData/Local/Temp/anonymous9088904637525981952webdriver-profile/extensions/fxdriver@googlecode.com/components/driver-component.js:625)
+... Removed 29 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace816944408", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace816944408'><pre>org.openqa.selenium.NoSuchElementException: Unable to locate element: {&quot;method&quot;:&quot;xpath&quot;,&quot;selector&quot;:&quot;//button[@id=&apos;clearButton&apos;]&quot;}
+Command duration or timeout: 10.08 seconds
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
+Build info: version: &apos;2.53.1&apos;, revision: &apos;a36b8b1cd5757287168e54b817830adce9b0158d&apos;, time: &apos;2016-06-30 19:26:09&apos;
+System info: host: &apos;nitunp-L&apos;, ip: &apos;192.168.20.46&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;1.8.0_111&apos;
+Driver info: org.openqa.selenium.firefox.FirefoxDriver
+Capabilities [{applicationCacheEnabled=true, rotatable=false, handlesAlerts=true, databaseEnabled=true, version=47.0.1, platform=WINDOWS, nativeEvents=false, acceptSslCerts=true, webStorageEnabled=true, locationContextEnabled=true, browserName=firefox, takesScreenshot=true, javascriptEnabled=true, cssSelectorsEnabled=true}]
+Session ID: 19f81284-b66c-4d5b-a72a-0e356ae79dc2
+*** Element info: {Using=xpath, value=//button[@id=&apos;clearButton&apos;]}
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(Unknown Source)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(Unknown Source)
+	at java.lang.reflect.Constructor.newInstance(Unknown Source)
+	at org.openqa.selenium.remote.ErrorHandler.createThrowable(ErrorHandler.java:206)
+	at org.openqa.selenium.remote.ErrorHandler.throwIfResponseFailed(ErrorHandler.java:158)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:678)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:363)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElementByXPath(RemoteWebDriver.java:500)
+	at org.openqa.selenium.By$ByXPath.findElement(By.java:361)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:355)
+	at org.openqa.selenium.support.pagefactory.DefaultElementLocator.findElement(DefaultElementLocator.java:69)
+	at org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:38)
+	at com.sun.proxy.$Proxy6.click(Unknown Source)
+	at com.vaticahealth.vatica.pages.PHP.clearSearchField(PHP.java:362)
+	at com.vaticahealth.vatica.tests.PHPTest.verifyOneRowOnPhp(PHPTest.java:121)
+	at com.vaticahealth.vatica.tests.SmokeTest.smokeTest_home_tcs(SmokeTest.java:81)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:100)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:646)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:811)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1137)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:129)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:112)
+	at org.testng.TestRunner.privateRun(TestRunner.java:753)
+	at org.testng.TestRunner.run(TestRunner.java:607)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:368)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:363)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:321)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:270)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1284)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1209)
+	at org.testng.TestNG.runSuites(TestNG.java:1124)
+	at org.testng.TestNG.run(TestNG.java:1096)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:132)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:236)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:81)
+Caused by: org.openqa.selenium.NoSuchElementException: Unable to locate element: {&quot;method&quot;:&quot;xpath&quot;,&quot;selector&quot;:&quot;//button[@id=&apos;clearButton&apos;]&quot;}
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
+Build info: version: &apos;2.53.1&apos;, revision: &apos;a36b8b1cd5757287168e54b817830adce9b0158d&apos;, time: &apos;2016-06-30 19:26:09&apos;
+System info: host: &apos;nitunp-L&apos;, ip: &apos;192.168.20.46&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;1.8.0_111&apos;
+Driver info: driver.version: unknown
+	at &lt;anonymous class&gt;.FirefoxDriver.prototype.findElementInternal_(file:///C:/Users/NITUNP~1/AppData/Local/Temp/anonymous9088904637525981952webdriver-profile/extensions/fxdriver@googlecode.com/components/driver-component.js:10770)
+	at &lt;anonymous class&gt;.fxdriver.Timer.prototype.setTimeout/&lt;.notify(file:///C:/Users/NITUNP~1/AppData/Local/Temp/anonymous9088904637525981952webdriver-profile/extensions/fxdriver@googlecode.com/components/driver-component.js:625)
+</pre></div></td>
+<td>18</td>
+<td>com.vaticahealth.vatica.tests.SmokeTest@7ceb3185</td></tr>
 </table><p>
 <table width='100%' border='1' class='invocation-passed'>
 <tr><td colspan='4' align='center'><b>PASSED TESTS</b></td></tr>
@@ -155,30 +267,25 @@ Session ID: 6161bc60-5818-4545-ad1b-46ff44e6d9e8
 <td><b>Instance</b></td>
 </tr>
 <tr>
-<td title='com.vaticahealth.vatica.tests.SmokeTest.smokeTest_dtab_completion()'><b>smokeTest_dtab_completion</b><br>Test class: com.vaticahealth.vatica.tests.SmokeTest<br>Test method: D tab completion</td>
-<td></td>
-<td>162</td>
-<td>com.vaticahealth.vatica.tests.SmokeTest@3148f668</td></tr>
-<tr>
 <td title='com.vaticahealth.vatica.tests.SmokeTest.smokeTest_hra_completion()'><b>smokeTest_hra_completion</b><br>Test class: com.vaticahealth.vatica.tests.SmokeTest<br>Test method: hra completion </td>
 <td></td>
-<td>154</td>
-<td>com.vaticahealth.vatica.tests.SmokeTest@3148f668</td></tr>
+<td>144</td>
+<td>com.vaticahealth.vatica.tests.SmokeTest@7ceb3185</td></tr>
 <tr>
 <td title='com.vaticahealth.vatica.tests.SmokeTest.smokeTest_hra_creation()'><b>smokeTest_hra_creation</b><br>Test class: com.vaticahealth.vatica.tests.SmokeTest<br>Test method: hra creation </td>
 <td></td>
-<td>49</td>
-<td>com.vaticahealth.vatica.tests.SmokeTest@3148f668</td></tr>
+<td>48</td>
+<td>com.vaticahealth.vatica.tests.SmokeTest@7ceb3185</td></tr>
 <tr>
 <td title='com.vaticahealth.vatica.tests.SmokeTest.smokeTest_login()'><b>smokeTest_login</b><br>Test class: com.vaticahealth.vatica.tests.SmokeTest<br>Test method: login and Site check</td>
 <td></td>
-<td>59</td>
-<td>com.vaticahealth.vatica.tests.SmokeTest@3148f668</td></tr>
+<td>63</td>
+<td>com.vaticahealth.vatica.tests.SmokeTest@7ceb3185</td></tr>
 <tr>
 <td title='com.vaticahealth.vatica.tests.SmokeTest.smokeTest_ttab_completion()'><b>smokeTest_ttab_completion</b><br>Test class: com.vaticahealth.vatica.tests.SmokeTest<br>Test method: T tab completion </td>
 <td></td>
-<td>28</td>
-<td>com.vaticahealth.vatica.tests.SmokeTest@3148f668</td></tr>
+<td>26</td>
+<td>com.vaticahealth.vatica.tests.SmokeTest@7ceb3185</td></tr>
 </table><p>
 </body>
 </html>
