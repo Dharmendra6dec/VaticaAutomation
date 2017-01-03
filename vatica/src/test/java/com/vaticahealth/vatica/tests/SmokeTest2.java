@@ -16,24 +16,21 @@ public class SmokeTest2 extends TestAnnotation {
 	public void smokeTest_login() throws Exception {
 		common.implictWait(20);
 		loginTest.tc_Login_1();
-		
+
 		phpTest.searchNewHraAndVerifyHraStatus();
-		
+
 		System.out.println("Comment from Dharam & Nitun");
-		
-//		phpTest.colorcheck();
+
+		// phpTest.colorcheck();
 
 		/*
-		phpTest.checkFirstNameSortingonPHPGrid();
-		phpTest.checkLastNameSortingonPHPGrid();
-		phpTest.checkVisitDateSortingonPHPGrid();
-
-		phpTest.differentSiteSelection();
-		phpTest.openRequiredHRA();
-		hraTest.upgradeHRA();
-		phpTest.searchNewHraAndVerifyHraDetails();
-		phpTest.restoreRecord();
-	
-		*/
+		 * phpTest.checkFirstNameSortingonPHPGrid();
+		 * phpTest.checkLastNameSortingonPHPGrid();
+		 * phpTest.checkVisitDateSortingonPHPGrid();
+		 * 
+		 * phpTest.differentSiteSelection(); phpTest.openRequiredHRA();
+		 * hraTest.upgradeHRA(); phpTest.searchNewHraAndVerifyHraDetails();
+		 * phpTest.restoreRecord();
+		 */
 	}
 }
