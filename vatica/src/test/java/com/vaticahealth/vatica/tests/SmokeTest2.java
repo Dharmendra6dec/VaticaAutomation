@@ -19,6 +19,8 @@ public class SmokeTest2 extends TestAnnotation {
 		
 		phpTest.searchNewHraAndVerifyHraStatus();
 		
+		System.out.println("Comment from Dharam");
+		
 //		phpTest.colorcheck();
 
 		/*
