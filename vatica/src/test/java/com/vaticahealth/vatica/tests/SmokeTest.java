@@ -2,16 +2,8 @@ package com.vaticahealth.vatica.tests;
 
 import java.awt.AWTException;
 import java.lang.reflect.InvocationTargetException;
-import java.util.ArrayList;
-
-import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.support.ui.Select;
-import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-import com.vaticahealth.vatica.config.Configuration;
-import com.vaticahealth.vatica.pages.PHP;
 import com.vaticahealth.vatica.utils.CommonCode;
 
 public class SmokeTest extends TestAnnotation {

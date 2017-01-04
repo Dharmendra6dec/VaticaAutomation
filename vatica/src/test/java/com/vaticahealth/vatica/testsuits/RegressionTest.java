@@ -1,4 +1,4 @@
-package com.vaticahealth.vatica.tests;
+package com.vaticahealth.vatica.testsuits;
 
 import java.awt.AWTException;
 import java.io.PrintWriter;
@@ -11,6 +11,9 @@ import org.testng.Assert;
 import org.testng.Reporter;
 import org.testng.annotations.Test;
 
+import com.vaticahealth.vatica.tests.LoginTest;
+import com.vaticahealth.vatica.tests.PHPTest;
+import com.vaticahealth.vatica.tests.TestAnnotation;
 import com.vaticahealth.vatica.utils.CommonCode;
 import com.vaticahealth.vatica.utils.Elements;
 
@@ -19,10 +22,10 @@ public class RegressionTest extends TestAnnotation {
 	LoginTest loginTest = new LoginTest();
 	PHPTest phpTest = new PHPTest();
 
-	public void  regressionTest() throws Exception {
-		
+	public void regressionTest() throws Exception {
+
 		loginTest.tc_Login_1();
-		
+
 		phpTest.logoCheck();
 		phpTest.checkFirstNameSortingonPHPGrid();
 		phpTest.checkLastNameSortingonPHPGrid();
@@ -34,12 +37,7 @@ public class RegressionTest extends TestAnnotation {
 		phpTest.siteCheck();
 		phpTest.verifyOneRowOnPhp();
 		phpTest.verifySiteOptions();
-		
-		
-		
-		
-		
-		
+
 	}
 
 	@Test(alwaysRun = true, description = "Settings drop down displayed with different options")
@@ -93,8 +91,4 @@ public class RegressionTest extends TestAnnotation {
 		}
 
 	}
-
-	
-	
-
 }

@@ -131,19 +131,22 @@ public class Login {
 		common.implictWait(10);
 		privacPolicyLink.click();
 		common.explictWaitPresence(5, By.xpath(Elements.PRIVACYTITLE));
-		Assert.assertEquals(privacyTitle.getText(), privacyTitleInput);
-
+		Assert.assertTrue(privacyTitle.getText().equals(privacyTitleInput),"Privacy policy title doesnot match");
+		closePrivacyPolicy();
 	}
 
 	public void closePrivacyPolicy() {
 		closePrivacyPolicy.click();
 	}
 
-	public void technicalSupportLink(String techSupportInputText) {
+	public void technicalSupportLink(String techSupportInputText) throws InterruptedException {
 		common.implictWait(10);
+		Thread.sleep(5000);
 		techSupportLink.click();
 		common.explictWaitPresence(5, By.xpath(Elements.TECHSUPPORTITLE));
+		//Assert.assertTrue(techSupportTitle.getText().equals(techSupportTitle),"Technical Support title doesnot match");
 		Assert.assertEquals(techSupportTitle.getText(), techSupportInputText);
+		cancelTechSupport.click();
 	}
 
 	public void cancelTechSupport() {
@@ -154,6 +157,28 @@ public class Login {
 		common.implictWait(10);
 		loginId.clear();
 		loginPassword.clear();
+	}
+
+	public void loginFiller() {
+		common.implictWait(10);
+		loginId.sendKeys(common.readExcel("hra", "EmailId"));
+		System.out.println(loginId.getText());
+		loginPassword.sendKeys(common.readExcel("hra", "Password"));
+		System.out.println(loginPassword.getText());
+	}
+
+	public void rememberMeCheckClick() {
+		common.implictWait(10);
+		if(rememberMeCheckBox.isSelected()== false) {
+			rememberMeCheckBox.click();
+			
+		}
+	}
+
+	public void checkEmailId(String emailid) throws InterruptedException {
+		common.implictWait(10);
+		Thread.sleep(5000);
+		Assert.assertTrue(loginId.getAttribute("value").equals(emailid), "Remember me check failed");
 	}
 
 }

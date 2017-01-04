@@ -35,5 +35,18 @@ public class SmokeTest2 extends TestAnnotation {
 		phpTest.searchNewHraAndVerifyHraDetails();
 		phpTest.restoreRecord();
 
+		phpTest.searchNewHraAndVerifyHraStatus();
+
+		// phpTest.colorcheck();
+
+		/*
+		 * phpTest.checkFirstNameSortingonPHPGrid();
+		 * phpTest.checkLastNameSortingonPHPGrid();
+		 * phpTest.checkVisitDateSortingonPHPGrid();
+		 * 
+		 * phpTest.differentSiteSelection(); phpTest.openRequiredHRA();
+		 * hraTest.upgradeHRA(); phpTest.searchNewHraAndVerifyHraDetails();
+		 * phpTest.restoreRecord();
+		 */
 	}
 }

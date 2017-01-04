@@ -268,9 +268,4 @@ public  class Elements extends TestAnnotation{
 			public static final String SIGNBTN = "//*[@id='mdSigning']/div/div/div[3]/button";
 			public static final String ESIGNVERIFICATIONMSG = "//div[contains(text(),'Electronically')]";
 			public static final String ESIGNSUCCESSOK = "//button[text()='OK' and @ng-click='close()']";
-			
-			
-			
-			//	
-
 }

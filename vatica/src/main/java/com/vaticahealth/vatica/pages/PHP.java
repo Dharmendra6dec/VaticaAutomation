@@ -15,6 +15,7 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
+
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
@@ -28,6 +29,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import org.testng.Reporter;
+
 import org.testng.annotations.Test;
 
 import com.vaticahealth.vatica.config.Configuration;
@@ -207,20 +209,19 @@ public class PHP {
 
 	@FindBy(xpath = Elements.Admin)
 	public WebElement GridAdminBtn;
-	
+
 	@FindBy(xpath = Elements.VISITTYPEONGRID)
 	public WebElement VisitTypeOnGrid;
-	
+
 	@FindBy(xpath = Elements.VISITSTATUSONGRID)
 	public WebElement VisitStatusOnGrid;
-	
+
 	@FindBy(xpath = Elements.VISITSIGNONGRID)
-	public WebElement VisitSignOnGrid ;
-	
+	public WebElement VisitSignOnGrid;
+
 	public PHP() {
 		PageFactory.initElements(driver, this);
 	}
-
 
 	public String siteOnPhp() throws InterruptedException {
 		Thread.sleep(2000);
@@ -262,6 +263,33 @@ public class PHP {
 
 	}
 
+	public String getFirstNamesthruDBConnect() throws ClassNotFoundException,
+			SQLException {
+
+		Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+		Connection conn = DriverManager.getConnection(
+				"jdbc:sqlserver://111.125.141.74;databaseName=VaticaHealthLog",
+				"user=swsadmin", "password=SeniorWellnessSASpider1!");
+		System.out.println("test");
+		String boom = null;
+		Statement sta = conn.createStatement();
+		String Sql = "select top 223 FirstName, HraId from Hra where siteId = 1 order by FirstName asc ";
+		ResultSet rs = sta.executeQuery(Sql);
+		while (rs.next()) {
+			boom = rs.getString(1);
+
+		}
+		return boom;
+	}
+
+	public List<WebElement> getfirstNamesOnGrid() {
+		List<WebElement> lst = driver.findElements(By
+				.xpath(Elements.FIRSTNAMESONGRID));
+		// System.out.println(lst);
+		return lst;
+
+	}
+
 	public List<String> getTextFromWebElementList(List<WebElement> lst) {
 
 		List<String> lstStr = new ArrayList<String>();
@@ -277,14 +305,16 @@ public class PHP {
 	}
 
 	public List<WebElement> getColumnsOnGrid() {
-		List<WebElement> lst = driver.findElements(By.xpath(Elements.COLUMNSONGRID));
+		List<WebElement> lst = driver.findElements(By
+				.xpath(Elements.COLUMNSONGRID));
 		// System.out.println(lst);
 		return lst;
 
 	}
 
 	public List<WebElement> getRowsOnGrid() {
-		List<WebElement> lst = driver.findElements(By.xpath(Elements.ROWSONGRID));
+		List<WebElement> lst = driver.findElements(By
+				.xpath(Elements.ROWSONGRID));
 		// System.out.println(lst);
 		return lst;
 
@@ -310,8 +340,9 @@ public class PHP {
 			e.printStackTrace();
 		}
 		int lastRecordNumbr = lastRecordParent.size();
-		String lastElementText = driver
-				.findElement(By.xpath(Elements.LASTRECORDPARENT + "[" + lastRecordNumbr + "]" + childXpath)).getText();
+		String lastElementText = driver.findElement(
+				By.xpath(Elements.LASTRECORDPARENT + "[" + lastRecordNumbr
+						+ "]" + childXpath)).getText();
 		System.out.println("last   " + lastElementText);
 		return lastElementText;
 
@@ -346,12 +377,6 @@ public class PHP {
 
 	public void searchButton() {
 		searchButton.click();
-	}
-
-	public void clickSettings() throws InterruptedException {
-		Thread.sleep(2000);
-		common.explictWaitPresence(20, By.xpath(Elements.SETTINGS));
-		settings.click();
 	}
 
 	public void clickChangeSettings() {
@@ -458,14 +483,16 @@ public class PHP {
 
 	}
 
-	public ArrayList<String> getSortedFirstNameOnPHPfromDB() throws ClassNotFoundException, SQLException {
+	public ArrayList<String> getSortedFirstNameOnPHPfromDB()
+			throws ClassNotFoundException, SQLException {
 		ArrayList<String> lst = new ArrayList<String>();
 		int i = 1;
 
 		Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-		Connection conn = DriverManager.getConnection(
-				"jdbc:sqlserver://192.168.1.51\\VaticaHealth;databasename=VaticaHealthQA", "swsadmin",
-				"SeniorWellnessSASpider1!");
+		Connection conn = DriverManager
+				.getConnection(
+						"jdbc:sqlserver://192.168.1.51\\VaticaHealth;databasename=VaticaHealthQA",
+						"swsadmin", "SeniorWellnessSASpider1!");
 		Statement sta = conn.createStatement();
 
 		String Sql2 = "select count(FirstName) from hra where SiteId = 1 ";
@@ -489,14 +516,16 @@ public class PHP {
 		return lst;
 	}
 
-	public ArrayList<String> getSortedLastNameOnPHPfromDB() throws ClassNotFoundException, SQLException {
+	public ArrayList<String> getSortedLastNameOnPHPfromDB()
+			throws ClassNotFoundException, SQLException {
 		ArrayList<String> lst = new ArrayList<String>();
 		int i = 1;
 
 		Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-		Connection conn = DriverManager.getConnection(
-				"jdbc:sqlserver://192.168.1.51\\VaticaHealth;databasename=VaticaHealthQA", "swsadmin",
-				"SeniorWellnessSASpider1!");
+		Connection conn = DriverManager
+				.getConnection(
+						"jdbc:sqlserver://192.168.1.51\\VaticaHealth;databasename=VaticaHealthQA",
+						"swsadmin", "SeniorWellnessSASpider1!");
 		Statement sta = conn.createStatement();
 
 		String Sql2 = "select count(LastName) from hra where SiteId = 1 ";
@@ -520,14 +549,16 @@ public class PHP {
 		return lst;
 	}
 
-	public ArrayList<String> getSortedVisitDatesOnPHPfromDB() throws ClassNotFoundException, SQLException {
+	public ArrayList<String> getSortedVisitDatesOnPHPfromDB()
+			throws ClassNotFoundException, SQLException {
 		ArrayList<String> lst = new ArrayList<String>();
 		int i = 1;
 
 		Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-		Connection conn = DriverManager.getConnection(
-				"jdbc:sqlserver://192.168.1.51\\VaticaHealth;databasename=VaticaHealthQA", "swsadmin",
-				"SeniorWellnessSASpider1!");
+		Connection conn = DriverManager
+				.getConnection(
+						"jdbc:sqlserver://192.168.1.51\\VaticaHealth;databasename=VaticaHealthQA",
+						"swsadmin", "SeniorWellnessSASpider1!");
 		Statement sta = conn.createStatement();
 
 		String Sql2 = "select count(1) from hra where SiteId = 1 ";
@@ -566,14 +597,16 @@ public class PHP {
 
 	// To verify the sorting of the First Names on the grid on PHP and its
 	// consistency on further pages
-	public ArrayList<String> getSortedFirstNamesFromPHPGrid() throws InterruptedException {
+	public ArrayList<String> getSortedFirstNamesFromPHPGrid()
+			throws InterruptedException {
 		common.implictWait(20);
 		Thread.sleep(3000);
 		FirstNameColumnGrid.click();
 		ArrayList<String> listOfFirstNames = new ArrayList<String>();
 
 		while (true) {
-			listOfFirstNames.addAll(getItemsFromGrid(Elements.FIRSTNAMESONGRID));
+			listOfFirstNames
+					.addAll(getItemsFromGrid(Elements.FIRSTNAMESONGRID));
 			if (NextBtnOnGrid.isDisplayed() && NextBtnOnGrid.isEnabled()) {
 				NextBtnOnGrid.click();
 				Thread.sleep(3000);
@@ -592,7 +625,8 @@ public class PHP {
 
 	// To verify the sorting of the Last Names on the grid on PHP and its
 	// consistency on further pages
-	public ArrayList<String> getSortedLastNamesFromPHPGrid() throws InterruptedException {
+	public ArrayList<String> getSortedLastNamesFromPHPGrid()
+			throws InterruptedException {
 		common.implictWait(20);
 		Thread.sleep(3000);
 		LastNameColumnGrid.click();
@@ -618,7 +652,8 @@ public class PHP {
 
 	// To verify the sorting of the Last Names on the grid on PHP and its
 	// consistency on further pages
-	public ArrayList<String> getSortedVisitDatesFromPHPGrid() throws InterruptedException {
+	public ArrayList<String> getSortedVisitDatesFromPHPGrid()
+			throws InterruptedException {
 		common.implictWait(20);
 		Thread.sleep(3000);
 		VisitDateColumnGrid.click();
@@ -669,11 +704,18 @@ public class PHP {
 	public void itemsPerPage() throws InterruptedException {
 
 		Thread.sleep(3000);
-		int expectedvalue = Integer.parseInt(common.readExcel("get_values", "itemsPerPage"));
+		int expectedvalue = Integer.parseInt(common.readExcel("get_values",
+				"itemsPerPage"));
 		int actualvalue = Integer.parseInt(getDefaultItemsPerPage());
 
-		Assert.assertTrue(expectedvalue == actualvalue, "Count of default items per page is incorrect.");
+		Assert.assertTrue(expectedvalue == actualvalue,
+				"Count of default items per page is incorrect.");
 
+	}
+
+	public void clickSettings() {
+		// TODO Auto-generated method stub
+		settings.click();
 	}
 
 }
