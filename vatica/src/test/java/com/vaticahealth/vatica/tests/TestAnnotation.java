@@ -12,6 +12,7 @@ import org.testng.annotations.Test;
 
 import com.vaticahealth.vatica.config.Configuration;
 import com.vaticahealth.vatica.pages.CreateHRA;
+import com.vaticahealth.vatica.pages.Diagnosis;
 import com.vaticahealth.vatica.pages.PHP;
 import com.vaticahealth.vatica.pages.Tests;
 import com.vaticahealth.vatica.pages.Hra;
@@ -20,13 +21,17 @@ import com.vaticahealth.vatica.utils.CommonCode;
 import com.vaticahealth.vatica.utils.Elements;
 
 public class TestAnnotation {
+
 	public static WebDriver driver = Configuration.broswer();
-	protected Login log = new Login();
 	CommonCode common = new CommonCode();
+
+	protected Login log = new Login();
 	protected PHP home = new PHP();
 	protected CreateHRA createHra = new CreateHRA();
 	protected Tests test = new Tests();
 	protected Hra hra = new Hra();
+	protected Diagnosis diag = new Diagnosis();
+
 	public String logIdSupp = common.readExcel("get_values", "loginId");
 	public String logPassowrdSupp = common.readExcel("get_values", "loginPassword");
 	public String logInvalidPasswordSupp = common.readExcel("get_values", "invalidPassword");

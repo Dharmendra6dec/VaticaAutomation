@@ -9,6 +9,7 @@ public  class Elements extends TestAnnotation{
 	PHP h = new PHP();
 	
 	// Login and PHP page
+	public static final String VATICAlOGO = "html/body/div[1]/div/div[1]/div[1]/div/div[1]/a/img";
 	public static final String loginId = "//input[@id='userName']";
 	public static final String loginPassword="//input[@id='password']";
 	public static final String loginButton="//button[@id='btn-login']";
@@ -62,31 +63,68 @@ public  class Elements extends TestAnnotation{
 	public static final String SELECTREPORT="//div[@id='mdExport']/div/div/div[2]/form/fieldset/div/div/select";
 	public static final String EXPORTDATABUTTON="//div[@id='mdExport']/div/div/div[3]/a";
 	public static final String DONEBUTTON="//div[@id='mdExport']/div/div/div[3]/button";
-	public static final String SITEONPHP="//a[@class='ng-binding'][contains(text(),' Demo Hospital 1')]";
+	public static final String SITEONPHP="html/body/div[1]/div/div[1]/div[1]/div/div[2]/ul/li[2]/a";
 	public static final String COLUMNSONGRID="//span[@class='ui-grid-header-cell-label ng-binding']";
 	public static final String SETTINGS="//*[@role='button'][@data-toggle='dropdown']";
+	public static final String SETTINGSSA = "html/body/div[1]/div/div[1]/div[1]/div/div[2]/ul/li[3]/ul/li[1]/a";
+	public static final String SETTINGSCHANGESITE = "//a[text()='Change Site']";
+	public static final String SETTINGSSITEOPTIONS = "html/body/div[1]/div/div[1]/div[1]/div/div[2]/ul/li[3]/ul/li[2]/ul";
+	public static final String SETTINGSSITEOPTIONS2 = "html/body/div[1]/div/div[1]/div[1]/div/div[2]/ul/li[3]/ul/li/ul";
+	public static final String FIRSTNAMECOLUMNGRID = "//span[text()='First Name']";
+	public static final String LASTNAMECOLUMNGRID = "//span[text()='Last Name']";
+	public static final String VISITDATECOLUMNGRID = "//span[text()='Visit Date']";
+	public static final String PAGETOFIRSTBUTTON = "//button[@title='Page to first']";
+	
 	public static final String LOGINBTN="//*[@id='btn-login']";
 	public static final String WELCOMEMSG="//*[contains(text(),'Welcome,')]";
 	public static final String ITEMSPERPAGE="//select[@class='ng-pristine ng-untouched ng-valid']";
 	public static final String ROWSONGRID="//div[@class='ui-grid-viewport ng-isolate-scope']/div/div";
 	public static final String FIRSTNAMESONGRID="//div[@class='ngCellText ui-grid-cell-contents  ng-scope']/span";
-	public static final String LASTNAMESONGRID="//div[@class='ngCell ui-grid-cell ng-scope ui-grid-disable-selection ui-grid-coluiGrid-000C']/div";
+	public static final String LASTNAMESONGRID="//div[@class='ngCell ui-grid-cell ng-scope ui-grid-disable-selection ui-grid-coluiGrid-0007']/div";
+	public static final String VISITDATEONGRID="//div[@class='ngCell ui-grid-cell ng-scope ui-grid-disable-selection ui-grid-coluiGrid-0008']/div";
 	public static final String NEXTBTNONGRID="//button[@class='ui-grid-pager-next']";
 	public static final String ADDNEWVISIT="//a[text()='Add New Visit']";
+	public static final String VISITSTATUSONGRID = ".//*[contains(@id,'-grid-container')]/div[2]/div/div/div/div[4]/div/span";
+	public static final String VISITTYPEONGRID = ".//*[contains(@id,'-grid-container')]/div[2]/div/div/div/div[4]/div/small";
+	public static final String VISITSIGNONGRID = ".//*[contains(@id,'-grid-container')]/div[2]/div/div/div/div[4]/div/small/i";
 	
-	// Create a new Visit page
-		public static final String MEDICARENUMBER_CV = "//*[@id='medicareNumber']";
-		public static final String FIRSTNAME_CV = "//*[@class='form-control ng-pristine ng-untouched ng-invalid ng-invalid-required' and @placeholder='First Name']";
-		public static final String LASTNAME_CV = "//*[@class='form-control ng-pristine ng-untouched ng-invalid ng-invalid-required' and @placeholder='Last Name']";
-		public static final String DOB_CV = "//*[@id='BI4']";
-		public static final String NEXTBTN = "//input[@type='button' and @value='Next']";
-		
-		// Confirm Patient Eligible details page
-		public static final String CONFIRMPATIENTINSUREANCE = "//select[@ng-model='NewHra.ChosenMaPlan']";
-		public static final String CONFIRMPATIENTBTN = "//button[text()='Confirm Patient']";
-		
-		//	Confirm new HRA
-		public static final String CONFIRMHRABTN = "//button[@class='btn btn-primary btn-sm' and text()='Confirm']";
+	
+	
+		// Search related
+		public static final String SEARCHGRIDFIRSTNAME = "//div[@class='ui-grid-canvas']/div/div/div[1]/div/span";
+		public static final String SEARCHGRIDLASTNAME = "//div[@class='ui-grid-canvas']/div/div/div[2]/div";
+		public static final String SEARCHGRIDDOB = "//div[@class='ui-grid-canvas']/div/div/div[1]/div/small";
+		public static final String SEARCHGRIDDOV = "//div[@class='ui-grid-canvas']/div/div/div[3]/div";
+
+		//Grid related 
+		 public static final String HRA="//a[text()='H']";
+		 public static final String PPP="//a[text()='P']";
+		 public static final String Test="//a[text()='T']";
+		 public static final String Diagnosis="//a[text()='D']";
+		 public static final String FIRSTHRAONGRID = "//*[contains(@id,'-grid-container')]/div[2]/div/div/div/div[2]/div";
+		 public static final String Snapshot="//a[contains (@href, '#/home/Snapshot')]";
+		 public static final String Comment="//a[contains (@ng-click, 'showProviderComments')]";
+		 public static final String Printforms="//a[contains (@ng-click, 'showPrint')]";
+		 public static final String MedicalRecords="//a[contains (@ng-click, 'showExport')]";
+		 public static final String Admin="//a[contains (@ng-click, 'showAdminAction')]";
+
+// Create a new Visit page
+	public static final String MEDICARENUMBER_CV = "//*[@id='medicareNumber']";
+	public static final String FIRSTNAME_CV = "//*[@class='form-control ng-pristine ng-untouched ng-invalid ng-invalid-required' and @placeholder='First Name']";
+	public static final String LASTNAME_CV = "//*[@class='form-control ng-pristine ng-untouched ng-invalid ng-invalid-required' and @placeholder='Last Name']";
+	public static final String DOB_CV = "//*[@id='BI4']";
+	public static final String NEXTBTN = "//input[@type='button' and @value='Next']";
+	
+	// Confirm Patient Eligible details page
+	public static final String CONFIRMPATIENTINSUREANCE = "//select[@ng-model='NewHra.ChosenMaPlan']";
+	public static final String CONFIRMPATIENTBTN = "//button[text()='Confirm Patient']";
+	public static final String FIRSTNAMEVALUE = ".//*[@id='frmCreateHRA']/div/div[1]/div[2]/div[1]/div[1]/table/tbody/tr[2]/td[2]";
+	public static final String LASTNAMEVALUE = ".//*[@id='frmCreateHRA']/div/div[1]/div[2]/div[1]/div[1]/table/tbody/tr[3]/td[2]";
+	public static final String DOBVALUE = ".//*[@id='frmCreateHRA']/div/div[1]/div[2]/div[1]/div[1]/table/tbody/tr[4]/td[2]";
+	public static final String MEDICAREVALUE = ".//*[@id='frmCreateHRA']/div/div[1]/div[2]/div[1]/div[1]/table/tbody/tr[5]/td[2]";
+	
+	//	Confirm new HRA
+	public static final String CONFIRMHRABTN = "//button[@class='btn btn-primary btn-sm' and text()='Confirm']";
 	
 	
 	// HRA page
@@ -107,6 +145,7 @@ public  class Elements extends TestAnnotation{
 	public static final String DIAGNOSTICSTAB = "//a[text()='D']";
 	public static final String SNAPSHOTTAB = "//*[@id='main-wrap']/div[1]/div/div/div[2]/div/div[1]/div/a[6]";
 	public static final String COMMENTSTAB = "//a[@ng-click='showCommentsView();']";
+	public static final String WARNINGCLOSEBUTTON = "//button[@class='btn btn-default ng-binding' and text()='Close']";
 	
 	
 	public static final String SAVE_NEXTBTN = "//*[text()='Save/Next']";
@@ -136,7 +175,7 @@ public  class Elements extends TestAnnotation{
 		public static final String PSADATE = "//input[@id='T21LD']";
 		public static final String GLOMERULERYES = "//input[@name='DLV10' and @type='radio']";
 		public static final String GLOMERULERDATE = "//input[@id='DL4D']";
-		public static final String GLOMERULERSELECT = "//select[@id='DL5']";
+		public static final String GLOMERULERTEXTBOX = "//input[@id='DL15']";
 		
 		//HRA page - Social History page
 		public static final String ILLEGALDRUGUSEYES = "//input[@type='radio' and @value='LSV131']";
@@ -186,21 +225,47 @@ public  class Elements extends TestAnnotation{
 	public static final String ADDTEST = "//input[@id='btnSelectAdditionalTests']";
 	public static final String VITAMINDTEST = ".//*[@id='mdPickList']/div/div/div[2]/div[5]/div/input";
 	public static final String ADDSELECTEDTEST = "//input[@value='Add Selected Tests']";
+	public static final String LIPIDPROFILETESTREJECT = "//*[@id='preventiveHomevhAcc']/div/ul/li[1]/div/div[1]/div[2]/strong/span";
+	public static final String HGBA1CTESTREJECT = "//*[@id='otherIndicatedHomevhAcc']/div/ul/li[1]/div/div[1]/div[2]/strong/span";
 	
-	//Shantanu
 	
-	public static final String HRA="//*[@id='1480515186382-grid-container']/div[2]/div/div[1]/div/div[5]/div/a[1]";
-	public static final String PPP="//*[@id='1480515186384-grid-container']/div[2]/div/div[1]/div/div[5]/div/a[2]";
-	public static final String Test="//*[@id='1480515186384-grid-container']/div[2]/div/div[1]/div/div[5]/div/a[3]";
-	public static final String Diagnosis="//*[@id='1480515186384-grid-container']/div[2]/div/div[1]/div/div[5]/div/a[4]";
-	public static final String Snapshot="//*[@id='1480515186384-grid-container']/div[2]/div/div[1]/div/div[5]/div/a[5]";
-	public static final String Comment="//*[@id='1480515186384-grid-container']/div[2]/div/div[1]/div/div[5]/div/a[6]";
-	public static final String Printforms="//*[@id='1480515186384-grid-container']/div[2]/div/div[1]/div/div[5]/div/a[7]";
-	public static final String MedicalRecords="//*[@id='1480515186384-grid-container']/div[2]/div/div[1]/div/div[5]/div/a[8]";
-	public static final String Admin="//*[@id='1480515186384-grid-container']/div[2]/div/div[1]/div/div[5]/div/a[9]";
 	
-	//Privacy Policy
-	public static final String Privacypolicy="//*[@id='footer']/div/div/div/div/a[1]";
-	public static final String Techsupport="//*[@id='footer']/div/div/div/div/a[2]";
-	
+	// Diagnosis Code Sheet
+		public static final String HOMECOUNT = "//a[@href='#uncategorized']"; 
+		public static final String REJECTEDCOUNT = "//a[@href='#rejected']";
+		public static final String ACCEPTEDCOUNT = "//a[@href='#accepted']";
+		public static final String DISEASE1ACCEPT = "//li[1][@class='ng-scope' and @ng-hide='dx.ConflictGroup']/div/div/div[2]/button[1]";
+		public static final String DISEASE2ACCEPT = "//li[2][@class='ng-scope' and @ng-hide='dx.ConflictGroup']/div/div/div[2]/button[1]";
+		public static final String DISEASE3ACCEPT = "//li[3][@class='ng-scope' and @ng-hide='dx.ConflictGroup']/div/div/div[2]/button[1]";
+		public static final String DISEASE4REJECT = "//li[4][@class='ng-scope' and @ng-hide='dx.ConflictGroup']/div/div/div[2]/button[2]";
+		public static final String DISEASE5REJECT = "//li[5][@class='ng-scope' and @ng-hide='dx.ConflictGroup']/div/div/div[2]/button[2]";
+		public static final String DISEASE6REJECT = "//li[6][@class='ng-scope' and @ng-hide='dx.ConflictGroup']/div/div/div[2]/button[2]";
+		
+		
+			// Diagnose Source Information - Reject page
+			public static final String CONDITIONNOTEXIST = "//input[@value='2']";
+			public static final String REJECTCOMMENTS = "//textarea[@rows='3']";
+			public static final String CONFIRMREJECTBTN = "//button[text()='Confirm Reject']";
+		
+			
+			// Diagnosis Accept page
+			public static final String FIRSTICDCODESELECTION = "html/body/div[1]/div/div/div/div[2]/div[2]/div/div/table/tbody/tr[1]/td[2]";
+			public static final String  ACCEPTNEXTBTN = "//*[text()='Next']";
+			
+			
+			// Meat Page
+			public static final String CONTINUETOMONITORCB = "//input[@value='1' and @name='ClinicalMonitor' ]";
+			public static final String EKGCB = "//input[@value='1' and @name='ClinicalEvaluation' ]";
+			public static final String EKGDATE = "//input[@placeholder='MM/dd/yyyy']";
+			public static final String INREMISSIONCB = "//input[@value='1' and @name='ClinicalAssessment' ]";
+			public static final String CONTINUECURRENTTREATMENTCB = "//input[@value='10' and @name='ClinicalTreatment' ]";
+			public static final String MEATMEDICATIONCB = "html/body/div[1]/div/div/div[1]/div/div[2]/div[2]/label/span[1]/input";
+			public static final String MEATCOMMENTS = "//textarea[@rows='3']";
+			public static final String MEATSAVECHANGESBTN = "//*[text()='Save Changes']";
+			
+			
+			// Electronics Signature
+			public static final String SIGNBTN = "//*[@id='mdSigning']/div/div/div[3]/button";
+			public static final String ESIGNVERIFICATIONMSG = "html/body/div[1]/div/div/div[2]";
+			public static final String ESIGNSUCCESSOK = "//button[text()='OK' and @ng-click='close()']";
 }

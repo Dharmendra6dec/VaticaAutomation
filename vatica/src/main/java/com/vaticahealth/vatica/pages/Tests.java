@@ -18,6 +18,12 @@ public class Tests {
 
 	@FindBy(xpath = Elements.IPPERADIOBUTTON)
 	public WebElement IppeRadioButton;
+	
+	@FindBy(xpath = Elements.LIPIDPROFILETESTREJECT)
+	public WebElement LipidProfileTestReject;
+	
+	@FindBy(xpath = Elements.HGBA1CTESTREJECT)
+	public WebElement Hgb1acTestReject;
 
 	@FindBy(xpath = Elements.PREVENTIVESERVSELECTALL)
 	public WebElement PreventiveServiceSelectAll;

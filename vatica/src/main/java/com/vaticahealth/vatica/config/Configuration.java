@@ -7,7 +7,11 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxProfile;
+import org.openqa.selenium.htmlunit.HtmlUnitDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
+//import org.openqa.selenium.phantomjs.PhantomJSDriver;
+//import org.openqa.selenium.phantomjs.PhantomJSDriverService;
+import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.safari.SafariDriver;
 import org.testng.Reporter;
 
@@ -22,24 +26,26 @@ public class Configuration {
 	public static String env;
 	public static String emailId;
 	public static String emailPassword;
-	public static String excelFilePath = currentDirec+"/src/test/resources/inputExcel.xls";
+	public static String excelFilePath = currentDirec + "/src/test/resources/inputExcel.xls";
 
 	// intializing the broswer driver
 	public static WebDriver broswer() {
 
+		DesiredCapabilities cap = new DesiredCapabilities();
+
 		// invoking mozilla firefox
 		if (broswer.equalsIgnoreCase("mozilla")) {
 			FirefoxProfile ffprofile = new FirefoxProfile();
-			ffprofile.setPreference("browser.download.dir", "C:\\Users\\Lakshya Grover\\Desktop");
+		//	ffprofile.setPreference("browser.download.dir", "C:\\Users\\Lakshya Grover\\Desktop");
 			ffprofile.setPreference("browser.download.folderList", 2);
-			ffprofile.setPreference("browser.helperApps.neverAsk.saveToDisk", "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;"
-			+"application/pdf");
+			ffprofile.setPreference("browser.helperApps.neverAsk.saveToDisk",
+					"application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;" + "application/pdf");
 			ffprofile.setPreference("browser.download.manager.showWhenStarting", false);
-			ffprofile.setPreference("pdfjs.disabled", true);
+			// ffprofile.setPreference("pdfjs.disabled", false);
 
 			driver = new FirefoxDriver(ffprofile);
 			Reporter.log("Mozilla is envoked");
-		
+
 		}
 		// Invoking Internet Explorer Broswer
 		else if (broswer.equalsIgnoreCase("IE")) {
@@ -48,7 +54,7 @@ public class Configuration {
 					System.getProperty("user.dir") + "/src/test/resources/IEDriverServer.exe");
 			driver = new InternetExplorerDriver();
 			Reporter.log("I.E is invoked");
-		
+
 		}
 		// Invoking the Google Chrome Broswer
 		else if (broswer.equalsIgnoreCase("chrome")) {
@@ -56,16 +62,36 @@ public class Configuration {
 					System.getProperty("user.dir") + "/src/test/resources/chromedriver.exe");
 			driver = new ChromeDriver();
 			Reporter.log("Chrome driver is invoked");
-			
+
 		}
 		// Invoking the Safari Broswer
 		else if (broswer.equalsIgnoreCase("Safari")) {
 			driver = new SafariDriver();
 			Reporter.log("Safari broswer is invoked");
-			
 
 		}
-		
+
+		// Invoking HTML unit driver
+		else if (broswer.equalsIgnoreCase("html")) {
+			driver = new HtmlUnitDriver();
+			Reporter.log("HTML Unit driver is invoked");
+
+		}
+
+		// Invoking Ghostdriver
+	/*	else if (broswer.equalsIgnoreCase("phantomjs")) {
+			cap.setJavascriptEnabled(true);
+			cap.setCapability(PhantomJSDriverService.PHANTOMJS_EXECUTABLE_PATH_PROPERTY,
+					System.getProperty("user.dir") + "/src/test/resources/phantomjs.exe");
+			
+			System.setProperty("phantomjs.binary.path",
+					System.getProperty("user.dir") + "/src/test/resources/phantomjs.exe");
+
+			driver = new PhantomJSDriver();
+			Reporter.log("GhostDriver is invoked");
+
+		}*/
+
 		return driver;
 
 	}

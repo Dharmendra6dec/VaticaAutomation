@@ -1,5 +1,8 @@
 package com.vaticahealth.vatica.pages;
 
+import java.awt.AWTException;
+import java.awt.Robot;
+import java.awt.event.KeyEvent;
 import java.lang.reflect.Array;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -8,6 +11,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
@@ -25,26 +30,35 @@ import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import org.testng.Reporter;
 
+import org.testng.annotations.Test;
+
 import com.vaticahealth.vatica.config.Configuration;
 import com.vaticahealth.vatica.utils.CommonCode;
 import com.vaticahealth.vatica.utils.Elements;
+import org.openqa.selenium.JavascriptExecutor;
 
 public class PHP {
 	WebDriver driver = Configuration.driver;
 	CommonCode common = new CommonCode();
+	Hra hra = new Hra();
 
 	@FindBy(xpath = Elements.logOut)
 	public WebElement logOut;
 
-	// Doe HRA
-	@FindBy(xpath = "//div[text()='DOE40217']")
-	public WebElement DoeHra;
+	@FindBy(xpath = Elements.FIRSTHRAONGRID)
+	public WebElement FirstHraOnGrid;
+
+	@FindBy(xpath = Elements.VATICAlOGO)
+	public WebElement VaticaLogo;
 
 	@FindBy(xpath = Elements.SEARCHFIRSTNAME)
 	public WebElement firstNameSearch;
 
 	@FindBy(xpath = Elements.SEARCHBUTTON)
 	public WebElement searchButton;
+
+	@FindBy(xpath = Elements.PAGETOFIRSTBUTTON)
+	public WebElement PageToFirstButton;
 
 	@FindBy(xpath = Elements.CLEARBUTTON)
 	public WebElement clearButton;
@@ -88,6 +102,18 @@ public class PHP {
 	@FindBy(xpath = Elements.DOB)
 	public WebElement dob;
 
+	@FindBy(xpath = Elements.SEARCHGRIDFIRSTNAME)
+	public WebElement SearchGridFirstName;
+
+	@FindBy(xpath = Elements.SEARCHGRIDLASTNAME)
+	public WebElement SearchGridLastName;
+
+	@FindBy(xpath = Elements.SEARCHGRIDDOB)
+	public WebElement SearchGridDOB;
+
+	@FindBy(xpath = Elements.SEARCHGRIDDOV)
+	public WebElement SearchGridDOV;
+
 	@FindBy(xpath = Elements.SEARCHVISITDATETEXT)
 	public WebElement visitDateTextSearch;
 
@@ -121,6 +147,18 @@ public class PHP {
 	@FindBy(xpath = Elements.SETTINGS)
 	public WebElement settings;
 
+	@FindBy(xpath = Elements.SETTINGSCHANGESITE)
+	public WebElement SettingsChangeSite;
+
+	@FindBy(xpath = Elements.FIRSTNAMECOLUMNGRID)
+	public WebElement FirstNameColumnGrid;
+
+	@FindBy(xpath = Elements.LASTNAMECOLUMNGRID)
+	public WebElement LastNameColumnGrid;
+
+	@FindBy(xpath = Elements.VISITDATECOLUMNGRID)
+	public WebElement VisitDateColumnGrid;
+
 	@FindBy(xpath = Elements.NEXTBTNONGRID)
 	public WebElement NextBtnOnGrid;
 
@@ -141,6 +179,9 @@ public class PHP {
 
 	@FindBy(xpath = Elements.SITEONPHP)
 	public WebElement siteOnPhp;
+
+	@FindBy(xpath = Elements.SETTINGSSITEOPTIONS)
+	public WebElement SiteOptions;
 
 	@FindBy(xpath = Elements.HRA)
 	public WebElement GridHraBtn;
@@ -169,25 +210,56 @@ public class PHP {
 	@FindBy(xpath = Elements.Admin)
 	public WebElement GridAdminBtn;
 
+	@FindBy(xpath = Elements.VISITTYPEONGRID)
+	public WebElement VisitTypeOnGrid;
+
+	@FindBy(xpath = Elements.VISITSTATUSONGRID)
+	public WebElement VisitStatusOnGrid;
+
+	@FindBy(xpath = Elements.VISITSIGNONGRID)
+	public WebElement VisitSignOnGrid;
+
 	public PHP() {
 		PageFactory.initElements(driver, this);
 	}
 
-	public String siteOnPhp() {
+	public String siteOnPhp() throws InterruptedException {
+		Thread.sleep(2000);
+		return siteOnPhp.getText();
+
+	}
+
+	// Double Clicking on First Hra from the PHP.
+	public void php_doubleClickFirstHRA() throws InterruptedException {
+		common.implictWait(10);
+		Thread.sleep(2000);
+		common.doubleClick(driver, FirstHraOnGrid);
+		Thread.sleep(10000);
+	}
+
+	public void clickAddNewVisitButton() {
+		AddNewVisitBtn.click();
+	}
+
+	// Clicking Logout Button
+	public void logOut() {
 		try {
 			Thread.sleep(2000);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return siteOnPhp.getText();
+		logOut.click();
 
 	}
 
-	public void logOut() throws InterruptedException {
-
-		Thread.sleep(5000);
-		logOut.click();
+	public ArrayList<String> getItemsFromGrid(String xpath) {
+		ArrayList<String> list = new ArrayList<String>();
+		List<WebElement> lstelle = driver.findElements(By.xpath(xpath));
+		for (int i = 0; i < lstelle.size(); i++) {
+			list.add(i, lstelle.get(i).getText());
+		}
+		return list;
 
 	}
 
@@ -216,28 +288,6 @@ public class PHP {
 		// System.out.println(lst);
 		return lst;
 
-	}
-
-	public String[] sortAlphabeticalList(List<String> str) {
-
-		String temp;
-		String[] strTemp = new String[str.size()];
-
-		for (int i = 0; i < str.size(); i++) {
-			strTemp[i] = str.get(i).toLowerCase();
-		}
-
-		for (int i = strTemp.length - 1; i > 0; i--) {
-			for (int j = 0; j < i; j++) {
-				int comp = strTemp[j].compareTo(strTemp[j + 1]);
-				if (comp > 0) {
-					temp = strTemp[j + 1];
-					strTemp[j + 1] = strTemp[j];
-					strTemp[j] = temp;
-				}
-			}
-		}
-		return strTemp;
 	}
 
 	public List<String> getTextFromWebElementList(List<WebElement> lst) {
@@ -320,34 +370,17 @@ public class PHP {
 		lastNameSearch.sendKeys(lastNameSupp);
 	}
 
+	public String DOBExtractOnPHP() {
+		String target = dob.getText();
+		return target.substring(4);
+	}
+
 	public void searchButton() {
 		searchButton.click();
 	}
 
-	public void assertSearchedItem(String elemetTextSupp,
-			WebElement elementInList, String lastElementLocation) {
-		String suppElementText = elemetTextSupp;
-		try {
-			Thread.sleep(7000);
-		} catch (InterruptedException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
-		if (noRecordfound.isDisplayed()) {
-			Reporter.log("No Record found");
-		} else {
-			System.out.println("passed   " + suppElementText);
-			System.out.println("1st element    " + elementInList.getText());
-			System.out.println("GROUND ZERO");
-			Assert.assertTrue(elementInList.getText().toUpperCase()
-					.contains(suppElementText));
-			System.out.println("here");
-
-			Assert.assertTrue(lastElemnetText(lastElementLocation)
-					.toUpperCase().contains(suppElementText));
-			moveToFirstPage.click();
-
-		}
+	public void clickChangeSettings() {
+		SettingsChangeSite.click();
 	}
 
 	public void dobText(String dobDateSupp) {
@@ -376,34 +409,45 @@ public class PHP {
 		s.selectByVisibleText(suppVisitType);
 	}
 
-	public void reports(String reportToBePrinted) throws InterruptedException {
-		String suppReportToBePrinted = reportToBePrinted;
+	public void pdfReport() throws InterruptedException, AWTException {
 		Thread.sleep(5000);
 		printFirstHraReportButton.click();
 		common.explictWaitPresence(5, By.xpath(Elements.SELECTREPORT));
-		Select s = new Select(selectReport);
-		s.selectByVisibleText(reportToBePrinted);
+		common.selectByValue(selectReport, 0);
 		exportDataButton.click();
-		Set<String> h = driver.getWindowHandles();
-		System.out.println(h.size());
-		int i = 1;
-		for (String m : h) {
-			if (i == 2) {
-				driver.switchTo().window(m);
-				System.out.println(driver.getTitle());
-				Thread.sleep(3000);
-				driver.findElement(By.xpath("//button[@id='download']"))
-						.click();
-			}
-			i++;
+		Thread.sleep(20000);
+		doneButton.click();
+		Thread.sleep(5000);
 
-		}
+		Set<String> handles = driver.getWindowHandles();
+		String win1 = driver.getWindowHandle();
+		handles.remove(win1);
+		String win2 = handles.iterator().next();
+		driver.switchTo().window(win2);
+		common.keyboard_Ctrl_S(driver);
+		driver.close();
+		driver.switchTo().window(win1);
 
-		/*
-		 * Actions a = new Actions(driver);
-		 * a.sendKeys(Keys.CONTROL,Keys.TAB).build().perform();
-		 * System.out.println(driver.getTitle());
-		 */
+	}
+
+	public void plainTextReport() throws InterruptedException, AWTException {
+		Thread.sleep(5000);
+		printFirstHraReportButton.click();
+		common.explictWaitPresence(5, By.xpath(Elements.SELECTREPORT));
+		common.selectByValue(selectReport, 1);
+		exportDataButton.click();
+		Thread.sleep(20000);
+		doneButton.click();
+		Thread.sleep(5000);
+
+		Set<String> handles = driver.getWindowHandles();
+		String win1 = driver.getWindowHandle();
+		handles.remove(win1);
+		String win2 = handles.iterator().next();
+		driver.switchTo().window(win2);
+		common.keyboard_Ctrl_S(driver);
+		driver.close();
+		driver.switchTo().window(win1);
 
 	}
 
@@ -414,8 +458,7 @@ public class PHP {
 		ArrayList<String> lst1 = new ArrayList<String>();
 		{
 			for (i = 0; i < 5; i++) {
-				lst[i] = common.readExcel("get_values", "columnLabelPHP"
-						+ (i + 1));
+				lst[i] = common.readExcel("sites", "columnLabelPHP" + (i + 1));
 				lst1.add(lst[i]);
 			}
 
@@ -424,14 +467,250 @@ public class PHP {
 
 	}
 
-	// Double Clicking on any webelement
-	public void doubleClick(WebDriver driver, WebElement elle)
+	public ArrayList<String> expectedSiteOptions() {
+
+		int i;
+		String lst[] = new String[8];
+		ArrayList<String> lst1 = new ArrayList<String>();
+		{
+			for (i = 0; i < 8; i++) {
+				lst[i] = common.readExcel("sites", "siteOption" + (i + 1));
+				lst1.add(lst[i]);
+			}
+
+			return lst1;
+		}
+
+	}
+
+	public ArrayList<String> getSortedFirstNameOnPHPfromDB()
+			throws ClassNotFoundException, SQLException {
+		ArrayList<String> lst = new ArrayList<String>();
+		int i = 1;
+
+		Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+		Connection conn = DriverManager
+				.getConnection(
+						"jdbc:sqlserver://192.168.1.51\\VaticaHealth;databasename=VaticaHealthQA",
+						"swsadmin", "SeniorWellnessSASpider1!");
+		Statement sta = conn.createStatement();
+
+		String Sql2 = "select count(FirstName) from hra where SiteId = 1 ";
+		ResultSet rs2 = sta.executeQuery(Sql2);
+		while (rs2.next()) {
+			int ListSize = Integer.parseInt(rs2.getString(1));
+			// System.out.println(ListSize);
+		}
+
+		String Sql = "select FirstName from hra where SiteId = 1 order by FirstName asc";
+		ResultSet rs = sta.executeQuery(Sql);
+		// System.out.println(rs.si);
+		while (rs.next()) {
+			lst.add(rs.getString("FirstName"));
+			// System.out.println(rs.getString("FirstName"));
+			// System.out.println(rs.getString("LastName"));
+			// boom = rs.getString(2);
+
+		}
+		System.out.println(lst.size());
+		return lst;
+	}
+
+	public ArrayList<String> getSortedLastNameOnPHPfromDB()
+			throws ClassNotFoundException, SQLException {
+		ArrayList<String> lst = new ArrayList<String>();
+		int i = 1;
+
+		Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+		Connection conn = DriverManager
+				.getConnection(
+						"jdbc:sqlserver://192.168.1.51\\VaticaHealth;databasename=VaticaHealthQA",
+						"swsadmin", "SeniorWellnessSASpider1!");
+		Statement sta = conn.createStatement();
+
+		String Sql2 = "select count(LastName) from hra where SiteId = 1 ";
+		ResultSet rs2 = sta.executeQuery(Sql2);
+		while (rs2.next()) {
+			int ListSize = Integer.parseInt(rs2.getString(1));
+			// System.out.println(ListSize);
+		}
+
+		String Sql = "select LastName from hra where SiteId = 1 order by LastName asc";
+		ResultSet rs = sta.executeQuery(Sql);
+		// System.out.println(rs.si);
+		while (rs.next()) {
+			lst.add(rs.getString("LastName"));
+			// System.out.println(rs.getString("FirstName"));
+			// System.out.println(rs.getString("LastName"));
+			// boom = rs.getString(2);
+
+		}
+		System.out.println(lst.size());
+		return lst;
+	}
+
+	public ArrayList<String> getSortedVisitDatesOnPHPfromDB()
+			throws ClassNotFoundException, SQLException {
+		ArrayList<String> lst = new ArrayList<String>();
+		int i = 1;
+
+		Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+		Connection conn = DriverManager
+				.getConnection(
+						"jdbc:sqlserver://192.168.1.51\\VaticaHealth;databasename=VaticaHealthQA",
+						"swsadmin", "SeniorWellnessSASpider1!");
+		Statement sta = conn.createStatement();
+
+		String Sql2 = "select count(1) from hra where SiteId = 1 ";
+		ResultSet rs2 = sta.executeQuery(Sql2);
+		while (rs2.next()) {
+			int ListSize = Integer.parseInt(rs2.getString(1));
+			// System.out.println(ListSize);
+		}
+
+		String Sql = "select CONVERT(varchar(10),AwvDate ,101) as AwvDate2 from hra where SiteId = 1 order by AwvDate asc";
+		ResultSet rs = sta.executeQuery(Sql);
+		// System.out.println(rs.si);
+		while (rs.next()) {
+
+			if (rs.getString("AwvDate2") != null) {
+				lst.add(rs.getString("AwvDate2"));
+			}
+
+			else {
+				lst.add("");
+			}
+
+		}
+		System.out.println(lst.size());
+		return lst;
+	}
+
+	public static void show(ArrayList<String> expectedList) {
+		// TODO Auto-generated method stub
+		ArrayList<String> lst = expectedList;
+		for (int i = 0; i < lst.size(); i++) {
+			System.out.println(lst.get(i));
+		}
+		// System.out.println("Done");
+	}
+
+	// To verify the sorting of the First Names on the grid on PHP and its
+	// consistency on further pages
+	public ArrayList<String> getSortedFirstNamesFromPHPGrid()
 			throws InterruptedException {
-		// common.implictWait(10);
-		// Thread.sleep(10000);
-		Actions builder = new Actions(driver);
-		builder.doubleClick(elle).build().perform();
-		Thread.sleep(7000);
+		common.implictWait(20);
+		Thread.sleep(3000);
+		FirstNameColumnGrid.click();
+		ArrayList<String> listOfFirstNames = new ArrayList<String>();
+
+		while (true) {
+			listOfFirstNames
+					.addAll(getItemsFromGrid(Elements.FIRSTNAMESONGRID));
+			if (NextBtnOnGrid.isDisplayed() && NextBtnOnGrid.isEnabled()) {
+				NextBtnOnGrid.click();
+				Thread.sleep(3000);
+			} else {
+				break;
+			}
+		}
+		System.out.println(listOfFirstNames.size());
+
+		for (int i = 0; i < listOfFirstNames.size(); i++) {
+			// System.out.println(listOfFirstNames.get(i).toString());
+		}
+		PageToFirstButton.click();
+		return listOfFirstNames;
+	}
+
+	// To verify the sorting of the Last Names on the grid on PHP and its
+	// consistency on further pages
+	public ArrayList<String> getSortedLastNamesFromPHPGrid()
+			throws InterruptedException {
+		common.implictWait(20);
+		Thread.sleep(3000);
+		LastNameColumnGrid.click();
+		ArrayList<String> listOfLastNames = new ArrayList<String>();
+
+		while (true) {
+			listOfLastNames.addAll(getItemsFromGrid(Elements.LASTNAMESONGRID));
+			if (NextBtnOnGrid.isDisplayed() && NextBtnOnGrid.isEnabled()) {
+				NextBtnOnGrid.click();
+				Thread.sleep(3000);
+			} else {
+				break;
+			}
+		}
+		System.out.println(listOfLastNames.size());
+
+		for (int i = 0; i < listOfLastNames.size(); i++) {
+			System.out.println(listOfLastNames.get(i).toString());
+		}
+		PageToFirstButton.click();
+		return listOfLastNames;
+	}
+
+	// To verify the sorting of the Last Names on the grid on PHP and its
+	// consistency on further pages
+	public ArrayList<String> getSortedVisitDatesFromPHPGrid()
+			throws InterruptedException {
+		common.implictWait(20);
+		Thread.sleep(3000);
+		VisitDateColumnGrid.click();
+		ArrayList<String> listOfVisitDates = new ArrayList<String>();
+
+		while (true) {
+			listOfVisitDates.addAll(getItemsFromGrid(Elements.VISITDATEONGRID));
+			if (NextBtnOnGrid.isDisplayed() && NextBtnOnGrid.isEnabled()) {
+				NextBtnOnGrid.click();
+				Thread.sleep(3000);
+			} else {
+				break;
+			}
+		}
+		System.out.println(listOfVisitDates.size());
+
+		for (int i = 0; i < listOfVisitDates.size(); i++) {
+			System.out.println(listOfVisitDates.get(i).toString());
+		}
+		PageToFirstButton.click();
+		return listOfVisitDates;
+	}
+
+	// Searching by filling in the Last Name on the Search section of PHP
+	public void SearchWithLastName(String lastname) throws InterruptedException {
+		common.implictWait(10);
+		Thread.sleep(5000);
+		clearSearchField();
+		Thread.sleep(5000);
+		lastName(lastname);
+		searchButton();
+		Thread.sleep(5000);
+	}
+
+	// Opening the HRA on the Grid.
+	public void updateHra() throws InterruptedException {
+		common.implictWait(10);
+
+		php_doubleClickFirstHRA();
+		try {
+			hra.warningPopUpClose();
+		} catch (org.openqa.selenium.NoSuchElementException e) {
+			System.out.println("Pop didn't appear");
+		}
+	}
+
+	// Default items per page on grid after login
+	public void itemsPerPage() throws InterruptedException {
+
+		Thread.sleep(3000);
+		int expectedvalue = Integer.parseInt(common.readExcel("get_values",
+				"itemsPerPage"));
+		int actualvalue = Integer.parseInt(getDefaultItemsPerPage());
+
+		Assert.assertTrue(expectedvalue == actualvalue,
+				"Count of default items per page is incorrect.");
+
 	}
 
 }

@@ -1,5 +1,6 @@
 package com.vaticahealth.vatica.tests;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.NoSuchElementException;
 
@@ -9,13 +10,17 @@ import com.vaticahealth.vatica.utils.CommonCode;
 public class HraTest extends TestAnnotation {
 
 	CommonCode common = new CommonCode();
+	String DateOfVisitCreated = common.recentDate();
+	String NewFirstname = common.firstNameGenerator();
+	String NewLastname = common.LastNameGenerator();
+	String NewVisitdate = common.recentDate();
 
 	// Completing the HRA by filling information in Background Information with
 	// necessary info
 	public void tc_Hra_Bi_1() throws InterruptedException {
 
 		common.implictWait(10);
-		hra.BackgroundInformationLink.click();
+		;
 		Thread.sleep(5000);
 		hra.selectByValue(hra.Gender, Integer.parseInt(common.readExcel("hra", "Gender")));
 		hra.AspirinYes.click();
@@ -36,7 +41,7 @@ public class HraTest extends TestAnnotation {
 		hra.PreVisitWorkListLink.click();
 		Thread.sleep(5000);
 		hra.FluShotYes.click();
-		hra.FluDate.sendKeys(common.readExcel("hra", "Last Test Date"));
+		hra.FluDate.sendKeys(common.recentDate());
 		hra.HemoglobinA1cYes.click();
 		hra.HemoglobinA1cDate.sendKeys(common.readExcel("hra", "Last Test Date"));
 		hra.HemoglobinA1cValue.sendKeys(common.readExcel("hra", "Hemoglobin"));
@@ -44,7 +49,7 @@ public class HraTest extends TestAnnotation {
 		hra.PsaDate.sendKeys(common.readExcel("hra", "Last Test Date"));
 		hra.GlomerulerYes.click();
 		hra.GlomerulerDate.sendKeys(common.readExcel("hra", "Last Test Date"));
-		hra.selectByValue(hra.GlomerulerSelect, Integer.parseInt(common.readExcel("hra", "Glomeruler")));
+		hra.GlomerulerTextBox.sendKeys(common.readExcel("hra", "Glomeruler"));
 		// hra.AddMedicineFrequency.sendKeys(Keys.TAB);
 		Thread.sleep(3000);
 
@@ -108,7 +113,14 @@ public class HraTest extends TestAnnotation {
 
 		common.implictWait(10);
 		hra.SelfAssessmentLink.click();
-		Thread.sleep(5000);
+		Thread.sleep(8000);
+		try {
+			if (driver.findElement(By.xpath("//button[text()='Close']")).isDisplayed()) {
+				driver.findElement(By.xpath("//button[text()='Close']")).click();
+			}
+		} catch (Exception e) {
+			System.out.println("Everything is executing correctly.");
+		}
 		hra.FairHealth.click();
 		hra.LittleDifficultyInWalking.click();
 		Thread.sleep(3000);
@@ -132,7 +144,8 @@ public class HraTest extends TestAnnotation {
 		common.implictWait(10);
 		hra.BiometricsLink.click();
 		Thread.sleep(5000);
-		hra.VisitDateBio.sendKeys(common.readExcel("hra", "Last Test Date"));
+		hra.VisitDateBio.sendKeys(DateOfVisitCreated);
+		// common.writeExcel("DOV", date, "hra");
 		hra.VisitDateBio.sendKeys(Keys.TAB);
 		Thread.sleep(3000);
 
@@ -146,21 +159,29 @@ public class HraTest extends TestAnnotation {
 		Thread.sleep(5000);
 		hra.NumberOfItems2.click();
 		hra.ClockDrawingTestNormal.click();
-		Thread.sleep(5000);
-		//hra.Save_NextBtn.click();
+		Thread.sleep(10000);
+		// hra.Save_NextBtn.click();
 
 	}
 
 	// Click on the 'T' button on the HRA page
-	public void tTabClick() {
+	public void tTabClick() throws InterruptedException {
 		common.implictWait(10);
+		Thread.sleep(3000);
 		hra.TestsTab.click();
 	}
-	
+
 	// Click on the 'D' button on the HRA page
-		public void dTabClick() {
-			common.implictWait(10);
-			hra.DiagnosticsTab.click();
-		}
+	public void dTabClick() throws InterruptedException {
+		common.implictWait(10);
+		Thread.sleep(3000);
+		hra.DiagnosticsTab.click();
+	}
+
+	// Update the HRA's firstname, lastname, DOB and visit date
+	public void upgradeHRA() throws InterruptedException {
+		hra.updateBackgroundInfo();
+		hra.updateVisitDate();
+	}
 
 }
