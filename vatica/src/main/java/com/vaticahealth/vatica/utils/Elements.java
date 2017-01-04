@@ -187,6 +187,20 @@ public  class Elements extends TestAnnotation{
 	public static final String VITAMINDTEST = ".//*[@id='mdPickList']/div/div/div[2]/div[5]/div/input";
 	public static final String ADDSELECTEDTEST = "//input[@value='Add Selected Tests']";
 	
+	//Shantanu
 	
-
+	public static final String HRA="//*[@id='1480515186382-grid-container']/div[2]/div/div[1]/div/div[5]/div/a[1]";
+	public static final String PPP="//*[@id='1480515186384-grid-container']/div[2]/div/div[1]/div/div[5]/div/a[2]";
+	public static final String Test="//*[@id='1480515186384-grid-container']/div[2]/div/div[1]/div/div[5]/div/a[3]";
+	public static final String Diagnosis="//*[@id='1480515186384-grid-container']/div[2]/div/div[1]/div/div[5]/div/a[4]";
+	public static final String Snapshot="//*[@id='1480515186384-grid-container']/div[2]/div/div[1]/div/div[5]/div/a[5]";
+	public static final String Comment="//*[@id='1480515186384-grid-container']/div[2]/div/div[1]/div/div[5]/div/a[6]";
+	public static final String Printforms="//*[@id='1480515186384-grid-container']/div[2]/div/div[1]/div/div[5]/div/a[7]";
+	public static final String MedicalRecords="//*[@id='1480515186384-grid-container']/div[2]/div/div[1]/div/div[5]/div/a[8]";
+	public static final String Admin="//*[@id='1480515186384-grid-container']/div[2]/div/div[1]/div/div[5]/div/a[9]";
+	
+	//Privacy Policy
+	public static final String Privacypolicy="//*[@id='footer']/div/div/div/div/a[1]";
+	public static final String Techsupport="//*[@id='footer']/div/div/div/div/a[2]";
+	
 }

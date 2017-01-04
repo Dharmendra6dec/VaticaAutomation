@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Set;
+
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
@@ -23,6 +24,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import org.testng.Reporter;
+
 import com.vaticahealth.vatica.config.Configuration;
 import com.vaticahealth.vatica.utils.CommonCode;
 import com.vaticahealth.vatica.utils.Elements;
@@ -33,9 +35,9 @@ public class PHP {
 
 	@FindBy(xpath = Elements.logOut)
 	public WebElement logOut;
-	
+
 	// Doe HRA
-	@FindBy(xpath="//div[text()='DOE40217']")
+	@FindBy(xpath = "//div[text()='DOE40217']")
 	public WebElement DoeHra;
 
 	@FindBy(xpath = Elements.SEARCHFIRSTNAME)
@@ -79,8 +81,8 @@ public class PHP {
 
 	@FindBy(xpath = Elements.TRAVERSEMONTHYEAR)
 	public WebElement traversedmonthYear;
-	
-	@FindBy(xpath= Elements.ADDNEWVISIT)
+
+	@FindBy(xpath = Elements.ADDNEWVISIT)
 	public WebElement AddNewVisitBtn;
 
 	@FindBy(xpath = Elements.DOB)
@@ -140,6 +142,33 @@ public class PHP {
 	@FindBy(xpath = Elements.SITEONPHP)
 	public WebElement siteOnPhp;
 
+	@FindBy(xpath = Elements.HRA)
+	public WebElement GridHraBtn;
+
+	@FindBy(xpath = Elements.PPP)
+	public WebElement GridPppBtn;
+
+	@FindBy(xpath = Elements.Test)
+	public WebElement GridTestBtn;
+
+	@FindBy(xpath = Elements.Diagnosis)
+	public WebElement GridDiagnosisBtn;
+
+	@FindBy(xpath = Elements.Snapshot)
+	public WebElement GridSnapshotBtn;
+
+	@FindBy(xpath = Elements.Comment)
+	public WebElement GridCommentBtn;
+
+	@FindBy(xpath = Elements.Printforms)
+	public WebElement GridPrintformsbtn;
+
+	@FindBy(xpath = Elements.MedicalRecords)
+	public WebElement GridMedicalRecordsBtn;
+
+	@FindBy(xpath = Elements.Admin)
+	public WebElement GridAdminBtn;
+
 	public PHP() {
 		PageFactory.initElements(driver, this);
 	}
@@ -155,21 +184,19 @@ public class PHP {
 
 	}
 
-	public void logOut() {
-		try {
-			Thread.sleep(2000);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+	public void logOut() throws InterruptedException {
+
+		Thread.sleep(5000);
 		logOut.click();
 
 	}
 
-	public String getFirstNamesthruDBConnect() throws ClassNotFoundException, SQLException {
+	public String getFirstNamesthruDBConnect() throws ClassNotFoundException,
+			SQLException {
 
 		Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-		Connection conn = DriverManager.getConnection("jdbc:sqlserver://111.125.141.74;databaseName=VaticaHealthLog",
+		Connection conn = DriverManager.getConnection(
+				"jdbc:sqlserver://111.125.141.74;databaseName=VaticaHealthLog",
 				"user=swsadmin", "password=SeniorWellnessSASpider1!");
 		System.out.println("test");
 		String boom = null;
@@ -184,7 +211,8 @@ public class PHP {
 	}
 
 	public List<WebElement> getfirstNamesOnGrid() {
-		List<WebElement> lst = driver.findElements(By.xpath(Elements.FIRSTNAMESONGRID));
+		List<WebElement> lst = driver.findElements(By
+				.xpath(Elements.FIRSTNAMESONGRID));
 		// System.out.println(lst);
 		return lst;
 
@@ -227,14 +255,16 @@ public class PHP {
 	}
 
 	public List<WebElement> getColumnsOnGrid() {
-		List<WebElement> lst = driver.findElements(By.xpath(Elements.COLUMNSONGRID));
+		List<WebElement> lst = driver.findElements(By
+				.xpath(Elements.COLUMNSONGRID));
 		// System.out.println(lst);
 		return lst;
 
 	}
 
 	public List<WebElement> getRowsOnGrid() {
-		List<WebElement> lst = driver.findElements(By.xpath(Elements.ROWSONGRID));
+		List<WebElement> lst = driver.findElements(By
+				.xpath(Elements.ROWSONGRID));
 		// System.out.println(lst);
 		return lst;
 
@@ -260,8 +290,9 @@ public class PHP {
 			e.printStackTrace();
 		}
 		int lastRecordNumbr = lastRecordParent.size();
-		String lastElementText = driver
-				.findElement(By.xpath(Elements.LASTRECORDPARENT + "[" + lastRecordNumbr + "]" + childXpath)).getText();
+		String lastElementText = driver.findElement(
+				By.xpath(Elements.LASTRECORDPARENT + "[" + lastRecordNumbr
+						+ "]" + childXpath)).getText();
 		System.out.println("last   " + lastElementText);
 		return lastElementText;
 
@@ -293,7 +324,8 @@ public class PHP {
 		searchButton.click();
 	}
 
-	public void assertSearchedItem(String elemetTextSupp, WebElement elementInList, String lastElementLocation) {
+	public void assertSearchedItem(String elemetTextSupp,
+			WebElement elementInList, String lastElementLocation) {
 		String suppElementText = elemetTextSupp;
 		try {
 			Thread.sleep(7000);
@@ -307,10 +339,12 @@ public class PHP {
 			System.out.println("passed   " + suppElementText);
 			System.out.println("1st element    " + elementInList.getText());
 			System.out.println("GROUND ZERO");
-			Assert.assertTrue(elementInList.getText().toUpperCase().contains(suppElementText));
+			Assert.assertTrue(elementInList.getText().toUpperCase()
+					.contains(suppElementText));
 			System.out.println("here");
 
-			Assert.assertTrue(lastElemnetText(lastElementLocation).toUpperCase().contains(suppElementText));
+			Assert.assertTrue(lastElemnetText(lastElementLocation)
+					.toUpperCase().contains(suppElementText));
 			moveToFirstPage.click();
 
 		}
@@ -358,7 +392,8 @@ public class PHP {
 				driver.switchTo().window(m);
 				System.out.println(driver.getTitle());
 				Thread.sleep(3000);
-				driver.findElement(By.xpath("//button[@id='download']")).click();
+				driver.findElement(By.xpath("//button[@id='download']"))
+						.click();
 			}
 			i++;
 
@@ -379,7 +414,8 @@ public class PHP {
 		ArrayList<String> lst1 = new ArrayList<String>();
 		{
 			for (i = 0; i < 5; i++) {
-				lst[i] = common.readExcel("get_values", "columnLabelPHP" + (i + 1));
+				lst[i] = common.readExcel("get_values", "columnLabelPHP"
+						+ (i + 1));
 				lst1.add(lst[i]);
 			}
 
@@ -387,14 +423,15 @@ public class PHP {
 		}
 
 	}
-	
+
 	// Double Clicking on any webelement
-			public void doubleClick(WebDriver driver, WebElement elle) throws InterruptedException{
-			//	common.implictWait(10);
-			//	Thread.sleep(10000);
-				Actions builder = new Actions(driver);
-				builder.doubleClick(elle).build().perform();
-				Thread.sleep(7000);
-			}
+	public void doubleClick(WebDriver driver, WebElement elle)
+			throws InterruptedException {
+		// common.implictWait(10);
+		// Thread.sleep(10000);
+		Actions builder = new Actions(driver);
+		builder.doubleClick(elle).build().perform();
+		Thread.sleep(7000);
+	}
 
 }

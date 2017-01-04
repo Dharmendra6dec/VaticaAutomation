@@ -144,7 +144,7 @@ public class RegressionTest extends TestAnnotation {
 	}
 
 	@Test(enabled = false)
-	public void logout() {
+	public void logout() throws InterruptedException {
 		home.logOut();
 
 	}
@@ -166,7 +166,7 @@ public class RegressionTest extends TestAnnotation {
 	}
 
 	@Test(alwaysRun = true, description = "Techincal supprt/help", enabled = false)
-	public void techSupportLink() {
+	public void techSupportLink() throws InterruptedException {
 		log.technicalSupportLink(common.readExcel("get_values", "TechSupportTitle"));
 		log.cancelTechSupport();
 

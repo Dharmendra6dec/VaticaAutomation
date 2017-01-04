@@ -24,6 +24,11 @@ public class SmokeTest extends TestAnnotation {
 	@Test
 	public void smokeTest() throws InvocationTargetException, InterruptedException {
 		
+	//loginTest.tc_Login_2();
+	//loginTest.tc_Login_3();
+	loginTest.tc_Login_4();
+	
+	/*
 	loginTest.tc_Login_1();
 	phpTest.tc_PHP_1();	
 	createHraTest.tc_CreateHra_1();
@@ -39,7 +44,7 @@ public class SmokeTest extends TestAnnotation {
 	hraTest.tc_Hra_CognitiveAssessment_1();
 	hraTest.tTabClick();
 	testTest.tc_tt_1();
-	
+	*/
 	
 	}
 	
