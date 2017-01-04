@@ -22,7 +22,7 @@ import com.vaticahealth.vatica.utils.Elements;
 
 public class TestAnnotation {
 
-	public static WebDriver driver = Configuration.broswer();
+	public static WebDriver driver = Configuration.browser();
 	CommonCode common = new CommonCode();
 
 	protected Login log = new Login();
@@ -31,6 +31,7 @@ public class TestAnnotation {
 	protected Tests test = new Tests();
 	protected Hra hra = new Hra();
 	protected Diagnosis diag = new Diagnosis();
+	
 
 	public String logIdSupp = common.readExcel("get_values", "loginId");
 	public String logPassowrdSupp = common.readExcel("get_values", "loginPassword");

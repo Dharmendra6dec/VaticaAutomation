@@ -12,28 +12,28 @@ public class SmokeTest2 extends TestAnnotation {
 	HraTest hraTest = new HraTest();
 	CommonCode common = new CommonCode();
 
-	@Test(priority = 1, description = "login and sorting check")
-	public void smokeTest_login() throws Exception {
+	@Test(priority = 1)
+	public void test1() throws Exception {
 		common.implictWait(20);
 		loginTest.tc_Login_1();
-		
-		phpTest.searchNewHraAndVerifyHraStatus();
-		
-		System.out.println("Comment from Nitun");
-		
-//		phpTest.colorcheck();
 
-		/*
-		phpTest.checkFirstNameSortingonPHPGrid();
-		phpTest.checkLastNameSortingonPHPGrid();
-		phpTest.checkVisitDateSortingonPHPGrid();
+//		phpTest.searchNewHraAndVerifyHraStatus();
 
+		// phpTest.colorcheck();
+
+//		phpTest.checkFirstNameSortingonPHPGrid();
+//		phpTest.checkLastNameSortingonPHPGrid();
+//		phpTest.checkVisitDateSortingonPHPGrid();
+	}
+
+	@Test(priority = 2)
+	public void test2() throws Exception {
+		common.implictWait(20);
 		phpTest.differentSiteSelection();
 		phpTest.openRequiredHRA();
 		hraTest.upgradeHRA();
 		phpTest.searchNewHraAndVerifyHraDetails();
 		phpTest.restoreRecord();
-	
-		*/
+
 	}
 }

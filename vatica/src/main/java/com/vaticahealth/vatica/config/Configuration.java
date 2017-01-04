@@ -29,7 +29,7 @@ public class Configuration {
 	public static String excelFilePath = currentDirec + "/src/test/resources/inputExcel.xls";
 
 	// intializing the broswer driver
-	public static WebDriver broswer() {
+	public static WebDriver browser() {
 
 		DesiredCapabilities cap = new DesiredCapabilities();
 

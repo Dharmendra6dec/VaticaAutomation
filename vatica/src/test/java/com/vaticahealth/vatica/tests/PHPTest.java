@@ -60,8 +60,11 @@ public class PHPTest extends TestAnnotation {
 			String site = Elements.SETTINGSSITEOPTIONS;
 			String site2 = Elements.SETTINGSSITEOPTIONS2;
 			if (i == 0) {
+				Thread.sleep(2000);
+				System.out.println(site + "/li[" + (i + 1) + "]/a");
 				driver.findElement(By.xpath(site + "/li[" + (i + 1) + "]/a")).click();
 			} else {
+				Thread.sleep(2000);
 				driver.findElement(By.xpath(site2 + "/li[" + (i + 1) + "]/a")).click();
 			}
 
@@ -251,7 +254,7 @@ public class PHPTest extends TestAnnotation {
 				"Visit Type is not matching");
 		Assert.assertTrue(php.VisitSignOnGrid.getCssValue("color").equals(common.readExcel("hra", "Visit Sign")),
 				"Visit Sign is not matching");
-
+		php.clearSearchField();
 	}
 
 	// Restore the record to Old Info

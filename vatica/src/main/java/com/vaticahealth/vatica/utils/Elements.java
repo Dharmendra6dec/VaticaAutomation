@@ -9,7 +9,7 @@ public  class Elements extends TestAnnotation{
 	PHP h = new PHP();
 	
 	// Login and PHP page
-	public static final String VATICAlOGO = "html/body/div[1]/div/div[1]/div[1]/div/div[1]/a/img";
+	public static final String VATICAlOGO = "html/body/div[1]/div/div[1]/div[1]/div/div/div[1]/a/img";
 	public static final String loginId = "//input[@id='userName']";
 	public static final String loginPassword="//input[@id='password']";
 	public static final String loginButton="//button[@id='btn-login']";
@@ -63,13 +63,13 @@ public  class Elements extends TestAnnotation{
 	public static final String SELECTREPORT="//div[@id='mdExport']/div/div/div[2]/form/fieldset/div/div/select";
 	public static final String EXPORTDATABUTTON="//div[@id='mdExport']/div/div/div[3]/a";
 	public static final String DONEBUTTON="//div[@id='mdExport']/div/div/div[3]/button";
-	public static final String SITEONPHP="html/body/div[1]/div/div[1]/div[1]/div/div[2]/ul/li[2]/a";
+	public static final String SITEONPHP="html/body/div[1]/div/div[1]/div[1]/div/div/div[2]/ul/li[2]/a";
 	public static final String COLUMNSONGRID="//span[@class='ui-grid-header-cell-label ng-binding']";
 	public static final String SETTINGS="//*[@role='button'][@data-toggle='dropdown']";
 	public static final String SETTINGSSA = "html/body/div[1]/div/div[1]/div[1]/div/div[2]/ul/li[3]/ul/li[1]/a";
 	public static final String SETTINGSCHANGESITE = "//a[text()='Change Site']";
-	public static final String SETTINGSSITEOPTIONS = "html/body/div[1]/div/div[1]/div[1]/div/div[2]/ul/li[3]/ul/li[2]/ul";
-	public static final String SETTINGSSITEOPTIONS2 = "html/body/div[1]/div/div[1]/div[1]/div/div[2]/ul/li[3]/ul/li/ul";
+	public static final String SETTINGSSITEOPTIONS = "html/body/div[1]/div/div[1]/div[1]/div/div/div[2]/ul/li[3]/ul/li[2]/ul";
+	public static final String SETTINGSSITEOPTIONS2 = "html/body/div[1]/div/div[1]/div[1]/div/div/div[2]/ul/li[3]/ul/li/ul";
 	public static final String FIRSTNAMECOLUMNGRID = "//span[text()='First Name']";
 	public static final String LASTNAMECOLUMNGRID = "//span[text()='Last Name']";
 	public static final String VISITDATECOLUMNGRID = "//span[text()='Visit Date']";
@@ -266,7 +266,7 @@ public  class Elements extends TestAnnotation{
 			
 			// Electronics Signature
 			public static final String SIGNBTN = "//*[@id='mdSigning']/div/div/div[3]/button";
-			public static final String ESIGNVERIFICATIONMSG = "html/body/div[1]/div/div/div[2]";
+			public static final String ESIGNVERIFICATIONMSG = "//div[contains(text(),'Electronically')]";
 			public static final String ESIGNSUCCESSOK = "//button[text()='OK' and @ng-click='close()']";
 			
 			
