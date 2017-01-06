@@ -8,39 +8,39 @@
       <![CDATA[URL is http://111.125.141.74:8086/VaticaHealth.Web.UI/]]>
     </line>
   </reporter-output>
-  <suite name="Default suite" duration-ms="601772" started-at="2017-01-04T11:49:57Z" finished-at="2017-01-04T11:59:59Z">
+  <suite name="Default suite" duration-ms="686451" started-at="2017-01-06T07:00:38Z" finished-at="2017-01-06T07:12:04Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="601772" started-at="2017-01-04T11:49:57Z" finished-at="2017-01-04T11:59:59Z">
+    <test name="Default test" duration-ms="686451" started-at="2017-01-06T07:00:38Z" finished-at="2017-01-06T07:12:04Z">
       <class name="com.vaticahealth.vatica.tests.SmokeTest">
-        <test-method status="PASS" signature="invokeUrl()[pri:0, instance:com.vaticahealth.vatica.tests.SmokeTest@1bd39d3c]" name="invokeUrl" is-config="true" duration-ms="11750" started-at="2017-01-04T17:19:57Z" finished-at="2017-01-04T17:20:09Z">
+        <test-method status="PASS" signature="invokeUrl()[pri:0, instance:com.vaticahealth.vatica.tests.SmokeTest@1bd39d3c]" name="invokeUrl" is-config="true" duration-ms="2746" started-at="2017-01-06T12:30:38Z" finished-at="2017-01-06T12:30:40Z">
           <reporter-output>
             <line>
               <![CDATA[URL is http://111.125.141.74:8086/VaticaHealth.Web.UI/]]>
             </line>
           </reporter-output>
         </test-method> <!-- invokeUrl -->
-        <test-method status="PASS" signature="smokeTest_login()[pri:1, instance:com.vaticahealth.vatica.tests.SmokeTest@1bd39d3c]" name="smokeTest_login" duration-ms="66989" started-at="2017-01-04T17:20:09Z" description="login" finished-at="2017-01-04T17:21:16Z">
+        <test-method status="PASS" signature="smokeTest_login()[pri:1, instance:com.vaticahealth.vatica.tests.SmokeTest@1bd39d3c]" name="smokeTest_login" duration-ms="66425" started-at="2017-01-06T12:30:40Z" description="login" finished-at="2017-01-06T12:31:47Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- smokeTest_login -->
-        <test-method status="PASS" signature="smokeTest_hra_creation()[pri:2, instance:com.vaticahealth.vatica.tests.SmokeTest@1bd39d3c]" name="smokeTest_hra_creation" duration-ms="49079" started-at="2017-01-04T17:21:16Z" description="hra creation " finished-at="2017-01-04T17:22:05Z">
+        <test-method status="PASS" signature="smokeTest_hra_creation()[pri:2, instance:com.vaticahealth.vatica.tests.SmokeTest@1bd39d3c]" name="smokeTest_hra_creation" duration-ms="49573" started-at="2017-01-06T12:31:47Z" description="hra creation " finished-at="2017-01-06T12:32:36Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- smokeTest_hra_creation -->
-        <test-method status="PASS" signature="smokeTest_hra_completion()[pri:3, instance:com.vaticahealth.vatica.tests.SmokeTest@1bd39d3c]" name="smokeTest_hra_completion" duration-ms="162885" started-at="2017-01-04T17:22:05Z" description="hra completion " finished-at="2017-01-04T17:24:48Z">
+        <test-method status="PASS" signature="smokeTest_hra_completion()[pri:3, instance:com.vaticahealth.vatica.tests.SmokeTest@1bd39d3c]" name="smokeTest_hra_completion" duration-ms="185575" started-at="2017-01-06T12:32:36Z" description="hra completion " finished-at="2017-01-06T12:35:42Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- smokeTest_hra_completion -->
-        <test-method status="PASS" signature="smokeTest_ttab_completion()[pri:4, instance:com.vaticahealth.vatica.tests.SmokeTest@1bd39d3c]" name="smokeTest_ttab_completion" duration-ms="27439" started-at="2017-01-04T17:24:48Z" description="T tab completion " finished-at="2017-01-04T17:25:15Z">
+        <test-method status="PASS" signature="smokeTest_ttab_completion()[pri:4, instance:com.vaticahealth.vatica.tests.SmokeTest@1bd39d3c]" name="smokeTest_ttab_completion" duration-ms="29065" started-at="2017-01-06T12:35:42Z" description="T tab completion " finished-at="2017-01-06T12:36:11Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- smokeTest_ttab_completion -->
-        <test-method status="PASS" signature="smokeTest_dtab_completion()[pri:5, instance:com.vaticahealth.vatica.tests.SmokeTest@1bd39d3c]" name="smokeTest_dtab_completion" duration-ms="164180" started-at="2017-01-04T17:25:15Z" description="D tab completion" finished-at="2017-01-04T17:27:59Z">
+        <test-method status="PASS" signature="smokeTest_dtab_completion()[pri:5, instance:com.vaticahealth.vatica.tests.SmokeTest@1bd39d3c]" name="smokeTest_dtab_completion" duration-ms="167306" started-at="2017-01-06T12:36:11Z" description="D tab completion" finished-at="2017-01-06T12:38:58Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- smokeTest_dtab_completion -->
-        <test-method status="PASS" signature="smokeTest_home_tcs()[pri:6, instance:com.vaticahealth.vatica.tests.SmokeTest@1bd39d3c]" name="smokeTest_home_tcs" duration-ms="119366" started-at="2017-01-04T17:27:59Z" description="PHP Test cases" finished-at="2017-01-04T17:29:59Z">
+        <test-method status="PASS" signature="smokeTest_home_tcs()[pri:6, instance:com.vaticahealth.vatica.tests.SmokeTest@1bd39d3c]" name="smokeTest_home_tcs" duration-ms="185714" started-at="2017-01-06T12:38:58Z" description="PHP Test cases" finished-at="2017-01-06T12:42:04Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- smokeTest_home_tcs -->

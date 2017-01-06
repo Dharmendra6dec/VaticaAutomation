@@ -121,7 +121,8 @@ public class Diagnosis {
 		}
 		
 		if (lst.size()==2) {
-			WebElement elle = driver.findElement(By.xpath(Elements.SAVE_NEXTBTN));
+			System.out.println("List returned 2.");
+			WebElement elle = lst.get(1);
 			Thread.sleep(2000);
 			elle.sendKeys(Keys.TAB);
 			elle.sendKeys(Keys.TAB);
