@@ -28,6 +28,6 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/Nitun Pachauri/workspace/Vatica Automation/GitRepo/vatica/src/test/resources/sqljdbc4.jar"/>
+	<classpathentry kind="lib" path="C:/VaticaAutomation/GitRepo/GitRepo/vatica/src/test/resources/sqljdbc4.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
