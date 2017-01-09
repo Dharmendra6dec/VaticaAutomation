@@ -1,9 +1,10 @@
-package com.vaticahealth.vatica.tests;
+package com.vaticahealth.vatica.testcases;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.NoSuchElementException;
 
+import com.vaticahealth.vatica.config.TestAnnotation;
 import com.vaticahealth.vatica.pages.Hra;
 import com.vaticahealth.vatica.utils.CommonCode;
 
@@ -20,7 +21,6 @@ public class HraTest extends TestAnnotation {
 	public void tc_Hra_Bi_1() throws InterruptedException {
 
 		common.implictWait(10);
-		;
 		Thread.sleep(5000);
 		hra.selectByValue(hra.Gender, Integer.parseInt(common.readExcel("hra", "Gender")));
 		hra.AspirinYes.click();

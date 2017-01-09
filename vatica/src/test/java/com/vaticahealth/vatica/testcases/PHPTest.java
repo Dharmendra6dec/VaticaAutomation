@@ -1,4 +1,4 @@
-package com.vaticahealth.vatica.tests;
+package com.vaticahealth.vatica.testcases;
 
 import java.util.ArrayList;
 import java.util.NoSuchElementException;
@@ -10,6 +10,7 @@ import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import com.vaticahealth.vatica.config.TestAnnotation;
 import com.vaticahealth.vatica.pages.Hra;
 import com.vaticahealth.vatica.pages.PHP;
 import com.vaticahealth.vatica.utils.CommonCode;
@@ -60,8 +61,11 @@ public class PHPTest extends TestAnnotation {
 			String site = Elements.SETTINGSSITEOPTIONS;
 			String site2 = Elements.SETTINGSSITEOPTIONS2;
 			if (i == 0) {
+				Thread.sleep(2000);
+				System.out.println(site + "/li[" + (i + 1) + "]/a");
 				driver.findElement(By.xpath(site + "/li[" + (i + 1) + "]/a")).click();
 			} else {
+				Thread.sleep(2000);
 				driver.findElement(By.xpath(site2 + "/li[" + (i + 1) + "]/a")).click();
 			}
 
@@ -124,28 +128,25 @@ public class PHPTest extends TestAnnotation {
 	// Execute one complete Search and Verify the one row in the PHP grid
 	public void verifyOneRowOnPhp() throws InterruptedException {
 
-		CreateHraTest cht = new CreateHraTest();
-		HraTest ht = new HraTest();
-
 		common.implictWait(10);
 		Thread.sleep(5000);
 		home.clearSearchField();
-		home.lastName(cht.LastNameCreated);
-		home.firstName(cht.FirstNameCreated);
-		home.dobText(cht.DOBCreated);
-		home.visitDateText(ht.DateOfVisitCreated);
+		Thread.sleep(2000);
+		home.firstName(common.readExcel("hra", "First Name"));
+		home.lastName(common.readExcel("hra", "Last Name"));
+		home.dobText(common.readExcel("hra", "DOB"));
+		home.visitDateText(common.readExcel("hra", "DOV"));
 		common.selectByValue(home.selectStatus, Integer.parseInt(common.readExcel("hra", "Visit Status")));
 		home.searchButton();
 		Thread.sleep(5000);
 
 		try {
-			// Assert.assertTrue(home.SearchGridFirstName.getText().equals(common.readExcel("hra",
-			// "First Name")),"First Names don't match");
 
-			Assert.assertTrue(home.SearchGridFirstName.getText().equals(cht.FirstNameCreated),
+			Assert.assertTrue(home.SearchGridFirstName.getText().equals(common.readExcel("hra", "First Name")),
 					"First Names don't match");
-			Assert.assertTrue(home.SearchGridLastName.getText().equals(cht.LastNameCreated), "Last Names don't match");
-			Assert.assertTrue(home.SearchGridDOV.getText().toString().equals(ht.DateOfVisitCreated),
+			Assert.assertTrue(home.SearchGridLastName.getText().equals(common.readExcel("hra", "Last Name")),
+					"Last Names don't match");
+			Assert.assertTrue(home.SearchGridDOV.getText().toString().equals(common.readExcel("hra", "DOV")),
 					"DOVs don't match");
 			Assert.assertTrue(home.SearchGridDOB.getText().toString().equals("DOB 04/04/1945"), "DOBs don't match");
 			Assert.assertTrue(home.GridPppBtn.isDisplayed() && home.GridPppBtn.isEnabled(),
@@ -156,20 +157,21 @@ public class PHPTest extends TestAnnotation {
 					"D  button on grid is not working.");
 			Assert.assertTrue(home.GridHraBtn.isDisplayed() && home.GridHraBtn.isEnabled(),
 					"HRA button on grid is not working.");
-			Assert.assertTrue(home.GridHraBtn.isDisplayed() && home.GridHraBtn.isEnabled(),
+			Assert.assertTrue(home.GridSnapshotBtn.isDisplayed() && home.GridSnapshotBtn.isEnabled(),
 					"HRA button on grid is not working.");
-			Assert.assertTrue(home.GridHraBtn.isDisplayed() && home.GridHraBtn.isEnabled(),
+			Assert.assertTrue(home.GridCommentBtn.isDisplayed() && home.GridCommentBtn.isEnabled(),
 					"HRA button on grid is not working.");
-			Assert.assertTrue(home.GridHraBtn.isDisplayed() && home.GridHraBtn.isEnabled(),
+			Assert.assertTrue(home.GridPrintformsbtn.isDisplayed() && home.GridPrintformsbtn.isEnabled(),
 					"HRA button on grid is not working.");
-			Assert.assertTrue(home.GridHraBtn.isDisplayed() && home.GridHraBtn.isEnabled(),
+			Assert.assertTrue(home.GridMedicalRecordsBtn.isDisplayed() && home.GridMedicalRecordsBtn.isEnabled(),
 					"HRA button on grid is not working.");
-			Assert.assertTrue(home.GridHraBtn.isDisplayed() && home.GridHraBtn.isEnabled(),
+			Assert.assertTrue(home.GridAdminBtn.isDisplayed() && home.GridAdminBtn.isEnabled(),
 					"HRA button on grid is not working.");
 
 		} catch (java.lang.AssertionError e) {
 			e.printStackTrace();
 		}
+		home.clearSearchField();
 	}
 
 	// To verify all the site option available from the Settings button
@@ -236,6 +238,7 @@ public class PHPTest extends TestAnnotation {
 
 	// Look for a specific HRA from Excel and confirm the status of hra
 	public void searchNewHraAndVerifyHraStatus() throws InterruptedException {
+		common.implictWait(10);
 		home.SearchWithLastName(common.readExcel("hra", "Last Name"));
 
 		System.out.println("ok" + php.VisitStatusOnGrid.getText() + "ok");
@@ -251,7 +254,7 @@ public class PHPTest extends TestAnnotation {
 				"Visit Type is not matching");
 		Assert.assertTrue(php.VisitSignOnGrid.getCssValue("color").equals(common.readExcel("hra", "Visit Sign")),
 				"Visit Sign is not matching");
-
+		php.clearSearchField();
 	}
 
 	// Restore the record to Old Info
@@ -263,9 +266,12 @@ public class PHPTest extends TestAnnotation {
 		hra.DOB.clear();
 		hra.DOB("4 4 45");
 		hra.FirstName.clear();
-		hra.FirstName("JOHN874594");
+		hra.FirstName("John78965");
 		hra.clickSaveButton();
 		Thread.sleep(5000);
+		hra.ErrorListClose.click();
+		Thread.sleep(3000);
+		hra.HomeTab.click();
 	}
 
 	public void colorcheck() {

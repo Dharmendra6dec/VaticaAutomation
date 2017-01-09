@@ -1,5 +1,6 @@
-package com.vaticahealth.vatica.tests;
+package com.vaticahealth.vatica.testcases;
 
+import com.vaticahealth.vatica.config.TestAnnotation;
 import com.vaticahealth.vatica.utils.CommonCode;
 
 public class TestsTest extends TestAnnotation{
@@ -8,7 +9,7 @@ public class TestsTest extends TestAnnotation{
 	
 	// Filling the Test Page correctly
 	public void tc_tt_1() throws InterruptedException {
-		common.implictWait(10);
+		common.implictWait(60);
 		Thread.sleep(20000);
 		test.IppeRadioButton.click();
 		test.Hgb1acTestReject.click();

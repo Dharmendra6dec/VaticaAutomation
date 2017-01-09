@@ -301,7 +301,7 @@ public class Hra {
 		VisitDateBio.clear();
 		VisitDateBio(NewVisitdate);
 		Save_NextBtn.click();
-		Thread.sleep(3000);
+		Thread.sleep(5000);
 		ErrorListClose.click();
 		Thread.sleep(2000);
 		HomeTab.click();

@@ -3,17 +3,12 @@
 <suite name="Failed suite [Default suite]">
   <test name="Default test(failed)">
     <classes>
-      <class name="com.vaticahealth.vatica.tests.SmokeTest">
+      <class name="com.vaticahealth.vatica.testsuits.SmokeTest2">
         <methods>
           <include name="invokeUrl"/>
-          <include name="smokeTest_loginConfirmation"/>
-          <include name="smokeTest_dtab_completion"/>
-          <include name="smokeTest_home_tcs"/>
-          <include name="smokeTest_hra_creation"/>
-          <include name="smokeTest_hra_completion"/>
-          <include name="smokeTest_ttab_completion"/>
+          <include name="test1"/>
         </methods>
-      </class> <!-- com.vaticahealth.vatica.tests.SmokeTest -->
+      </class> <!-- com.vaticahealth.vatica.testsuits.SmokeTest2 -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

@@ -1,36 +1,33 @@
-package com.vaticahealth.vatica.tests;
+package com.vaticahealth.vatica.config;
 
 import org.openqa.selenium.WebDriver;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.AfterSuite;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.BeforeTest;
-import org.testng.annotations.Test;
 
-import com.vaticahealth.vatica.config.Configuration;
 import com.vaticahealth.vatica.pages.CreateHRA;
 import com.vaticahealth.vatica.pages.Diagnosis;
 import com.vaticahealth.vatica.pages.PHP;
+import com.vaticahealth.vatica.pages.PPP;
 import com.vaticahealth.vatica.pages.Tests;
+import com.vaticahealth.vatica.testcases.HraTest;
+import com.vaticahealth.vatica.testcases.LoginTest;
+import com.vaticahealth.vatica.testcases.PHPTest;
 import com.vaticahealth.vatica.pages.Hra;
 import com.vaticahealth.vatica.pages.Login;
 import com.vaticahealth.vatica.utils.CommonCode;
-import com.vaticahealth.vatica.utils.Elements;
 
 public class TestAnnotation {
 
-	public static WebDriver driver = Configuration.broswer();
-	CommonCode common = new CommonCode();
-
-	protected Login log = new Login();
+	public static WebDriver driver = Configuration.browser();
+	public CommonCode common = new CommonCode();
+		
+	protected Login login = new Login();
 	protected PHP home = new PHP();
 	protected CreateHRA createHra = new CreateHRA();
 	protected Tests test = new Tests();
 	protected Hra hra = new Hra();
 	protected Diagnosis diag = new Diagnosis();
+	protected PPP ppp = new PPP();
+	
 
 	public String logIdSupp = common.readExcel("get_values", "loginId");
 	public String logPassowrdSupp = common.readExcel("get_values", "loginPassword");

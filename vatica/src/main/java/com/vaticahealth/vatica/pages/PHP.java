@@ -15,6 +15,7 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
+
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
@@ -28,6 +29,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import org.testng.Reporter;
+
 import org.testng.annotations.Test;
 
 import com.vaticahealth.vatica.config.Configuration;
@@ -207,20 +209,19 @@ public class PHP {
 
 	@FindBy(xpath = Elements.Admin)
 	public WebElement GridAdminBtn;
-	
+
 	@FindBy(xpath = Elements.VISITTYPEONGRID)
 	public WebElement VisitTypeOnGrid;
-	
+
 	@FindBy(xpath = Elements.VISITSTATUSONGRID)
 	public WebElement VisitStatusOnGrid;
-	
+
 	@FindBy(xpath = Elements.VISITSIGNONGRID)
-	public WebElement VisitSignOnGrid ;
-	
+	public WebElement VisitSignOnGrid;
+
 	public PHP() {
 		PageFactory.initElements(driver, this);
 	}
-
 
 	public String siteOnPhp() throws InterruptedException {
 		Thread.sleep(2000);
@@ -259,6 +260,30 @@ public class PHP {
 			list.add(i, lstelle.get(i).getText());
 		}
 		return list;
+
+	}
+
+	public String getFirstNamesthruDBConnect() throws ClassNotFoundException, SQLException {
+
+		Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+		Connection conn = DriverManager.getConnection("jdbc:sqlserver://111.125.141.74;databaseName=VaticaHealthLog",
+				"user=swsadmin", "password=SeniorWellnessSASpider1!");
+		System.out.println("test");
+		String boom = null;
+		Statement sta = conn.createStatement();
+		String Sql = "select top 223 FirstName, HraId from Hra where siteId = 1 order by FirstName asc ";
+		ResultSet rs = sta.executeQuery(Sql);
+		while (rs.next()) {
+			boom = rs.getString(1);
+
+		}
+		return boom;
+	}
+
+	public List<WebElement> getfirstNamesOnGrid() {
+		List<WebElement> lst = driver.findElements(By.xpath(Elements.FIRSTNAMESONGRID));
+		// System.out.println(lst);
+		return lst;
 
 	}
 
@@ -332,6 +357,31 @@ public class PHP {
 		}
 		clearButton.click();
 	}
+	
+	public void searchForTestHra() throws InterruptedException {
+		common.implictWait(10);
+		Thread.sleep(5000);
+		clearSearchField();
+		Thread.sleep(2000);
+		firstName(common.readExcel("hra", "First Name"));
+		lastName(common.readExcel("hra", "Last Name"));
+		dobText(common.readExcel("hra", "DOB"));
+		visitDateText(common.readExcel("hra", "DOV"));
+		common.selectByValue(selectStatus, Integer.parseInt(common.readExcel("hra", "Visit Status")));
+		searchButton();
+		Thread.sleep(5000);
+	}
+	
+	public void searchHraWithFirstName(String FirstName) throws InterruptedException {
+		common.implictWait(20);
+		Thread.sleep(5000);
+		clearSearchField();
+		Thread.sleep(2000);
+		firstName(FirstName);
+		Thread.sleep(5000);
+		searchButton();
+		Thread.sleep(5000);
+	}
 
 	public void lastName(String lastNameSupp) {
 		common.explictWaitPresence(20, By.xpath(Elements.SEARCHLASTNAME));
@@ -346,12 +396,6 @@ public class PHP {
 
 	public void searchButton() {
 		searchButton.click();
-	}
-
-	public void clickSettings() throws InterruptedException {
-		Thread.sleep(2000);
-		common.explictWaitPresence(20, By.xpath(Elements.SETTINGS));
-		settings.click();
 	}
 
 	public void clickChangeSettings() {
@@ -386,6 +430,19 @@ public class PHP {
 
 	public void pdfReport() throws InterruptedException, AWTException {
 		Thread.sleep(5000);
+
+		common.implictWait(10);
+		Thread.sleep(5000);
+		clearSearchField();
+		Thread.sleep(2000);
+		firstName(common.readExcel("hra", "First Name"));
+		lastName(common.readExcel("hra", "Last Name"));
+		dobText(common.readExcel("hra", "DOB"));
+		visitDateText(common.readExcel("hra", "DOV"));
+		common.selectByValue(selectStatus, Integer.parseInt(common.readExcel("hra", "Visit Status")));
+		searchButton();
+		Thread.sleep(5000);
+
 		printFirstHraReportButton.click();
 		common.explictWaitPresence(5, By.xpath(Elements.SELECTREPORT));
 		common.selectByValue(selectReport, 0);
@@ -406,6 +463,19 @@ public class PHP {
 	}
 
 	public void plainTextReport() throws InterruptedException, AWTException {
+
+		common.implictWait(10);
+		Thread.sleep(5000);
+		clearSearchField();
+		Thread.sleep(2000);
+		firstName(common.readExcel("hra", "First Name"));
+		lastName(common.readExcel("hra", "Last Name"));
+		dobText(common.readExcel("hra", "DOB"));
+		visitDateText(common.readExcel("hra", "DOV"));
+		common.selectByValue(selectStatus, Integer.parseInt(common.readExcel("hra", "Visit Status")));
+		searchButton();
+		Thread.sleep(5000);
+
 		Thread.sleep(5000);
 		printFirstHraReportButton.click();
 		common.explictWaitPresence(5, By.xpath(Elements.SELECTREPORT));
@@ -674,6 +744,11 @@ public class PHP {
 
 		Assert.assertTrue(expectedvalue == actualvalue, "Count of default items per page is incorrect.");
 
+	}
+
+	public void clickSettings() {
+		// TODO Auto-generated method stub
+		settings.click();
 	}
 
 }

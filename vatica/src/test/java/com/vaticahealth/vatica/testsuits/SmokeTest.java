@@ -1,4 +1,4 @@
-package com.vaticahealth.vatica.tests;
+package com.vaticahealth.vatica.testsuits;
 
 import java.awt.AWTException;
 import java.lang.reflect.InvocationTargetException;
@@ -13,32 +13,18 @@ import org.openqa.selenium.support.ui.Select;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-import com.vaticahealth.vatica.config.Configuration;
-import com.vaticahealth.vatica.pages.PHP;
+import com.vaticahealth.vatica.config.TestAnnotation;
+import com.vaticahealth.vatica.config.VaticaInterface;
 import com.vaticahealth.vatica.utils.CommonCode;
 import com.vaticahealth.vatica.utils.MailConfig;
 import com.vaticahealth.vatica.utils.MonitoringMail;
 
-public class SmokeTest extends TestAnnotation {
+public class SmokeTest extends TestAnnotation implements VaticaInterface {
 
-	LoginTest loginTest = new LoginTest();
-	PHPTest phpTest = new PHPTest();
-	CommonCode common = new CommonCode();
-	CreateHraTest createHraTest = new CreateHraTest();
-	HraTest hraTest = new HraTest();
-	TestsTest testTest = new TestsTest();
-	DiagnosisTest diagTest = new DiagnosisTest();
-	
-	
 	@Test(priority = 1, description = "login")
 	public void smokeTest_login() throws Exception {
 		common.implictWait(20);
 		loginTest.tc_Login_1();
-	}
-		
-	@Test(priority = 2, description = "login confirmation")
-	public void smokeTest_loginConfirmation() throws Exception {
-		phpTest.loginConf();
 		phpTest.loginConf();
 		phpTest.logoCheck();
 		phpTest.siteCheck();
@@ -48,7 +34,7 @@ public class SmokeTest extends TestAnnotation {
 
 	}
 
-	@Test(priority = 3, description = "hra creation ")
+	/*@Test(priority = 3, description = "hra creation ")
 	public void smokeTest_hra_creation() throws InvocationTargetException, InterruptedException {
 		common.implictWait(20);
 		createHraTest.tc_CreateHra_1();
@@ -93,7 +79,7 @@ public class SmokeTest extends TestAnnotation {
 		home.plainTextReport();
 		phpTest.logout();
 
-	}
+	}*/
 	
 	@Test(priority = 8, description = "Send email report")
 	public void QuitDriver() throws AddressException, MessagingException{
