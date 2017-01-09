@@ -1,26 +1,19 @@
-package com.vaticahealth.vatica.tests;
+package com.vaticahealth.vatica.testsuits;
 
 import java.awt.AWTException;
 import java.lang.reflect.InvocationTargetException;
 import org.testng.annotations.Test;
 
+import com.vaticahealth.vatica.config.TestAnnotation;
+import com.vaticahealth.vatica.config.VaticaInterface;
 import com.vaticahealth.vatica.utils.CommonCode;
 
-public class SmokeTest extends TestAnnotation {
-
-	LoginTest loginTest = new LoginTest();
-	PHPTest phpTest = new PHPTest();
-	CommonCode common = new CommonCode();
-	CreateHraTest createHraTest = new CreateHraTest();
-	HraTest hraTest = new HraTest();
-	TestsTest testTest = new TestsTest();
-	DiagnosisTest diagTest = new DiagnosisTest();
+public class SmokeTest extends TestAnnotation implements VaticaInterface {
 
 	@Test(priority = 1, description = "login")
 	public void smokeTest_login() throws Exception {
 		common.implictWait(20);
 		loginTest.tc_Login_1();
-		phpTest.loginConf();
 		phpTest.loginConf();
 		phpTest.logoCheck();
 		phpTest.siteCheck();

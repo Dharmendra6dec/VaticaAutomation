@@ -357,6 +357,30 @@ public class PHP {
 		}
 		clearButton.click();
 	}
+	
+	public void searchForTestHra() throws InterruptedException {
+		common.implictWait(10);
+		Thread.sleep(5000);
+		clearSearchField();
+		Thread.sleep(2000);
+		firstName(common.readExcel("hra", "First Name"));
+		lastName(common.readExcel("hra", "Last Name"));
+		dobText(common.readExcel("hra", "DOB"));
+		visitDateText(common.readExcel("hra", "DOV"));
+		common.selectByValue(selectStatus, Integer.parseInt(common.readExcel("hra", "Visit Status")));
+		searchButton();
+		Thread.sleep(5000);
+	}
+	
+	public void searchHraWithFirstName(String FirstName) throws InterruptedException {
+		common.implictWait(20);
+		Thread.sleep(5000);
+		clearSearchField();
+		Thread.sleep(2000);
+		firstName(FirstName);
+		searchButton();
+		Thread.sleep(5000);
+	}
 
 	public void lastName(String lastNameSupp) {
 		common.explictWaitPresence(20, By.xpath(Elements.SEARCHLASTNAME));

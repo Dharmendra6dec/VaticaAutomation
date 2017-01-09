@@ -1,50 +1,100 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="0" total="6" passed="6">
+<testng-results skipped="0" failed="1" total="1" passed="0">
   <reporter-output>
     <line>
-      <![CDATA[Mozilla is envoked]]>
+      <![CDATA[Chrome driver is invoked]]>
     </line>
     <line>
       <![CDATA[URL is http://111.125.141.74:8086/VaticaHealth.Web.UI/]]>
     </line>
   </reporter-output>
-  <suite name="Default suite" duration-ms="686451" started-at="2017-01-06T07:00:38Z" finished-at="2017-01-06T07:12:04Z">
+  <suite name="Default suite" duration-ms="150144" started-at="2017-01-08T15:54:26Z" finished-at="2017-01-08T15:56:56Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="686451" started-at="2017-01-06T07:00:38Z" finished-at="2017-01-06T07:12:04Z">
-      <class name="com.vaticahealth.vatica.tests.SmokeTest">
-        <test-method status="PASS" signature="invokeUrl()[pri:0, instance:com.vaticahealth.vatica.tests.SmokeTest@1bd39d3c]" name="invokeUrl" is-config="true" duration-ms="2746" started-at="2017-01-06T12:30:38Z" finished-at="2017-01-06T12:30:40Z">
+    <test name="Default test" duration-ms="150144" started-at="2017-01-08T15:54:26Z" finished-at="2017-01-08T15:56:56Z">
+      <class name="com.vaticahealth.vatica.testsuits.SmokeTest2">
+        <test-method status="PASS" signature="invokeUrl()[pri:0, instance:com.vaticahealth.vatica.testsuits.SmokeTest2@5d534f5d]" name="invokeUrl" is-config="true" duration-ms="3991" started-at="2017-01-08T21:24:26Z" finished-at="2017-01-08T21:24:30Z">
           <reporter-output>
             <line>
               <![CDATA[URL is http://111.125.141.74:8086/VaticaHealth.Web.UI/]]>
             </line>
           </reporter-output>
         </test-method> <!-- invokeUrl -->
-        <test-method status="PASS" signature="smokeTest_login()[pri:1, instance:com.vaticahealth.vatica.tests.SmokeTest@1bd39d3c]" name="smokeTest_login" duration-ms="66425" started-at="2017-01-06T12:30:40Z" description="login" finished-at="2017-01-06T12:31:47Z">
+        <test-method status="FAIL" signature="test1()[pri:1, instance:com.vaticahealth.vatica.testsuits.SmokeTest2@5d534f5d]" name="test1" duration-ms="146086" started-at="2017-01-08T21:24:30Z" finished-at="2017-01-08T21:26:56Z">
+          <exception class="org.openqa.selenium.NoSuchElementException">
+            <message>
+              <![CDATA[no such element: Unable to locate element: {"method":"xpath","selector":".//*[@id='pageContainer1']/xhtml:div[2]/xhtml:div[9]"}
+  (Session info: chrome=55.0.2883.87)
+  (Driver info: chromedriver=2.24.417431 (9aea000394714d2fbb20850021f6204f2256b9cf),platform=Windows NT 10.0.14393 x86_64) (WARNING: The server did not provide any stacktrace information)
+Command duration or timeout: 62.06 seconds
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
+Build info: version: '2.53.1', revision: 'a36b8b1cd5757287168e54b817830adce9b0158d', time: '2016-06-30 19:26:09'
+System info: host: 'nitunp-L', ip: '192.168.2.3', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_111'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities [{applicationCacheEnabled=false, rotatable=false, mobileEmulationEnabled=false, networkConnectionEnabled=false, chrome={chromedriverVersion=2.24.417431 (9aea000394714d2fbb20850021f6204f2256b9cf), userDataDir=C:\Users\NITUNP~1\AppData\Local\Temp\scoped_dir12588_1226}, takesHeapSnapshot=true, pageLoadStrategy=normal, databaseEnabled=false, handlesAlerts=true, hasTouchScreen=false, version=55.0.2883.87, platform=XP, browserConnectionEnabled=false, nativeEvents=true, acceptSslCerts=true, locationContextEnabled=true, webStorageEnabled=true, browserName=chrome, takesScreenshot=true, javascriptEnabled=true, cssSelectorsEnabled=true}]
+Session ID: fdfbb1bbabb66485bb333d54be89af3e
+*** Element info: {Using=xpath, value=.//*[@id='pageContainer1']/xhtml:div[2]/xhtml:div[9]}]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {"method":"xpath","selector":".//*[@id='pageContainer1']/xhtml:div[2]/xhtml:div[9]"}
+  (Session info: chrome=55.0.2883.87)
+  (Driver info: chromedriver=2.24.417431 (9aea000394714d2fbb20850021f6204f2256b9cf),platform=Windows NT 10.0.14393 x86_64) (WARNING: The server did not provide any stacktrace information)
+Command duration or timeout: 62.06 seconds
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
+Build info: version: '2.53.1', revision: 'a36b8b1cd5757287168e54b817830adce9b0158d', time: '2016-06-30 19:26:09'
+System info: host: 'nitunp-L', ip: '192.168.2.3', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_111'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities [{applicationCacheEnabled=false, rotatable=false, mobileEmulationEnabled=false, networkConnectionEnabled=false, chrome={chromedriverVersion=2.24.417431 (9aea000394714d2fbb20850021f6204f2256b9cf), userDataDir=C:\Users\NITUNP~1\AppData\Local\Temp\scoped_dir12588_1226}, takesHeapSnapshot=true, pageLoadStrategy=normal, databaseEnabled=false, handlesAlerts=true, hasTouchScreen=false, version=55.0.2883.87, platform=XP, browserConnectionEnabled=false, nativeEvents=true, acceptSslCerts=true, locationContextEnabled=true, webStorageEnabled=true, browserName=chrome, takesScreenshot=true, javascriptEnabled=true, cssSelectorsEnabled=true}]
+Session ID: fdfbb1bbabb66485bb333d54be89af3e
+*** Element info: {Using=xpath, value=.//*[@id='pageContainer1']/xhtml:div[2]/xhtml:div[9]}
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(Unknown Source)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(Unknown Source)
+	at java.lang.reflect.Constructor.newInstance(Unknown Source)
+	at org.openqa.selenium.remote.ErrorHandler.createThrowable(ErrorHandler.java:206)
+	at org.openqa.selenium.remote.ErrorHandler.throwIfResponseFailed(ErrorHandler.java:158)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:678)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:363)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElementByXPath(RemoteWebDriver.java:500)
+	at org.openqa.selenium.By$ByXPath.findElement(By.java:361)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:355)
+	at org.openqa.selenium.support.pagefactory.DefaultElementLocator.findElement(DefaultElementLocator.java:69)
+	at org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:38)
+	at com.sun.proxy.$Proxy6.getText(Unknown Source)
+	at com.vaticahealth.vatica.testcases.PPPTest.verifyPPP_Report_TabOnPPP(PPPTest.java:165)
+	at com.vaticahealth.vatica.testsuits.SmokeTest2.test1(SmokeTest2.java:28)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:100)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:646)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:811)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1137)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:129)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:112)
+	at org.testng.TestRunner.privateRun(TestRunner.java:753)
+	at org.testng.TestRunner.run(TestRunner.java:607)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:368)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:363)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:321)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:270)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1284)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1209)
+	at org.testng.TestNG.runSuites(TestNG.java:1124)
+	at org.testng.TestNG.run(TestNG.java:1096)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:132)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:236)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:81)
+]]>
+            </full-stacktrace>
+          </exception> <!-- org.openqa.selenium.NoSuchElementException -->
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- smokeTest_login -->
-        <test-method status="PASS" signature="smokeTest_hra_creation()[pri:2, instance:com.vaticahealth.vatica.tests.SmokeTest@1bd39d3c]" name="smokeTest_hra_creation" duration-ms="49573" started-at="2017-01-06T12:31:47Z" description="hra creation " finished-at="2017-01-06T12:32:36Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- smokeTest_hra_creation -->
-        <test-method status="PASS" signature="smokeTest_hra_completion()[pri:3, instance:com.vaticahealth.vatica.tests.SmokeTest@1bd39d3c]" name="smokeTest_hra_completion" duration-ms="185575" started-at="2017-01-06T12:32:36Z" description="hra completion " finished-at="2017-01-06T12:35:42Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- smokeTest_hra_completion -->
-        <test-method status="PASS" signature="smokeTest_ttab_completion()[pri:4, instance:com.vaticahealth.vatica.tests.SmokeTest@1bd39d3c]" name="smokeTest_ttab_completion" duration-ms="29065" started-at="2017-01-06T12:35:42Z" description="T tab completion " finished-at="2017-01-06T12:36:11Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- smokeTest_ttab_completion -->
-        <test-method status="PASS" signature="smokeTest_dtab_completion()[pri:5, instance:com.vaticahealth.vatica.tests.SmokeTest@1bd39d3c]" name="smokeTest_dtab_completion" duration-ms="167306" started-at="2017-01-06T12:36:11Z" description="D tab completion" finished-at="2017-01-06T12:38:58Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- smokeTest_dtab_completion -->
-        <test-method status="PASS" signature="smokeTest_home_tcs()[pri:6, instance:com.vaticahealth.vatica.tests.SmokeTest@1bd39d3c]" name="smokeTest_home_tcs" duration-ms="185714" started-at="2017-01-06T12:38:58Z" description="PHP Test cases" finished-at="2017-01-06T12:42:04Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- smokeTest_home_tcs -->
-      </class> <!-- com.vaticahealth.vatica.tests.SmokeTest -->
+        </test-method> <!-- test1 -->
+      </class> <!-- com.vaticahealth.vatica.testsuits.SmokeTest2 -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

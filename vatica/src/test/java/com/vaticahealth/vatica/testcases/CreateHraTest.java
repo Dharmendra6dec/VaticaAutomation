@@ -1,8 +1,9 @@
-package com.vaticahealth.vatica.tests;
+package com.vaticahealth.vatica.testcases;
 
 import org.openqa.selenium.Keys;
 import org.testng.Assert;
 
+import com.vaticahealth.vatica.config.TestAnnotation;
 import com.vaticahealth.vatica.utils.CommonCode;
 
 public class CreateHraTest extends TestAnnotation{

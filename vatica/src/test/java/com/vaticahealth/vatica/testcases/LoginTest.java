@@ -1,28 +1,28 @@
-package com.vaticahealth.vatica.tests;
+package com.vaticahealth.vatica.testcases;
 
 import java.lang.reflect.InvocationTargetException;
 
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.Test;
 
+import com.vaticahealth.vatica.config.TestAnnotation;
 import com.vaticahealth.vatica.pages.Login;
 import com.vaticahealth.vatica.utils.CommonCode;
 
 public class LoginTest extends TestAnnotation {
-	CommonCode common = new CommonCode();
-	Login login = new Login();
+//	CommonCode common = new CommonCode();
 
 	// Login in to the application with correct credentials and select the
 	// website 'Plus' from the dropdown of sites.
 	public void tc_Login_1() throws InterruptedException, InvocationTargetException {
 
 		common.implictWait(20);
-		log.logging(logIdSupp, logPassowrdSupp);
-		log.loginButton();
+		login.logging(logIdSupp, logPassowrdSupp);
+		login.loginButton();
 		Thread.sleep(5000);
-		log.websiteDropDown(intff);
+		login.websiteDropDown(intff);
 		// Thread.sleep(3000);
-		log.selectWebsiteButton();
+		login.selectWebsiteButton();
 
 	}
 

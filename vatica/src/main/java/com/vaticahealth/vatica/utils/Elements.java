@@ -2,11 +2,10 @@ package com.vaticahealth.vatica.utils;
 
 import org.openqa.selenium.By;
 
+import com.vaticahealth.vatica.config.TestAnnotation;
 import com.vaticahealth.vatica.pages.PHP;
-import com.vaticahealth.vatica.tests.TestAnnotation;
 
-public  class Elements extends TestAnnotation{
-	PHP h = new PHP();
+public  class Elements{
 	
 	// Login and PHP page
 	public static final String VATICAlOGO = "html/body/div[1]/div/div[1]/div[1]/div/div/div[1]/a/img";
@@ -268,4 +267,36 @@ public  class Elements extends TestAnnotation{
 			public static final String SIGNBTN = "//*[@id='mdSigning']/div/div/div[3]/button";
 			public static final String ESIGNVERIFICATIONMSG = "//div[contains(text(),'Electronically')]";
 			public static final String ESIGNSUCCESSOK = "//button[text()='OK' and @ng-click='close()']";
+		
+			
+	// PPP Tab
+		public static final String PPP_Header_text = "//h4[contains(@title,'Personal')]"; 	
+		public static final String Introduction_link = "//a[text()='Introduction']";
+		public static final String Current_Health_Analysis_link = "//a[text()='I. Current Health Analysis']";
+		public static final String Personal_Health_Advice_link = "//a[text()='II. Personalized Health Advice']";
+		public static final String Screening_Schedule_link = "//a[text()='III. Screening Schedule']";
+		public static final String Community_Based_Resources_link = "//a[text()='Community Based Resources']";
+		public static final String Print_On__PPP_btn = "//a[text()='Print']";
+		
+		// Inroduction Link
+			public static final String Introduction_Header_img = "//*[@id='introduction']/img";
+			public static final String Patient_Name_On_Introduction_text = "//*[@id='introduction']/h4";
+		
+		// Current Health Analysis	
+			public static final String Current_Health_Analysis_img= "//*[@id='analysis']/div[1]/img";
+			public static final String Summary_Of_Test_Key_text = "//*[@class='col-xs-7']/table/tbody/tr/td[1]";
+			public static final String Summary_Of_Test_Value_text = "//*[@class='col-xs-7']/table/tbody/tr/td[2]";
+		
+		//	Personal Health Advice
+			public static final String Personal_Health_Advice_img = "//*[@id='advice']/div[1]/img";
+			
+		// 	Screening Schedule
+			public static final String Screening_Schedule_img = ".//*[@id='schedule']/div[1]/img";
+			
+		// Community Based Resources
+			public static final String Community_Based_Resources_img = ".//*[@id='resources']/div/img";
+		
+		// PPP Report
+			public static final String PPP_Report_Header_text = ".//*[@id='pageContainer1']/xhtml:div[2]/xhtml:div[9]";
+			public static final String PPP_Report_PatientName_text = ".//*[@id='pageContainer1']/xhtml:div[2]/xhtml:div[1]";
 }

@@ -1,5 +1,6 @@
-package com.vaticahealth.vatica.tests;
+package com.vaticahealth.vatica.testcases;
 
+import com.vaticahealth.vatica.config.TestAnnotation;
 import com.vaticahealth.vatica.utils.CommonCode;
 
 public class TestsTest extends TestAnnotation{

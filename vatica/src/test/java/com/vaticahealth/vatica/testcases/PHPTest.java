@@ -1,4 +1,4 @@
-package com.vaticahealth.vatica.tests;
+package com.vaticahealth.vatica.testcases;
 
 import java.util.ArrayList;
 import java.util.NoSuchElementException;
@@ -10,6 +10,7 @@ import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import com.vaticahealth.vatica.config.TestAnnotation;
 import com.vaticahealth.vatica.pages.Hra;
 import com.vaticahealth.vatica.pages.PHP;
 import com.vaticahealth.vatica.utils.CommonCode;
@@ -156,15 +157,15 @@ public class PHPTest extends TestAnnotation {
 					"D  button on grid is not working.");
 			Assert.assertTrue(home.GridHraBtn.isDisplayed() && home.GridHraBtn.isEnabled(),
 					"HRA button on grid is not working.");
-			Assert.assertTrue(home.GridHraBtn.isDisplayed() && home.GridHraBtn.isEnabled(),
+			Assert.assertTrue(home.GridSnapshotBtn.isDisplayed() && home.GridSnapshotBtn.isEnabled(),
 					"HRA button on grid is not working.");
-			Assert.assertTrue(home.GridHraBtn.isDisplayed() && home.GridHraBtn.isEnabled(),
+			Assert.assertTrue(home.GridCommentBtn.isDisplayed() && home.GridCommentBtn.isEnabled(),
 					"HRA button on grid is not working.");
-			Assert.assertTrue(home.GridHraBtn.isDisplayed() && home.GridHraBtn.isEnabled(),
+			Assert.assertTrue(home.GridPrintformsbtn.isDisplayed() && home.GridPrintformsbtn.isEnabled(),
 					"HRA button on grid is not working.");
-			Assert.assertTrue(home.GridHraBtn.isDisplayed() && home.GridHraBtn.isEnabled(),
+			Assert.assertTrue(home.GridMedicalRecordsBtn.isDisplayed() && home.GridMedicalRecordsBtn.isEnabled(),
 					"HRA button on grid is not working.");
-			Assert.assertTrue(home.GridHraBtn.isDisplayed() && home.GridHraBtn.isEnabled(),
+			Assert.assertTrue(home.GridAdminBtn.isDisplayed() && home.GridAdminBtn.isEnabled(),
 					"HRA button on grid is not working.");
 
 		} catch (java.lang.AssertionError e) {

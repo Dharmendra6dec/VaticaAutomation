@@ -1,8 +1,9 @@
-package com.vaticahealth.vatica.tests;
+package com.vaticahealth.vatica.testcases;
 
 import org.openqa.selenium.Keys;
 import org.testng.Assert;
 
+import com.vaticahealth.vatica.config.TestAnnotation;
 import com.vaticahealth.vatica.utils.CommonCode;
 
 public class DiagnosisTest extends TestAnnotation {
@@ -99,7 +100,12 @@ public class DiagnosisTest extends TestAnnotation {
 		Assert.assertTrue(diag.EsignSuccessMsg.getText().equals("Electronically signed by Demo Test."),
 				"The Esign success message is different");
 	//	common.explictWaitClickable(20, diag.EsignSuccessOk);
+		
+	/*	diag.EsignSuccessMsg.sendKeys(Keys.TAB);
+		diag.EsignSuccessMsg.sendKeys(Keys.ENTER);*/
+		
 		diag.EsignSuccessOk.click();
+		
 		Thread.sleep(5000);
 		Assert.assertTrue(driver.getTitle().toString().equals("Vatica Health"), "Incorrect page has been rendered.");
 	}
