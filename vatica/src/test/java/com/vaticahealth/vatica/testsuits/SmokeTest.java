@@ -34,7 +34,7 @@ public class SmokeTest extends TestAnnotation implements VaticaInterface {
 
 	}
 
-	/*@Test(priority = 3, description = "hra creation ")
+	@Test(priority = 3, description = "hra creation ")
 	public void smokeTest_hra_creation() throws InvocationTargetException, InterruptedException {
 		common.implictWait(20);
 		createHraTest.tc_CreateHra_1();
@@ -79,7 +79,7 @@ public class SmokeTest extends TestAnnotation implements VaticaInterface {
 		home.plainTextReport();
 		phpTest.logout();
 
-	}*/
+	}
 	
 	@Test(priority = 8, description = "Send email report")
 	public void QuitDriver() throws AddressException, MessagingException{
